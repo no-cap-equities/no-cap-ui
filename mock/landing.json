@@ -1,0 +1,22 @@
+{
+  "siteName": "No Cap",
+  "poweredBy": "Forte",
+  "roles": [
+    { "id": "founder", "title": "Founder / Admin", "img": "/img/role-founder.png", "cta": "Enter as Founder" },
+    { "id": "investor", "title": "Investor", "img": "/img/role-investor.png", "cta": "Enter as Investor" },
+    { "id": "employee", "title": "Employee", "img": "/img/role-employee.png", "cta": "Enter as Employee" }
+  ],
+  "features": [
+    { "icon": "ShieldCheck", "label": "Seamless Compliance" },
+    { "icon": "PieChart", "label": "Real-Time Cap Table" },
+    { "icon": "Zap", "label": "On-Chain Actions" }
+  ],
+  "links": [
+    { "label": "Docs", "href": "https://docs.nocap.dev" },
+    { "label": "GitHub", "href": "https://github.com/nocap-hq" }
+  ],
+  "certs": [
+    { "img": "/img/soc2.svg", "alt": "SOC 2 Type II" },
+    { "img": "/img/iso27001.svg", "alt": "ISO 27001" }
+  ]
+}
