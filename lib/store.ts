@@ -1,21 +1,51 @@
 import { create } from 'zustand'
 
-type UserRole = 'founder' | 'investor' | 'employee' | null
+export type UserRole = 'founder' | 'investor' | 'employee' | null
 
-interface UserState {
-  role: UserRole
-  isAuthenticated: boolean
-  setRole: (role: UserRole) => void
-  login: () => void
-  logout: () => void
+export interface Wallet {
+  address: string
+  shortAddress: string
+  provider: string
 }
 
-export const useUserStore = create<UserState>((set) => ({
+export interface UserState {
+  role: UserRole
+  isAuthenticated: boolean
+  wallet: Wallet | null
+  setRole: (role: UserRole) => void
+  login: (wallet?: Wallet) => void
+  logout: () => void
+  connectWallet: (provider: string) => Promise<void>
+}
+
+export const useUserStore = create<UserState>((set, get) => ({
   role: null,
   isAuthenticated: false,
+  wallet: null,
   setRole: (role) => set({ role }),
-  login: () => set({ isAuthenticated: true }),
-  logout: () => set({ isAuthenticated: false, role: null }),
+  login: (wallet) => set({ isAuthenticated: true, wallet: wallet || get().wallet }),
+  logout: () => {
+    // Clear localStorage to ensure clean state
+    localStorage.removeItem('no-cap-auth')
+    set({ isAuthenticated: false, role: null, wallet: null })
+  },
+  connectWallet: async (provider) => {
+    // Mock wallet connection
+    const randomAddress = `0x${Array.from({length: 40}, () => 
+      Math.floor(Math.random() * 16).toString(16)).join('')}`
+    
+    const wallet = {
+      address: randomAddress,
+      shortAddress: `${randomAddress.slice(0, 6)}...${randomAddress.slice(-4)}`,
+      provider
+    }
+    
+    // Simulate network delay
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    
+    set({ wallet })
+    return
+  }
 }))
 
 interface CompanyState {

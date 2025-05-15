@@ -1,6 +1,17 @@
+'use client'
+
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
+import { Button } from '@/components/ui/button'
+import { WalletConnectDialog } from '@/components/auth/wallet-connect-dialog'
+import { useAuth } from '@/components/auth/auth-provider'
+import { useRouter } from 'next/navigation'
+import { useUserStore } from '@/lib/store'
 
 export default function Home() {
+  const [showConnectDialog, setShowConnectDialog] = useState(false)
+  const { isAuthenticated, role } = useAuth()
+  const router = useRouter()
   return (
     <main className="min-h-screen flex flex-col">
       <header className="container mx-auto p-4 flex justify-between items-center">
@@ -8,8 +19,31 @@ export default function Home() {
           <span className="text-2xl">🧢</span>
           <h1 className="text-xl font-bold">No Cap</h1>
         </div>
-        <div className="text-sm text-muted-foreground">
-          Powered by Forte
+        <div className="flex items-center gap-4">
+          <div className="text-sm text-muted-foreground">
+            Powered by Forte
+          </div>
+          {isAuthenticated ? (
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={() => {
+                if (role === "founder") router.push("/founder/dashboard")
+                else if (role === "investor") router.push("/investor/portfolio")
+                else if (role === "employee") router.push("/employee/dashboard")
+              }}
+            >
+              Go to Dashboard
+            </Button>
+          ) : (
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={() => setShowConnectDialog(true)}
+            >
+              Connect Wallet
+            </Button>
+          )}
         </div>
       </header>
 
@@ -22,9 +56,19 @@ export default function Home() {
 
         <div className="grid md:grid-cols-3 gap-8 w-full max-w-4xl">
           {/* Founder Card */}
-          <Link 
-            href="/founder/dashboard"
-            className="flex flex-col items-center p-6 rounded-lg border border-border bg-card hover:shadow-md transition-shadow"
+          <div 
+            onClick={() => {
+              if (isAuthenticated) {
+                // If already logged in, switch role and navigate
+                useUserStore.setState({ role: 'founder' })
+                router.push("/founder/dashboard")
+              } else {
+                // If not logged in, set role and show wallet dialog
+                useUserStore.setState({ role: 'founder' })
+                setShowConnectDialog(true)
+              }
+            }}
+            className="flex flex-col items-center p-6 rounded-lg border border-border bg-card hover:shadow-md transition-shadow cursor-pointer"
           >
             <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
               <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -38,12 +82,22 @@ export default function Home() {
             <div className="mt-6 text-primary font-medium">
               Enter as Founder
             </div>
-          </Link>
+          </div>
 
           {/* Investor Card */}
-          <Link 
-            href="/investor/portfolio"
-            className="flex flex-col items-center p-6 rounded-lg border border-border bg-card hover:shadow-md transition-shadow"
+          <div 
+            onClick={() => {
+              if (isAuthenticated) {
+                // If already logged in, switch role and navigate
+                useUserStore.setState({ role: 'investor' })
+                router.push("/investor/portfolio")
+              } else {
+                // If not logged in, set role and show wallet dialog
+                useUserStore.setState({ role: 'investor' })
+                setShowConnectDialog(true)
+              }
+            }}
+            className="flex flex-col items-center p-6 rounded-lg border border-border bg-card hover:shadow-md transition-shadow cursor-pointer"
           >
             <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
               <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -57,12 +111,22 @@ export default function Home() {
             <div className="mt-6 text-primary font-medium">
               Enter as Investor
             </div>
-          </Link>
+          </div>
 
           {/* Employee Card */}
-          <Link 
-            href="/employee/dashboard"
-            className="flex flex-col items-center p-6 rounded-lg border border-border bg-card hover:shadow-md transition-shadow"
+          <div 
+            onClick={() => {
+              if (isAuthenticated) {
+                // If already logged in, switch role and navigate
+                useUserStore.setState({ role: 'employee' })
+                router.push("/employee/dashboard")
+              } else {
+                // If not logged in, set role and show wallet dialog
+                useUserStore.setState({ role: 'employee' })
+                setShowConnectDialog(true)
+              }
+            }}
+            className="flex flex-col items-center p-6 rounded-lg border border-border bg-card hover:shadow-md transition-shadow cursor-pointer"
           >
             <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
               <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -76,7 +140,7 @@ export default function Home() {
             <div className="mt-6 text-primary font-medium">
               Enter as Employee
             </div>
-          </Link>
+          </div>
         </div>
 
         <div className="flex gap-8 mt-16">
@@ -114,6 +178,11 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      
+      <WalletConnectDialog
+        open={showConnectDialog}
+        onOpenChange={setShowConnectDialog}
+      />
     </main>
   );
 }

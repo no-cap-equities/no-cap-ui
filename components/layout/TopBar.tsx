@@ -11,9 +11,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useTheme } from "next-themes"
+import { useAuth } from "@/components/auth/auth-provider"
+import { LogoutButton } from "@/components/auth/logout-button"
+import { RoleSwitcher } from "./RoleSwitcher"
 
 export function TopBar() {
   const { theme, setTheme } = useTheme()
+  const { isAuthenticated, wallet, role } = useAuth()
 
   return (
     <div className="h-16 border-b border-border flex items-center px-4 bg-background">
@@ -37,6 +41,7 @@ export function TopBar() {
       </div>
 
       <div className="flex items-center gap-2">
+        <RoleSwitcher />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" className="relative">
@@ -83,8 +88,17 @@ export function TopBar() {
             <DropdownMenuSeparator />
             <DropdownMenuItem>Profile</DropdownMenuItem>
             <DropdownMenuItem>Settings</DropdownMenuItem>
+            {wallet && (
+              <DropdownMenuItem>
+                <div className="text-xs text-muted-foreground">
+                  Connected: {wallet.shortAddress}
+                </div>
+              </DropdownMenuItem>
+            )}
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Log out</DropdownMenuItem>
+            <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+              <LogoutButton variant="ghost" className="w-full p-0 h-auto" />
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
