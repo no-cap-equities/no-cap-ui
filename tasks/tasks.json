@@ -337,7 +337,7 @@
       "dependencies": [
         1
       ],
-      "status": "pending",
+      "status": "done",
       "subtasks": [
         {
           "id": 1,
@@ -345,7 +345,7 @@
           "description": "Create TypeScript interfaces for the fundamental entities in the cap table system",
           "dependencies": [],
           "details": "Define interfaces for Company, Stakeholder, Security, Transaction, CapTable, and other core entities. Include proper typing for all properties, relationships between entities, and consider using discriminated unions for different security types (common shares, preferred shares, options, etc.).",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": 2,
@@ -355,7 +355,7 @@
             1
           ],
           "details": "Develop validation functions that can check if data objects conform to the defined interfaces. Include type guards, validation error reporting, and helper functions to ensure data integrity throughout the application.",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": 3,
@@ -365,7 +365,7 @@
             1
           ],
           "details": "Build functions that handle data normalization, denormalization, and transformation between API responses and the application's internal data structures. Include utilities for date formatting, percentage calculations, and other cap table specific transformations.",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": 4,
@@ -375,7 +375,7 @@
             1
           ],
           "details": "Create a TypeScript interface for the API client that defines all methods for CRUD operations on cap table entities. Include proper typing for request parameters and response types based on the core interfaces.",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": 5,
@@ -385,7 +385,7 @@
             4
           ],
           "details": "Develop a mock API client that implements the API client interface using in-memory data structures. Include simulated network delays, error conditions, and a comprehensive set of sample data for all entity types.",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": 6,
@@ -395,7 +395,7 @@
             5
           ],
           "details": "Create mock API endpoints for listing, creating, updating, and deleting cap tables. Include proper request validation, error handling, and response formatting according to the defined interfaces.",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": 7,
@@ -405,7 +405,7 @@
             5
           ],
           "details": "Create mock API endpoints for managing stakeholders and securities, including CRUD operations for both entity types. Implement proper relationship handling between stakeholders, securities, and cap tables.",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": 8,
@@ -416,7 +416,7 @@
             7
           ],
           "details": "Create mock API endpoints for recording, listing, and managing transactions such as issuances, transfers, exercises, and conversions. Ensure proper validation of transaction effects on the cap table state.",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": 9,
@@ -426,7 +426,7 @@
             4
           ],
           "details": "Develop base React Query hooks that wrap the API client interface. Include proper error handling, loading states, and TypeScript typing for all hooks. Set up default query options and global configuration.",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": 10,
@@ -436,7 +436,7 @@
             9
           ],
           "details": "Build React Query hooks for specific entity operations such as useCapTables, useStakeholders, useSecurities, and useTransactions. Include specialized mutation hooks for creating, updating, and deleting entities.",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": 11,
@@ -446,7 +446,7 @@
             10
           ],
           "details": "Create utilities and hooks for managing the cache invalidation, optimistic updates, and data synchronization between different parts of the application. Ensure that related entities are properly updated when changes occur.",
-          "status": "pending"
+          "status": "done"
         },
         {
           "id": 12,
@@ -458,7 +458,7 @@
             11
           ],
           "details": "Develop unit tests for TypeScript interfaces, validation utilities, and transformation functions. Create integration tests for the API client and mock routes. Implement testing utilities for React Query hooks using React Testing Library.",
-          "status": "pending"
+          "status": "done"
         }
       ]
     },

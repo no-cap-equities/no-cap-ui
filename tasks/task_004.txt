@@ -1,6 +1,6 @@
 # Task ID: 4
 # Title: Core Data Models and API Layer
-# Status: pending
+# Status: done
 # Dependencies: 1
 # Priority: high
 # Description: Implement the core data models and API layer for cap table, stakeholders, securities, grants, transactions, approvals, and compliance entities.
@@ -26,73 +26,73 @@
 6. Verify data consistency across different views
 
 # Subtasks:
-## 1. Define core TypeScript interfaces for cap table entities [pending]
+## 1. Define core TypeScript interfaces for cap table entities [done]
 ### Dependencies: None
 ### Description: Create TypeScript interfaces for the fundamental entities in the cap table system
 ### Details:
 Define interfaces for Company, Stakeholder, Security, Transaction, CapTable, and other core entities. Include proper typing for all properties, relationships between entities, and consider using discriminated unions for different security types (common shares, preferred shares, options, etc.).
 
-## 2. Implement data validation utilities [pending]
+## 2. Implement data validation utilities [done]
 ### Dependencies: 4.1
 ### Description: Create utility functions to validate data against the TypeScript interfaces
 ### Details:
 Develop validation functions that can check if data objects conform to the defined interfaces. Include type guards, validation error reporting, and helper functions to ensure data integrity throughout the application.
 
-## 3. Create data transformation utilities [pending]
+## 3. Create data transformation utilities [done]
 ### Dependencies: 4.1
 ### Description: Implement utility functions to transform data between API and UI formats
 ### Details:
 Build functions that handle data normalization, denormalization, and transformation between API responses and the application's internal data structures. Include utilities for date formatting, percentage calculations, and other cap table specific transformations.
 
-## 4. Design API client interface [pending]
+## 4. Design API client interface [done]
 ### Dependencies: 4.1
 ### Description: Define the core API client interface for interacting with backend services
 ### Details:
 Create a TypeScript interface for the API client that defines all methods for CRUD operations on cap table entities. Include proper typing for request parameters and response types based on the core interfaces.
 
-## 5. Implement mock API client [pending]
+## 5. Implement mock API client [done]
 ### Dependencies: 4.4
 ### Description: Create a mock implementation of the API client for development and testing
 ### Details:
 Develop a mock API client that implements the API client interface using in-memory data structures. Include simulated network delays, error conditions, and a comprehensive set of sample data for all entity types.
 
-## 6. Set up API route handlers for cap tables [pending]
+## 6. Set up API route handlers for cap tables [done]
 ### Dependencies: 4.5
 ### Description: Implement mock API routes for cap table CRUD operations
 ### Details:
 Create mock API endpoints for listing, creating, updating, and deleting cap tables. Include proper request validation, error handling, and response formatting according to the defined interfaces.
 
-## 7. Set up API route handlers for stakeholders and securities [pending]
+## 7. Set up API route handlers for stakeholders and securities [done]
 ### Dependencies: 4.5
 ### Description: Implement mock API routes for stakeholder and security management
 ### Details:
 Create mock API endpoints for managing stakeholders and securities, including CRUD operations for both entity types. Implement proper relationship handling between stakeholders, securities, and cap tables.
 
-## 8. Set up API route handlers for transactions [pending]
+## 8. Set up API route handlers for transactions [done]
 ### Dependencies: 4.5, 4.7
 ### Description: Implement mock API routes for transaction management
 ### Details:
 Create mock API endpoints for recording, listing, and managing transactions such as issuances, transfers, exercises, and conversions. Ensure proper validation of transaction effects on the cap table state.
 
-## 9. Implement base React Query hooks [pending]
+## 9. Implement base React Query hooks [done]
 ### Dependencies: 4.4
 ### Description: Create foundational React Query hooks for data fetching
 ### Details:
 Develop base React Query hooks that wrap the API client interface. Include proper error handling, loading states, and TypeScript typing for all hooks. Set up default query options and global configuration.
 
-## 10. Implement entity-specific React Query hooks [pending]
+## 10. Implement entity-specific React Query hooks [done]
 ### Dependencies: 4.9
 ### Description: Create specialized React Query hooks for each entity type
 ### Details:
 Build React Query hooks for specific entity operations such as useCapTables, useStakeholders, useSecurities, and useTransactions. Include specialized mutation hooks for creating, updating, and deleting entities.
 
-## 11. Develop data caching and synchronization strategy [pending]
+## 11. Develop data caching and synchronization strategy [done]
 ### Dependencies: 4.10
 ### Description: Implement a strategy for caching and synchronizing data across the application
 ### Details:
 Create utilities and hooks for managing the cache invalidation, optimistic updates, and data synchronization between different parts of the application. Ensure that related entities are properly updated when changes occur.
 
-## 12. Create comprehensive test suite for data layer [pending]
+## 12. Create comprehensive test suite for data layer [done]
 ### Dependencies: 4.3, 4.8, 4.11
 ### Description: Implement tests for the data models, API layer, and React Query hooks
 ### Details:
