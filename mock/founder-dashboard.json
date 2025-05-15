@@ -1,0 +1,52 @@
+{
+  "company": {
+    "id": "acme-inc",
+    "name": "Acme Robotics",
+    "logo": "/img/acme.svg",
+    "valuationUsd": 850000000,
+    "valuationDisplay": "$8.5 M"
+  },
+  "capTable": {
+    "asOf": "2025-05-15",
+    "holders": [
+      { "label": "Founders", "shares": 4500000, "pct": 45 },
+      { "label": "Employees", "shares": 1500000, "pct": 15 },
+      { "label": "Option Pool", "shares": 500000, "pct": 5 },
+      { "label": "Seed Inv.", "shares": 2000000, "pct": 20 },
+      { "label": "Series A", "shares": 1500000, "pct": 15 }
+    ]
+  },
+  "treasury": {
+    "usdCents": 220000000,
+    "stablecoins": [
+      { "symbol": "USDC", "amount": 125000000 },
+      { "symbol": "DAI", "amount": 95000000 }
+    ],
+    "runwayDays": 270
+  },
+  "checklist": {
+    "items": [
+      { "id": "form-d", "label": "Form D Filed", "status": "complete" },
+      { "id": "409a", "label": "409A Valuation", "status": "due-soon", "dueDate": "2025-07-01" },
+      { "id": "iso-cap", "label": "ISO 100k Limit Check", "status": "warning" },
+      { "id": "board-cons", "label": "Board Consents", "status": "pending" }
+    ]
+  },
+  "activity": [
+    {
+      "id": "tx-01",
+      "type": "GRANT_ISSUED",
+      "actor": "0xC0FFEE",
+      "message": "10 000 options granted to Jane D.",
+      "timestamp": "2025-05-14T14:12:00-04:00"
+    },
+    {
+      "id": "tx-02",
+      "type": "TRANSFER",
+      "actor": "0xBEEF",
+      "message": "1 500 shares transferred to Series A SPV",
+      "timestamp": "2025-05-13T09:00:00-04:00",
+      "txHash": "0xabc123…"
+    }
+  ]
+}

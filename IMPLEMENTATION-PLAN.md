@@ -1,6 +1,6 @@
 # No Cap UI Implementation Plan
 
-This document outlines our approach to building the No Cap UI using Storybook-driven development and shadcn/ui components.
+This document outlines our approach to building the No Cap UI using Storybook-driven development and shadcn components.
 
 ## Phase 1: Setup and Structure
 
@@ -27,27 +27,27 @@ This document outlines our approach to building the No Cap UI using Storybook-dr
 ### 2. Install Required shadcn Components
 ```bash
 # UI Components
-npx shadcn-ui@latest add button
-npx shadcn-ui@latest add card
-npx shadcn-ui@latest add avatar
-npx shadcn-ui@latest add badge
-npx shadcn-ui@latest add table
-npx shadcn-ui@latest add tabs
-npx shadcn-ui@latest add dialog
-npx shadcn-ui@latest add dropdown-menu
-npx shadcn-ui@latest add input
-npx shadcn-ui@latest add form
-npx shadcn-ui@latest add select
-npx shadcn-ui@latest add checkbox
-npx shadcn-ui@latest add radio-group
-npx shadcn-ui@latest add slider
-npx shadcn-ui@latest add progress
-npx shadcn-ui@latest add switch
-npx shadcn-ui@latest add accordion
-npx shadcn-ui@latest add alert
-npx shadcn-ui@latest add tooltip
-npx shadcn-ui@latest add sheet
-npx shadcn-ui@latest add toast
+npx shadcn@latest add -y button
+npx shadcn@latest add -y card
+npx shadcn@latest add -y avatar
+npx shadcn@latest add -y badge
+npx shadcn@latest add -y table
+npx shadcn@latest add -y tabs
+npx shadcn@latest add -y dialog
+npx shadcn@latest add -y dropdown-menu
+npx shadcn@latest add -y input
+npx shadcn@latest add -y form
+npx shadcn@latest add -y select
+npx shadcn@latest add -y checkbox
+npx shadcn@latest add -y radio-group
+npx shadcn@latest add -y slider
+npx shadcn@latest add -y progress
+npx shadcn@latest add -y switch
+npx shadcn@latest add -y accordion
+npx shadcn@latest add -y alert
+npx shadcn@latest add -y tooltip
+npx shadcn@latest add -y sheet
+npx shadcn@latest add -y toast
 ```
 
 ### 3. Configure Storybook

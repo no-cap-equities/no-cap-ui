@@ -2,9 +2,9 @@
   "siteName": "No Cap",
   "poweredBy": "Forte",
   "roles": [
-    { "id": "founder", "title": "Founder / Admin", "img": "/img/role-founder.png", "cta": "Enter as Founder" },
-    { "id": "investor", "title": "Investor", "img": "/img/role-investor.png", "cta": "Enter as Investor" },
-    { "id": "employee", "title": "Employee", "img": "/img/role-employee.png", "cta": "Enter as Employee" }
+    { "id": "founder", "title": "Founder / Admin", "img": "/img/role-founder.svg", "cta": "Enter as Founder" },
+    { "id": "investor", "title": "Investor", "img": "/img/role-investor.svg", "cta": "Enter as Investor" },
+    { "id": "employee", "title": "Employee", "img": "/img/role-employee.svg", "cta": "Enter as Employee" }
   ],
   "features": [
     { "icon": "ShieldCheck", "label": "Seamless Compliance" },

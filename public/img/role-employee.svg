@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>Employee Role</title>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#F0E6FF" x="0" y="0" width="200" height="200"></rect>
+        <text font-family="Arial" font-size="16" font-weight="bold" fill="#6633CC">
+            <tspan x="50" y="110">EMPLOYEE</tspan>
+        </text>
+        <circle stroke="#6633CC" stroke-width="2" cx="100" cy="60" r="20"></circle>
+        <path d="M100,80 L100,120" stroke="#6633CC" stroke-width="2"></path>
+        <path d="M80,90 L120,90" stroke="#6633CC" stroke-width="2"></path>
+    </g>
+</svg>
