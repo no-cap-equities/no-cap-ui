@@ -1,0 +1,87 @@
+# Task ID: 11
+# Title: Investor Portfolio View
+# Status: pending
+# Dependencies: 2, 4, 5
+# Priority: medium
+# Description: Implement the investor dashboard with portfolio summary, interactive bubble map, holdings table, and alerts to provide investors with a comprehensive view of their investments.
+# Details:
+1. Create investor portfolio route at `/app/(routes)/investor/portfolio/page.tsx`
+2. Build SummaryBar with portfolio metrics
+3. Implement BubbleMap visualization for portfolio companies
+4. Create HoldingsTable with sortable columns
+5. Build LiquidityEventCard for upcoming events
+6. Implement ThemeToggle for user preferences
+7. Create API integration with `/api/mock/investor-holdings?investor=:id`
+8. Build tooltip interactions for bubble map
+9. Implement navigation to company detail view
+10. Create responsive layout with table fallback on mobile
+
+# Test Strategy:
+1. Test portfolio loading with investor data
+2. Verify bubble map interactions and tooltips
+3. Test holdings table sorting and filtering
+4. Validate alert notifications
+5. Test navigation to company details
+6. Verify responsive behavior on mobile devices
+
+# Subtasks:
+## 1. Design portfolio summary component [pending]
+### Dependencies: None
+### Description: Create the portfolio summary component showing key metrics like total investment, current valuation, and ROI
+### Details:
+Design a clean, card-based layout that displays total portfolio value, number of investments, overall ROI percentage, and performance over time. Include a small sparkline chart for quick trend visualization. Ensure the design is responsive and follows the application's design system.
+
+## 2. Implement data aggregation service for portfolio metrics [pending]
+### Dependencies: 11.1
+### Description: Create a service to aggregate and calculate portfolio-level metrics from individual investment data
+### Details:
+Develop a service that processes raw investment data to calculate summary metrics like total invested capital, current valuation, ROI, and performance over time. Implement caching mechanisms to improve dashboard loading performance. Include error handling for missing or inconsistent data.
+
+## 3. Design interactive bubble map visualization [pending]
+### Dependencies: None
+### Description: Create the UI design for the bubble map showing investments by geography, sector, and size
+### Details:
+Design an interactive bubble map visualization where each bubble represents a portfolio company. Size should represent investment amount, color should represent sector, and position should represent geographic location. Include tooltips for hovering and interaction states for selection.
+
+## 4. Implement bubble map visualization component [pending]
+### Dependencies: 11.3
+### Description: Develop the interactive bubble map component using D3.js or similar visualization library
+### Details:
+Implement the bubble map visualization using D3.js or a similar library. Create animations for transitions, implement zoom and pan functionality, and ensure the visualization is responsive. Connect to the data service to populate the map with real portfolio data.
+
+## 5. Design holdings table component [pending]
+### Dependencies: None
+### Description: Create the UI design for the sortable and filterable holdings table
+### Details:
+Design a data table showing all portfolio companies with columns for company name, investment date, investment amount, current valuation, ROI, sector, and stage. Include sorting, filtering, and pagination controls. Design should be consistent with the dashboard's overall look and feel.
+
+## 6. Implement holdings table component [pending]
+### Dependencies: 11.5
+### Description: Develop the interactive holdings table with sorting, filtering, and pagination
+### Details:
+Implement the holdings table component with full sorting capabilities for all columns, filtering by multiple criteria, and efficient pagination. Include the ability to export data to CSV. Ensure the table is accessible and works well on all screen sizes.
+
+## 7. Design liquidity event alerts component [pending]
+### Dependencies: None
+### Description: Create the UI for the liquidity event alerts section
+### Details:
+Design an alerts section that displays upcoming and recent liquidity events like IPOs, acquisitions, or secondary market opportunities. Include visual indicators for event types, timeline visualization, and notification settings. Design should draw attention to high-priority events.
+
+## 8. Implement liquidity event alerts functionality [pending]
+### Dependencies: 11.7
+### Description: Develop the alerts component with notification system
+### Details:
+Implement the liquidity events alert system with real-time updates. Create the notification mechanism that can push alerts to email or in-app notifications based on user preferences. Include the ability to mark alerts as read or dismiss them.
+
+## 9. Integrate all dashboard components [pending]
+### Dependencies: 11.2, 11.4, 11.6, 11.8
+### Description: Combine all components into a cohesive dashboard layout with proper data flow
+### Details:
+Integrate all dashboard components into a unified interface. Implement state management to ensure data consistency across components. Create interactions between components (e.g., clicking a bubble on the map filters the holdings table). Optimize the layout for different screen sizes.
+
+## 10. Implement dashboard performance optimizations [pending]
+### Dependencies: 11.9
+### Description: Optimize dashboard loading and interaction performance
+### Details:
+Implement performance optimizations including lazy loading of components, data caching, virtualized lists for large datasets, and debounced event handlers. Add loading states and skeleton screens for better user experience during data fetching. Conduct performance testing and optimize render cycles.
+

@@ -1,0 +1,2501 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Project Setup and Configuration",
+      "description": "Initialize the Next.js 15.3+ project with App Router architecture, configure Tailwind v4, set up shadcn/ui component system, and establish the project structure.",
+      "details": "1. Create a new Next.js project using the App Router: `npx create-next-app@latest no-cap --typescript --tailwind --app`\n2. Configure Tailwind v4 for layout/spacing only\n3. Set up CSS variables for theming in `/app/globals.css`\n4. Install and configure shadcn/ui: `npx shadcn-ui@latest init`\n5. Create component directory structure:\n   - `/components/ui` - Re-exported shadcn components\n   - `/components/charts` - Chart wrappers\n   - `/components/layout` - Layout components\n   - `/app/(routes)` - Route groups by user role\n6. Set up Zustand for client state management: `npm install zustand`\n7. Set up React Query for API cache: `npm install @tanstack/react-query`\n8. Configure ESLint and Prettier\n9. Set up mock API directory structure for `/api/mock/*` endpoints",
+      "testStrategy": "1. Verify project builds without errors: `npm run build`\n2. Confirm all dependencies are correctly installed\n3. Test that the development server runs: `npm run dev`\n4. Validate that the component structure is accessible\n5. Ensure CSS variables are properly defined and accessible",
+      "priority": "high",
+      "dependencies": [],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "Initialize Next.js 15.3+ project",
+          "description": "Create a new Next.js 15.3+ project with App Router architecture",
+          "dependencies": [],
+          "details": "Use 'npx create-next-app@latest' to initialize a new project. When prompted, select the following options: 1) Name your project, 2) Yes to TypeScript, 3) Yes to ESLint, 4) Yes to Tailwind CSS, 5) Yes to App Router, 6) No to custom import alias (unless specifically needed). After initialization, verify the project structure and ensure Next.js version is 15.3 or higher in package.json.",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "Configure Tailwind v4",
+          "description": "Update and configure Tailwind CSS to version 4",
+          "dependencies": [
+            1
+          ],
+          "details": "Update Tailwind CSS to v4 by running 'npm install tailwindcss@latest postcss@latest autoprefixer@latest'. Create or update tailwind.config.js to use the v4 syntax. Configure content paths to include all relevant files. Set up any custom theme extensions, plugins, or color schemes needed for the project. Update the globals.css file to include the proper Tailwind directives (@tailwind base, components, and utilities).",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "Install and configure shadcn/ui",
+          "description": "Set up shadcn/ui component library with the project",
+          "dependencies": [
+            2
+          ],
+          "details": "Install shadcn/ui CLI with 'npm install -D @shadcn/ui'. Initialize shadcn/ui with 'npx shadcn-ui@latest init'. During initialization, configure the style (default, new york), color (slate, zinc, etc.), global CSS path, component directory, and React Server Components support. Ensure the configuration is compatible with Tailwind v4 and Next.js 15.3+.",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "Set up App Router directory structure",
+          "description": "Create the necessary directories and files for App Router architecture",
+          "dependencies": [
+            1
+          ],
+          "details": "Establish the core App Router directory structure: 1) app/ directory with page.tsx (homepage), layout.tsx (root layout), and error.tsx (error handling), 2) Create app/api directory for API routes, 3) Set up proper metadata in layout.tsx for SEO, 4) Configure any necessary route groups with parentheses notation (e.g., (auth), (dashboard)). Ensure the structure follows Next.js 15.3+ best practices.",
+          "status": "pending"
+        },
+        {
+          "id": 5,
+          "title": "Implement authentication structure",
+          "description": "Set up the authentication framework and related routes",
+          "dependencies": [
+            4
+          ],
+          "details": "Create an (auth) route group with sign-in, sign-up, and other auth-related pages. Set up authentication provider (NextAuth.js, Clerk, or custom solution). Configure necessary middleware.ts for protected routes. Create authentication hooks or utilities in the lib/ directory. Ensure the authentication flow works with the App Router architecture.",
+          "status": "pending"
+        },
+        {
+          "id": 6,
+          "title": "Create reusable components with shadcn/ui",
+          "description": "Install and customize essential shadcn/ui components",
+          "dependencies": [
+            3
+          ],
+          "details": "Install core shadcn/ui components using the CLI (e.g., 'npx shadcn-ui@latest add button card form input'). Create a components/ directory with subdirectories for organization (ui/, layout/, forms/, etc.). Customize components to match project design requirements. Create any composite components needed for the application using the shadcn/ui primitives.",
+          "status": "pending"
+        },
+        {
+          "id": 7,
+          "title": "Set up state management and data fetching",
+          "description": "Implement state management solution and data fetching patterns",
+          "dependencies": [
+            4
+          ],
+          "details": "Choose and implement a state management approach (React Context, Zustand, Jotai, etc.). Create a lib/ directory for utilities and state management. Set up data fetching patterns using Next.js Server Components and/or client-side fetching. Implement proper loading states and error handling for data fetching. Configure any necessary API route handlers in the app/api directory.",
+          "status": "pending"
+        },
+        {
+          "id": 8,
+          "title": "Configure environment variables and config",
+          "description": "Set up environment variables and project configuration",
+          "dependencies": [
+            1
+          ],
+          "details": "Create .env, .env.local, .env.example files for environment variables. Set up a config.ts file to centralize configuration values. Configure any necessary third-party services (database, authentication, etc.). Implement environment-specific settings for development, testing, and production. Document all required environment variables in the README.md.",
+          "status": "pending"
+        },
+        {
+          "id": 9,
+          "title": "Implement testing and deployment setup",
+          "description": "Configure testing framework and deployment pipeline",
+          "dependencies": [
+            2,
+            3,
+            4,
+            7,
+            8
+          ],
+          "details": "Set up testing framework (Jest, Vitest, or React Testing Library). Create test directories and initial test files. Configure CI/CD pipeline with GitHub Actions or similar service. Set up deployment configuration for the chosen hosting platform (Vercel, Netlify, etc.). Create necessary scripts in package.json for testing, building, and deployment. Document the deployment process in the README.md.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Authentication System with Alchemy Account Kit",
+      "description": "Implement the authentication system using Alchemy Account Kit for wallet connections with optional email/SSO stub for alternative login methods.",
+      "details": "1. Install Alchemy Account Kit: `npm install @alchemy/aa-core @alchemy/aa-accounts`\n2. Create authentication provider component in `/components/providers/auth-provider.tsx`\n3. Implement wallet connection flow with Alchemy Account Kit\n4. Create authentication hooks in `/hooks/use-auth.ts`\n5. Build authentication modal component with provider options\n6. Implement session management with role context\n7. Create protected route middleware\n8. Add email/SSO stub as alternative authentication method\n9. Implement sign out functionality\n10. Create authentication state in Zustand store",
+      "testStrategy": "1. Test wallet connection with test accounts\n2. Verify session persistence across page refreshes\n3. Test role-based access control\n4. Validate authentication state management\n5. Test sign out functionality\n6. Verify protected routes redirect unauthenticated users",
+      "priority": "high",
+      "dependencies": [
+        1
+      ],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "Set up Alchemy Account Kit dependencies",
+          "description": "Install and configure all necessary dependencies for Alchemy Account Kit integration",
+          "dependencies": [],
+          "details": "Install required packages (alchemy-account-kit, ethers.js, etc.). Configure environment variables for Alchemy API keys and network settings. Set up initial project structure for authentication components.",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "Implement wallet connection interface",
+          "description": "Create UI components for wallet connection options",
+          "dependencies": [
+            1
+          ],
+          "details": "Design and implement UI components for different wallet connection methods (MetaMask, WalletConnect, email, etc.). Create a modal component for wallet selection. Implement connection status indicators and error handling for failed connections.",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "Develop wallet connection logic",
+          "description": "Implement the core functionality to connect with various wallet providers",
+          "dependencies": [
+            1,
+            2
+          ],
+          "details": "Create connection handlers for each wallet type. Implement proper error handling and connection state management. Set up event listeners for wallet connection/disconnection events. Test connections with different wallet types.",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "Create authentication hooks",
+          "description": "Develop custom React hooks for authentication state management",
+          "dependencies": [
+            3
+          ],
+          "details": "Create useAuth hook to manage authentication state. Implement functions for login, logout, and checking authentication status. Add wallet address and connection status to the authentication context. Ensure hooks are properly typed with TypeScript.",
+          "status": "pending"
+        },
+        {
+          "id": 5,
+          "title": "Implement session management",
+          "description": "Create a system to manage user sessions after authentication",
+          "dependencies": [
+            4
+          ],
+          "details": "Implement JWT or session token generation after successful wallet authentication. Create storage mechanisms for session persistence (localStorage, cookies, etc.). Add automatic session refresh functionality. Implement session timeout handling.",
+          "status": "pending"
+        },
+        {
+          "id": 6,
+          "title": "Develop sign-in with Ethereum functionality",
+          "description": "Implement SIWE (Sign-In With Ethereum) protocol for secure authentication",
+          "dependencies": [
+            3,
+            4
+          ],
+          "details": "Generate SIWE messages with proper formatting. Implement signature request and verification flow. Create backend endpoints for signature verification. Handle nonce generation and validation for security.",
+          "status": "pending"
+        },
+        {
+          "id": 7,
+          "title": "Create protected route components",
+          "description": "Implement components to restrict access to authenticated users only",
+          "dependencies": [
+            4,
+            5
+          ],
+          "details": "Create a ProtectedRoute component that redirects unauthenticated users. Implement role-based access control if needed. Add loading states while checking authentication. Create redirect logic for authentication flows.",
+          "status": "pending"
+        },
+        {
+          "id": 8,
+          "title": "Implement user profile management",
+          "description": "Create functionality to manage user profiles associated with wallet addresses",
+          "dependencies": [
+            5,
+            6
+          ],
+          "details": "Create database schema for user profiles. Implement profile creation upon first authentication. Add profile editing functionality. Create UI components for profile management. Implement avatar/ENS name resolution.",
+          "status": "pending"
+        },
+        {
+          "id": 9,
+          "title": "Add multi-wallet support",
+          "description": "Extend the authentication system to support multiple connected wallets",
+          "dependencies": [
+            3,
+            5,
+            6
+          ],
+          "details": "Implement wallet switching functionality. Create UI for managing multiple connected wallets. Update authentication state to handle multiple wallets. Ensure proper session management when switching between wallets.",
+          "status": "pending"
+        },
+        {
+          "id": 10,
+          "title": "Create comprehensive testing suite",
+          "description": "Develop tests for all authentication components and flows",
+          "dependencies": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "details": "Write unit tests for authentication hooks and components. Create integration tests for authentication flows. Implement mock wallet providers for testing. Test edge cases like disconnections and rejected signatures. Create documentation for the authentication system.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Multi-Role Landing Page",
+      "description": "Create the landing page with role selection cards that direct users to personalized experiences based on their relationship with the platform (founder, investor, employee).",
+      "details": "1. Create landing page route at `/app/page.tsx`\n2. Design and implement the header with logo and 'Powered by Forte' text\n3. Build three role selection cards (Founder/Admin, Investor, Employee)\n4. Implement role selection logic that updates Zustand store\n5. Create animations for subtle blockchain connection visuals\n6. Build footer with regulatory compliance badges\n7. Implement responsive design for mobile and tablet views\n8. Connect role selection to authentication flow\n9. Create mock API endpoint at `/api/mock/landing` to serve landing page data\n10. Implement accessibility features for role selection cards",
+      "testStrategy": "1. Test role selection functionality\n2. Verify responsive design across device sizes\n3. Test authentication flow after role selection\n4. Validate accessibility with screen readers\n5. Verify that mock API endpoint returns correct data",
+      "priority": "high",
+      "dependencies": [
+        1,
+        2
+      ],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "Design role selection cards",
+          "description": "Create visual designs for the role selection cards that will appear on the landing page",
+          "dependencies": [],
+          "details": "Design at least 3 distinct role cards (e.g., investor, creator, developer) with appropriate iconography, color schemes, and hover states. Each card should clearly communicate the role's purpose and benefits. Include both active and inactive states in the design.",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "Implement responsive layout structure",
+          "description": "Create the responsive HTML/CSS structure for the landing page that works across all device sizes",
+          "dependencies": [],
+          "details": "Develop a flexible grid layout that adapts to desktop, tablet, and mobile viewports. Ensure proper spacing, typography scaling, and component repositioning based on screen size. Use CSS media queries to handle breakpoints appropriately.",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "Develop role selection component",
+          "description": "Build the interactive component that allows users to select their role",
+          "dependencies": [
+            1,
+            2
+          ],
+          "details": "Implement the role selection cards as interactive components that highlight on hover and can be selected. Store the selected role in application state. Include validation to ensure a role is selected before proceeding.",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "Create entrance and transition animations",
+          "description": "Implement smooth animations for page load and role selection transitions",
+          "dependencies": [
+            2
+          ],
+          "details": "Design and implement entrance animations for the landing page elements (fade-in, slide-in, etc.). Create smooth transitions when users select different roles. Ensure animations are subtle and enhance rather than distract from the user experience.",
+          "status": "pending"
+        },
+        {
+          "id": 5,
+          "title": "Implement blockchain connection visuals",
+          "description": "Create visual indicators for blockchain connection status",
+          "dependencies": [
+            2
+          ],
+          "details": "Design and implement subtle visual indicators showing blockchain connection status (connecting, connected, disconnected). Include appropriate loading states and error handling for connection issues. These should be non-intrusive but informative.",
+          "status": "pending"
+        },
+        {
+          "id": 6,
+          "title": "Integrate with authentication flow",
+          "description": "Connect the role selection process with the user authentication system",
+          "dependencies": [
+            3
+          ],
+          "details": "Integrate the selected role with the authentication flow so that user permissions and experience are tailored to their role. Implement the necessary API calls to store the selected role with the user profile. Handle authentication redirects appropriately.",
+          "status": "pending"
+        },
+        {
+          "id": 7,
+          "title": "Implement role-specific content previews",
+          "description": "Create dynamic content previews that change based on selected role",
+          "dependencies": [
+            3,
+            6
+          ],
+          "details": "Develop a system that dynamically updates content previews on the landing page based on the selected role. This should give users a glimpse of what their experience will be like after selecting a specific role. Include relevant metrics, features, or benefits for each role.",
+          "status": "pending"
+        },
+        {
+          "id": 8,
+          "title": "Perform cross-browser testing and optimization",
+          "description": "Test the landing page across different browsers and optimize performance",
+          "dependencies": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "details": "Test the landing page on major browsers (Chrome, Firefox, Safari, Edge) and ensure consistent functionality. Optimize animations and transitions for performance. Ensure loading times are minimized and the page is accessible according to WCAG standards.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Core Data Models and API Layer",
+      "description": "Implement the core data models and API layer for cap table, stakeholders, securities, grants, transactions, approvals, and compliance entities.",
+      "details": "1. Define TypeScript interfaces for all core entities in `/types/index.ts`:\n   - Company, CapTable, Stakeholder, Security, Grant, Transaction, Approval, Compliance\n2. Create API client utilities in `/lib/api.ts`\n3. Implement React Query hooks for data fetching in `/hooks/use-queries.ts`\n4. Set up mock API routes in `/app/api/mock/` for all data endpoints\n5. Create sample JSON data files in `/mock/` directory based on the data specification\n6. Implement error handling and loading states\n7. Create data transformation utilities for visualization formats\n8. Set up optimistic updates for mutations\n9. Implement caching strategies for performance\n10. Create mock API response delay simulation for testing",
+      "testStrategy": "1. Test all API endpoints with sample requests\n2. Verify data model integrity across transformations\n3. Test error handling with simulated failures\n4. Validate caching behavior\n5. Test optimistic updates for mutations\n6. Verify data consistency across different views",
+      "priority": "high",
+      "dependencies": [
+        1
+      ],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "Define core TypeScript interfaces for cap table entities",
+          "description": "Create TypeScript interfaces for the fundamental entities in the cap table system",
+          "dependencies": [],
+          "details": "Define interfaces for Company, Stakeholder, Security, Transaction, CapTable, and other core entities. Include proper typing for all properties, relationships between entities, and consider using discriminated unions for different security types (common shares, preferred shares, options, etc.).",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "Implement data validation utilities",
+          "description": "Create utility functions to validate data against the TypeScript interfaces",
+          "dependencies": [
+            1
+          ],
+          "details": "Develop validation functions that can check if data objects conform to the defined interfaces. Include type guards, validation error reporting, and helper functions to ensure data integrity throughout the application.",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "Create data transformation utilities",
+          "description": "Implement utility functions to transform data between API and UI formats",
+          "dependencies": [
+            1
+          ],
+          "details": "Build functions that handle data normalization, denormalization, and transformation between API responses and the application's internal data structures. Include utilities for date formatting, percentage calculations, and other cap table specific transformations.",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "Design API client interface",
+          "description": "Define the core API client interface for interacting with backend services",
+          "dependencies": [
+            1
+          ],
+          "details": "Create a TypeScript interface for the API client that defines all methods for CRUD operations on cap table entities. Include proper typing for request parameters and response types based on the core interfaces.",
+          "status": "pending"
+        },
+        {
+          "id": 5,
+          "title": "Implement mock API client",
+          "description": "Create a mock implementation of the API client for development and testing",
+          "dependencies": [
+            4
+          ],
+          "details": "Develop a mock API client that implements the API client interface using in-memory data structures. Include simulated network delays, error conditions, and a comprehensive set of sample data for all entity types.",
+          "status": "pending"
+        },
+        {
+          "id": 6,
+          "title": "Set up API route handlers for cap tables",
+          "description": "Implement mock API routes for cap table CRUD operations",
+          "dependencies": [
+            5
+          ],
+          "details": "Create mock API endpoints for listing, creating, updating, and deleting cap tables. Include proper request validation, error handling, and response formatting according to the defined interfaces.",
+          "status": "pending"
+        },
+        {
+          "id": 7,
+          "title": "Set up API route handlers for stakeholders and securities",
+          "description": "Implement mock API routes for stakeholder and security management",
+          "dependencies": [
+            5
+          ],
+          "details": "Create mock API endpoints for managing stakeholders and securities, including CRUD operations for both entity types. Implement proper relationship handling between stakeholders, securities, and cap tables.",
+          "status": "pending"
+        },
+        {
+          "id": 8,
+          "title": "Set up API route handlers for transactions",
+          "description": "Implement mock API routes for transaction management",
+          "dependencies": [
+            5,
+            7
+          ],
+          "details": "Create mock API endpoints for recording, listing, and managing transactions such as issuances, transfers, exercises, and conversions. Ensure proper validation of transaction effects on the cap table state.",
+          "status": "pending"
+        },
+        {
+          "id": 9,
+          "title": "Implement base React Query hooks",
+          "description": "Create foundational React Query hooks for data fetching",
+          "dependencies": [
+            4
+          ],
+          "details": "Develop base React Query hooks that wrap the API client interface. Include proper error handling, loading states, and TypeScript typing for all hooks. Set up default query options and global configuration.",
+          "status": "pending"
+        },
+        {
+          "id": 10,
+          "title": "Implement entity-specific React Query hooks",
+          "description": "Create specialized React Query hooks for each entity type",
+          "dependencies": [
+            9
+          ],
+          "details": "Build React Query hooks for specific entity operations such as useCapTables, useStakeholders, useSecurities, and useTransactions. Include specialized mutation hooks for creating, updating, and deleting entities.",
+          "status": "pending"
+        },
+        {
+          "id": 11,
+          "title": "Develop data caching and synchronization strategy",
+          "description": "Implement a strategy for caching and synchronizing data across the application",
+          "dependencies": [
+            10
+          ],
+          "details": "Create utilities and hooks for managing the cache invalidation, optimistic updates, and data synchronization between different parts of the application. Ensure that related entities are properly updated when changes occur.",
+          "status": "pending"
+        },
+        {
+          "id": 12,
+          "title": "Create comprehensive test suite for data layer",
+          "description": "Implement tests for the data models, API layer, and React Query hooks",
+          "dependencies": [
+            3,
+            8,
+            11
+          ],
+          "details": "Develop unit tests for TypeScript interfaces, validation utilities, and transformation functions. Create integration tests for the API client and mock routes. Implement testing utilities for React Query hooks using React Testing Library.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Visualization Components and Chart Library",
+      "description": "Develop reusable chart components using Recharts for cap table visualization, including pie charts, bar charts, line graphs, and other data representations.",
+      "details": "1. Install Recharts: `npm install recharts`\n2. Create base chart components in `/components/charts/`:\n   - PieChart for ownership distribution\n   - BarChart for comparative analysis\n   - LineChart for time-series data\n   - BubbleChart for portfolio visualization\n3. Implement responsive chart containers\n4. Create chart color utilities that use CSS variables\n5. Build interactive tooltip components\n6. Implement animation configurations\n7. Create chart legend components\n8. Build chart export functionality (PNG, CSV)\n9. Implement accessibility features for charts\n10. Create chart skeleton loaders for loading states",
+      "testStrategy": "1. Test charts with various data sets\n2. Verify responsive behavior across screen sizes\n3. Test interactive features (tooltips, clicks)\n4. Validate export functionality\n5. Test accessibility with screen readers\n6. Verify color scheme consistency with design system",
+      "priority": "medium",
+      "dependencies": [
+        1,
+        4
+      ],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "Set up project structure for Recharts components",
+          "description": "Create the initial project structure for reusable chart components using Recharts library",
+          "dependencies": [],
+          "details": "Initialize the project structure with appropriate folders for components, utilities, and types. Set up necessary dependencies including Recharts and any supporting libraries. Create basic documentation structure and component API guidelines.",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "Implement base chart configuration system",
+          "description": "Develop a configuration system that will be shared across all chart types",
+          "dependencies": [
+            1
+          ],
+          "details": "Create a flexible configuration system that handles common chart properties like dimensions, margins, colors, animations, and theming. Implement prop validation and default values. Design the system to be extensible for all chart types while maintaining consistency.",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "Develop pie chart component for ownership visualization",
+          "description": "Create a reusable pie chart component to visualize ownership distribution in cap tables",
+          "dependencies": [
+            2
+          ],
+          "details": "Implement a pie chart component with customizable segments, labels, and tooltips. Include features for highlighting segments, showing percentages, and handling edge cases like many small segments. Ensure the component works with cap table data structure for ownership visualization.",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "Build bar chart component for comparative metrics",
+          "description": "Develop a bar chart component for comparing metrics across different equity classes or time periods",
+          "dependencies": [
+            2
+          ],
+          "details": "Create a bar chart component supporting horizontal and vertical orientations, grouped and stacked configurations. Implement features for sorting, filtering, and customizing bar appearance. Ensure it can effectively display comparative cap table metrics like ownership by class or changes over funding rounds.",
+          "status": "pending"
+        },
+        {
+          "id": 5,
+          "title": "Implement line graph for historical equity trends",
+          "description": "Create a line graph component to visualize changes in equity distribution over time",
+          "dependencies": [
+            2
+          ],
+          "details": "Develop a line graph component with support for multiple series, customizable line styles, and data point markers. Implement zoom and pan capabilities for exploring historical data. Include features for displaying significant events like funding rounds or exits on the timeline.",
+          "status": "pending"
+        },
+        {
+          "id": 6,
+          "title": "Add interactive features and tooltips",
+          "description": "Enhance all chart components with interactive features and detailed tooltips",
+          "dependencies": [
+            3,
+            4,
+            5
+          ],
+          "details": "Implement consistent interactive behaviors across all chart types including hover effects, click actions, and tooltips. Create customizable tooltip components that display relevant data points and calculated metrics. Add support for drill-down interactions to explore detailed information.",
+          "status": "pending"
+        },
+        {
+          "id": 7,
+          "title": "Implement responsive design for all chart components",
+          "description": "Ensure all chart components are fully responsive across different screen sizes",
+          "dependencies": [
+            3,
+            4,
+            5
+          ],
+          "details": "Add responsive behavior to all chart components using Recharts' responsive container. Implement adaptive layouts that optimize for different screen sizes. Create fallback visualizations for very small screens where detailed charts may not be readable.",
+          "status": "pending"
+        },
+        {
+          "id": 8,
+          "title": "Develop chart export and sharing functionality",
+          "description": "Add capabilities to export charts as images or data and share them",
+          "dependencies": [
+            6,
+            7
+          ],
+          "details": "Implement functionality to export charts as PNG, SVG, or PDF. Add options to export underlying data as CSV or Excel. Create shareable links or embed codes for charts. Ensure exported visuals maintain high quality and include relevant context.",
+          "status": "pending"
+        },
+        {
+          "id": 9,
+          "title": "Implement accessibility features",
+          "description": "Ensure all chart components meet accessibility standards",
+          "dependencies": [
+            6,
+            7
+          ],
+          "details": "Add ARIA attributes to all chart components. Implement keyboard navigation for interactive elements. Ensure color schemes are accessible for color-blind users. Add screen reader support with meaningful descriptions of data visualizations. Test with accessibility tools and make necessary improvements.",
+          "status": "pending"
+        },
+        {
+          "id": 10,
+          "title": "Create comprehensive documentation and examples",
+          "description": "Develop detailed documentation and usage examples for all chart components",
+          "dependencies": [
+            8,
+            9
+          ],
+          "details": "Create comprehensive API documentation for all components. Develop a storybook or example gallery showcasing different chart configurations and use cases specific to cap table visualization. Include code snippets, prop tables, and best practices. Add performance optimization guidelines and troubleshooting information.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Founder Dashboard Implementation",
+      "description": "Create the founder dashboard with cap table visualization, treasury widget, compliance checklist, and activity timeline to provide a comprehensive view of ownership and compliance.",
+      "details": "1. Create founder dashboard route at `/app/(routes)/founder/dashboard/page.tsx`\n2. Implement SidebarNav component for founder navigation\n3. Build TopBar with company selector and notifications\n4. Create CapTablePieChart component with interactive features\n5. Implement StackedBarToggle for alternative visualization\n6. Build TreasuryWidget showing balances and runway\n7. Create ComplianceChecklist component with status indicators\n8. Implement RecentActivityTimeline with transaction history\n9. Connect to mock API endpoint `/api/mock/founder-dashboard`\n10. Implement responsive layout for different screen sizes\n11. Add drag-to-dilute CTA navigation to simulator page",
+      "testStrategy": "1. Test dashboard loading and data display\n2. Verify interactive features of charts\n3. Test responsive layout across device sizes\n4. Validate navigation to other founder screens\n5. Test notifications and alerts functionality\n6. Verify that all components update correctly with data changes",
+      "priority": "high",
+      "dependencies": [
+        2,
+        4,
+        5
+      ],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "Define dashboard requirements and architecture",
+          "description": "Document the complete requirements for the founder dashboard and design the overall architecture",
+          "dependencies": [],
+          "details": "Create a comprehensive document outlining all dashboard components, data sources, user interactions, and technical requirements. Design the architecture including component hierarchy, state management approach, and API integration points. Include wireframes for the main dashboard layout and navigation structure.",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "Set up dashboard framework and navigation",
+          "description": "Implement the base dashboard structure with navigation between different sections",
+          "dependencies": [
+            1
+          ],
+          "details": "Create the dashboard shell with responsive layout. Implement the navigation bar/sidebar that allows switching between cap table, treasury, compliance, and activity sections. Set up routing and state management foundation. Ensure the framework supports all planned widgets and visualizations.",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "Implement cap table data model and API integration",
+          "description": "Create the data structures and API connections needed for the cap table visualization",
+          "dependencies": [
+            2
+          ],
+          "details": "Define the data model for equity ownership, share classes, vesting schedules, and dilution calculations. Implement API services to fetch cap table data. Create data transformation utilities to prepare the data for visualization. Include error handling and loading states.",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "Develop cap table visualization component",
+          "description": "Build interactive charts and tables to display equity distribution and ownership",
+          "dependencies": [
+            3
+          ],
+          "details": "Implement pie/donut charts showing equity distribution by stakeholder type. Create detailed tables showing individual ownership percentages, share counts, and values. Add interactive features like filtering, sorting, and drill-down capabilities. Ensure visualizations are responsive across device sizes.",
+          "status": "pending"
+        },
+        {
+          "id": 5,
+          "title": "Implement treasury data model and API integration",
+          "description": "Create the data structures and API connections for the treasury management widget",
+          "dependencies": [
+            2
+          ],
+          "details": "Define the data model for cash positions, burn rate, runway calculations, and financial projections. Implement API services to fetch treasury data. Create data transformation utilities for financial calculations and trend analysis. Include error handling and loading states.",
+          "status": "pending"
+        },
+        {
+          "id": 6,
+          "title": "Develop treasury management widget",
+          "description": "Build interactive components to display cash position, burn rate, and financial projections",
+          "dependencies": [
+            5
+          ],
+          "details": "Implement line/area charts showing cash flow over time. Create burn rate visualizations and runway indicators. Add financial health metrics and alerts for critical thresholds. Include interactive features for different time periods and projection scenarios. Ensure all components are responsive.",
+          "status": "pending"
+        },
+        {
+          "id": 7,
+          "title": "Implement compliance data model and API integration",
+          "description": "Create the data structures and API connections for the compliance checklist",
+          "dependencies": [
+            2
+          ],
+          "details": "Define the data model for compliance requirements, deadlines, completion status, and documentation. Implement API services to fetch compliance data. Create utilities for deadline calculations and status tracking. Include error handling and loading states.",
+          "status": "pending"
+        },
+        {
+          "id": 8,
+          "title": "Develop compliance checklist component",
+          "description": "Build an interactive checklist to track regulatory and governance requirements",
+          "dependencies": [
+            7
+          ],
+          "details": "Implement a categorized checklist showing compliance items with status indicators. Create deadline visualizations and overdue alerts. Add document upload/attachment capabilities. Include filtering by status, category, and urgency. Ensure the component is responsive and accessible.",
+          "status": "pending"
+        },
+        {
+          "id": 9,
+          "title": "Implement activity timeline data model and API integration",
+          "description": "Create the data structures and API connections for the activity timeline",
+          "dependencies": [
+            2
+          ],
+          "details": "Define the data model for company events, milestones, transactions, and user activities. Implement API services to fetch timeline data. Create utilities for chronological sorting, filtering, and grouping. Include error handling and loading states.",
+          "status": "pending"
+        },
+        {
+          "id": 10,
+          "title": "Develop activity timeline component",
+          "description": "Build an interactive timeline showing company events and activities",
+          "dependencies": [
+            9
+          ],
+          "details": "Implement a vertical timeline visualization with event categories and icons. Create interactive features for filtering by event type and date range. Add detail expansion and related document access. Ensure the timeline is responsive and performs well with large datasets.",
+          "status": "pending"
+        },
+        {
+          "id": 11,
+          "title": "Integrate components and implement dashboard analytics",
+          "description": "Combine all components into a cohesive dashboard and add analytics features",
+          "dependencies": [
+            4,
+            6,
+            8,
+            10
+          ],
+          "details": "Integrate all components into the main dashboard. Implement cross-component communication where needed. Add dashboard-level analytics like summary metrics and health indicators. Create user preference saving and dashboard customization options. Perform final testing and optimization across all device sizes.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Cap Table Explorer with Time-Machine Slider",
+      "description": "Implement the cap table explorer with an interactive timeline slider that allows users to visualize ownership evolution over time and explore different equity scenarios.",
+      "details": "1. Create cap table explorer route at `/app/(routes)/founder/cap-table/page.tsx`\n2. Build TimeMachineSlider component for time navigation\n3. Implement CapTableTable with sortable columns and expandable rows\n4. Create PieToBarToggle for switching visualization types\n5. Build DiluteSimulatorPanel for modeling funding rounds\n6. Implement ScenarioSaveChip for bookmarking scenarios\n7. Create API integration with `/api/mock/cap-table?date=YYYY-MM-DD`\n8. Implement animation for ownership changes over time\n9. Build export functionality for cap table data\n10. Create responsive layout with collapsible simulator panel on mobile",
+      "testStrategy": "1. Test time slider functionality with different dates\n2. Verify cap table data updates correctly with time changes\n3. Test dilution simulator with various inputs\n4. Validate scenario saving functionality\n5. Test export features for different formats\n6. Verify responsive behavior on mobile devices",
+      "priority": "high",
+      "dependencies": [
+        4,
+        5,
+        6
+      ],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "Design data model for cap table time series",
+          "description": "Create a data model that can represent ownership changes over time, including funding rounds, option grants, transfers, and other equity events.",
+          "dependencies": [],
+          "details": "Define schemas for equity events, ownership records with timestamps, and historical snapshots. Ensure the model can efficiently support time-based queries and scenario branching. Include entity relationships between shareholders, equity types, and transactions.",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "Implement time-machine slider component",
+          "description": "Develop an interactive slider component that allows users to move through the cap table history and see ownership at different points in time.",
+          "dependencies": [
+            1
+          ],
+          "details": "Create a responsive slider with date markers for significant events. Implement smooth transitions between time points. Add play/pause functionality to animate through time. Include tooltips showing key events at each point on the timeline.",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "Build cap table visualization engine",
+          "description": "Create a visualization engine that can render the cap table data in multiple formats (pie charts, bar graphs, tables) based on the selected time point.",
+          "dependencies": [
+            1
+          ],
+          "details": "Implement D3.js or similar library for data visualization. Create modular visualization components that can be toggled. Ensure visualizations update efficiently when the time point changes. Include animations for transitions between states.",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "Develop visualization toggle controls",
+          "description": "Create UI controls that allow users to switch between different visualization types and configure display options.",
+          "dependencies": [
+            3
+          ],
+          "details": "Design an intuitive toggle interface for switching between pie charts, bar graphs, tables, and other visualizations. Include options for grouping shareholders by type, filtering by ownership percentage, and highlighting specific shareholders. Implement responsive design for different screen sizes.",
+          "status": "pending"
+        },
+        {
+          "id": 5,
+          "title": "Implement dilution simulator",
+          "description": "Create a simulator that allows users to model how potential future events would affect ownership percentages.",
+          "dependencies": [
+            1,
+            3
+          ],
+          "details": "Build a form interface for inputting hypothetical events (new funding rounds, option grants, etc.). Implement real-time calculation of dilution effects. Show before/after comparisons visually. Include validation to prevent unrealistic scenarios.",
+          "status": "pending"
+        },
+        {
+          "id": 6,
+          "title": "Develop scenario management system",
+          "description": "Create functionality to save, load, and compare different cap table scenarios.",
+          "dependencies": [
+            5
+          ],
+          "details": "Implement a scenario storage system with naming and description. Create UI for managing saved scenarios. Build comparison view to show differences between scenarios. Include export functionality for scenarios in various formats (PDF, Excel, etc.).",
+          "status": "pending"
+        },
+        {
+          "id": 7,
+          "title": "Create interactive timeline of equity events",
+          "description": "Develop a visual timeline showing all equity events with filtering and search capabilities.",
+          "dependencies": [
+            1,
+            2
+          ],
+          "details": "Design a horizontal timeline with event markers. Implement zooming and panning for navigating large timelines. Add filtering by event type, date range, and stakeholders. Include search functionality to find specific events quickly.",
+          "status": "pending"
+        },
+        {
+          "id": 8,
+          "title": "Implement shareholder detail view",
+          "description": "Create a detailed view showing a specific shareholder's equity position over time.",
+          "dependencies": [
+            1,
+            3,
+            7
+          ],
+          "details": "Design a shareholder profile page with ownership history graph. Show all transactions affecting the shareholder. Include metrics like ownership percentage, value over time, and dilution history. Add export functionality for shareholder-specific reports.",
+          "status": "pending"
+        },
+        {
+          "id": 9,
+          "title": "Build API for cap table data retrieval and manipulation",
+          "description": "Develop backend APIs to support all the cap table explorer functionality.",
+          "dependencies": [
+            1
+          ],
+          "details": "Create RESTful endpoints for retrieving cap table data at specific time points. Implement endpoints for scenario creation and management. Add authentication and authorization for sensitive data. Include performance optimizations for large cap tables.",
+          "status": "pending"
+        },
+        {
+          "id": 10,
+          "title": "Implement end-to-end testing and performance optimization",
+          "description": "Create comprehensive tests and optimize performance for the cap table explorer.",
+          "dependencies": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "details": "Develop unit tests for all components. Create integration tests for the full feature. Implement performance testing for large datasets. Optimize rendering and data loading for smooth user experience. Add caching strategies for frequently accessed data points.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Equity Issuance Wizard",
+      "description": "Create a multi-step wizard for issuing equity to stakeholders with instrument selection, recipient information, terms configuration, compliance checks, and approval workflow.",
+      "details": "1. Create equity issuance wizard route at `/app/(routes)/founder/issue-equity/page.tsx`\n2. Build Stepper component for multi-step navigation\n3. Implement InstrumentCard selection for security types\n4. Create StakeholderLookup for recipient selection\n5. Build VestingTimeline visualization for schedule configuration\n6. Implement RuleValidationList for compliance checks\n7. Create SummaryCard for final review\n8. Build side panel showing cap table impact\n9. Implement form validation for each step\n10. Create API integration with mock endpoints for instruments, employees, and vesting templates\n11. Implement draft saving functionality\n12. Build submission flow to approval system",
+      "testStrategy": "1. Test wizard navigation through all steps\n2. Verify form validation for required fields\n3. Test instrument selection and configuration\n4. Validate compliance checks with different scenarios\n5. Test submission and approval routing\n6. Verify cap table impact visualization updates correctly",
+      "priority": "medium",
+      "dependencies": [
+        4,
+        6
+      ],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "Design Wizard Flow Architecture",
+          "description": "Create the overall architecture for the multi-step equity issuance wizard, defining the step sequence and data flow between steps.",
+          "dependencies": [],
+          "details": "Define the complete wizard flow including navigation, data persistence between steps, and error handling. Create wireframes for each step and document the data model that will be passed through the wizard.",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "Implement Instrument Selection Step",
+          "description": "Build the first step of the wizard for selecting the equity instrument type (options, RSUs, etc.) with appropriate visualizations and explanations.",
+          "dependencies": [
+            1
+          ],
+          "details": "Create UI components for instrument selection with comparison charts, tooltips explaining each instrument type, and validation logic to ensure a valid selection before proceeding.",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "Develop Recipient Information Form",
+          "description": "Create the form for inputting recipient details including validation for required fields and integration with existing user database.",
+          "dependencies": [
+            1
+          ],
+          "details": "Build form components with validation for name, contact information, employee ID, and tax information. Include search functionality to find existing users in the system and auto-populate fields when possible.",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "Implement Grant Size Calculator",
+          "description": "Create an interactive calculator for determining grant size based on company policies, recipient level, and available equity pool.",
+          "dependencies": [
+            2,
+            3
+          ],
+          "details": "Build a calculator that shows available options based on company guidelines, with visualizations of dilution impact and monetary value at different price points. Include validation to prevent exceeding available equity pool.",
+          "status": "pending"
+        },
+        {
+          "id": 5,
+          "title": "Build Vesting Schedule Configuration",
+          "description": "Develop the interface for configuring vesting schedules with visualization of the vesting timeline.",
+          "dependencies": [
+            4
+          ],
+          "details": "Create UI for setting vesting parameters (cliff period, vesting duration, frequency) with an interactive timeline visualization showing vesting events. Include templates for standard vesting schedules and custom configuration options.",
+          "status": "pending"
+        },
+        {
+          "id": 6,
+          "title": "Implement Document Generation Preview",
+          "description": "Create a preview system for the equity documents that will be generated based on the configured grant.",
+          "dependencies": [
+            5
+          ],
+          "details": "Build a document preview system showing how the final grant documents will appear with all entered information. Include the ability to download draft documents for review before submission.",
+          "status": "pending"
+        },
+        {
+          "id": 7,
+          "title": "Develop Compliance Verification System",
+          "description": "Implement automated compliance checks to ensure the grant meets regulatory requirements and company policies.",
+          "dependencies": [
+            4,
+            5
+          ],
+          "details": "Create a system that validates the grant against securities regulations, company equity plan rules, and recipient eligibility requirements. Display warnings or errors when compliance issues are detected.",
+          "status": "pending"
+        },
+        {
+          "id": 8,
+          "title": "Build Approval Workflow Integration",
+          "description": "Integrate the wizard with the company's approval workflow system to route completed grants for necessary approvals.",
+          "dependencies": [
+            6,
+            7
+          ],
+          "details": "Implement integration with the approval system, determining the approval chain based on grant size, recipient, and company policies. Include status tracking and notification capabilities.",
+          "status": "pending"
+        },
+        {
+          "id": 9,
+          "title": "Create Summary and Confirmation Step",
+          "description": "Develop the final wizard step showing a complete summary of the grant and confirmation before submission.",
+          "dependencies": [
+            6,
+            7
+          ],
+          "details": "Build a comprehensive summary page displaying all configured grant details with the ability to go back and edit any section. Include a final submission confirmation with terms acknowledgment.",
+          "status": "pending"
+        },
+        {
+          "id": 10,
+          "title": "Implement Data Persistence and Recovery",
+          "description": "Create a system for saving draft grants and recovering in-progress wizard sessions.",
+          "dependencies": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "details": "Develop functionality to automatically save wizard progress, allow users to return to in-progress grants, and implement draft management features including listing, editing, and deleting draft grants.",
+          "status": "pending"
+        },
+        {
+          "id": 11,
+          "title": "Develop Notification System",
+          "description": "Build a notification system to alert relevant parties about grant creation, approval requests, and status changes.",
+          "dependencies": [
+            8,
+            9
+          ],
+          "details": "Implement email and in-app notifications for grant submission, approval requests, approvals/rejections, and final grant issuance. Include customizable notification preferences for different user roles.",
+          "status": "pending"
+        },
+        {
+          "id": 12,
+          "title": "Create Comprehensive Testing Suite",
+          "description": "Develop end-to-end testing for the entire wizard flow, including edge cases and integration testing.",
+          "dependencies": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "details": "Create automated tests covering all wizard steps, validation logic, compliance checks, and approval workflows. Include performance testing for large grants and security testing for sensitive equity data.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Multi-Party Approval Workflow",
+      "description": "Implement the approval workflow system with visual flow diagram, approval actions, delegation capabilities, and activity tracking for equity transactions.",
+      "details": "1. Create approval detail route at `/app/(routes)/approvals/[requestId]/page.tsx`\n2. Build AvatarFlow component for visualizing approval sequence\n3. Implement ApprovalDocViewer for document review\n4. Create DiffOwnershipChart showing before/after impact\n5. Build ActionButtons for approve/reject/delegate actions\n6. Implement HistoryTimeline for tracking approval activity\n7. Create API integration with `/api/mock/approvals/:id`\n8. Implement optimistic UI updates for approval actions\n9. Build notification system for pending approvals\n10. Create delegation modal for reassigning approvals\n11. Implement server-sent events for real-time updates",
+      "testStrategy": "1. Test approval flow visualization with different scenarios\n2. Verify approval actions (approve, reject, delegate)\n3. Test document viewer functionality\n4. Validate history timeline updates\n5. Test notification system for approvals\n6. Verify real-time updates with multiple users",
+      "priority": "medium",
+      "dependencies": [
+        4,
+        8
+      ],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "Define approval workflow states and transitions",
+          "description": "Define all possible states in the approval workflow (draft, pending, approved, rejected, etc.) and the valid transitions between them.",
+          "dependencies": [],
+          "details": "Create a comprehensive state machine that covers all possible approval scenarios. Include edge cases like cancellations, revisions, and expired approvals. Document the business rules that govern transitions between states.",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "Create visual workflow diagram",
+          "description": "Design a visual representation of the approval workflow that clearly shows all states and transitions.",
+          "dependencies": [
+            1
+          ],
+          "details": "Use a flowchart tool to create a clear, professional diagram. Include color coding for different types of states and actions. Ensure the diagram is suitable for both technical and non-technical stakeholders.",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "Design approval action interfaces",
+          "description": "Design the UI components for approval actions (approve, reject, request changes, etc.).",
+          "dependencies": [
+            1
+          ],
+          "details": "Create mockups for approval buttons, confirmation dialogs, and comment fields. Ensure the design is intuitive and prevents accidental actions. Include mobile-responsive designs.",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "Implement document viewing capabilities",
+          "description": "Develop the functionality to view documents requiring approval within the workflow system.",
+          "dependencies": [],
+          "details": "Implement secure document rendering for various file types (PDF, DOCX, images). Include zoom, page navigation, and annotation features. Ensure documents load efficiently even when large.",
+          "status": "pending"
+        },
+        {
+          "id": 5,
+          "title": "Develop core approval workflow engine",
+          "description": "Build the backend logic that manages workflow states, transitions, and validation rules.",
+          "dependencies": [
+            1
+          ],
+          "details": "Implement the state machine defined earlier as a robust backend service. Include validation logic for each transition. Design for extensibility to allow new states or rules to be added later.",
+          "status": "pending"
+        },
+        {
+          "id": 6,
+          "title": "Implement delegation capabilities",
+          "description": "Create functionality allowing approvers to delegate their approval authority to others.",
+          "dependencies": [
+            5
+          ],
+          "details": "Build delegation features including temporary and permanent delegation options. Include controls for delegation limits, expiration, and revocation. Implement notification systems for both delegator and delegate.",
+          "status": "pending"
+        },
+        {
+          "id": 7,
+          "title": "Develop real-time activity tracking",
+          "description": "Implement a system to track and display all workflow activities in real-time.",
+          "dependencies": [
+            5
+          ],
+          "details": "Create an event-based system that captures all workflow actions. Implement real-time updates using WebSockets or similar technology. Design an activity log that shows who did what and when.",
+          "status": "pending"
+        },
+        {
+          "id": 8,
+          "title": "Create notification system",
+          "description": "Develop notifications for approval requests, status changes, and approaching deadlines.",
+          "dependencies": [
+            5,
+            7
+          ],
+          "details": "Implement multi-channel notifications (email, in-app, mobile push). Create templates for different notification types. Include preference settings for users to control notification frequency and channels.",
+          "status": "pending"
+        },
+        {
+          "id": 9,
+          "title": "Implement reporting and analytics",
+          "description": "Build reporting features to track approval metrics and identify bottlenecks.",
+          "dependencies": [
+            7
+          ],
+          "details": "Create dashboards showing approval times, rejection rates, and bottlenecks. Implement filters for different time periods and organizational units. Include export functionality for reports.",
+          "status": "pending"
+        },
+        {
+          "id": 10,
+          "title": "Develop audit trail functionality",
+          "description": "Create a comprehensive audit system that logs all actions within the approval workflow.",
+          "dependencies": [
+            5,
+            7
+          ],
+          "details": "Implement tamper-evident logging of all system actions. Include user information, timestamps, IP addresses, and before/after states. Create interfaces for authorized users to review audit trails.",
+          "status": "pending"
+        },
+        {
+          "id": 11,
+          "title": "Conduct integration testing",
+          "description": "Test the complete approval workflow system with all components working together.",
+          "dependencies": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "details": "Create test scenarios covering the entire approval lifecycle. Test edge cases like simultaneous approvals and system outages. Verify real-time updates and notification delivery. Conduct performance testing under load.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Employee Dashboard with Vesting Visualization",
+      "description": "Create the employee dashboard with equity summary, vesting timeline, grants table, tax calculator, and educational content to help employees understand their equity.",
+      "details": "1. Create employee dashboard route at `/app/(routes)/employee/dashboard/page.tsx`\n2. Build MetricCard components for equity summary\n3. Implement LinearVestingBar for visualizing vesting schedule\n4. Create GrantsTable with expandable details\n5. Build TaxCalcWidget for estimating tax implications\n6. Implement FAQAccordion for educational content\n7. Create API integration with `/api/mock/employee-grants?user=:id`\n8. Implement confetti animation for vesting milestones\n9. Build navigation to option exercise wizard\n10. Create responsive layout with mobile-first approach",
+      "testStrategy": "1. Test dashboard loading with employee data\n2. Verify vesting visualization accuracy\n3. Test grants table expansion and details\n4. Validate tax calculator with different scenarios\n5. Test educational content accessibility\n6. Verify responsive layout on mobile devices",
+      "priority": "medium",
+      "dependencies": [
+        2,
+        4,
+        5
+      ],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "Design dashboard layout and information architecture",
+          "description": "Create wireframes and design mockups for the overall dashboard layout, including navigation and component placement.",
+          "dependencies": [],
+          "details": "Define the information hierarchy, user flow, and responsive design considerations. Include placement for equity summary, vesting timeline, grants table, tax calculator, and educational content sections.",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "Implement equity summary component",
+          "description": "Develop the equity summary section showing total grants, vested shares, and current value.",
+          "dependencies": [
+            1
+          ],
+          "details": "Create visualizations for quick understanding of equity position. Include total shares granted, vested shares, unvested shares, and estimated current value based on latest company valuation.",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "Build vesting timeline visualization",
+          "description": "Create an interactive timeline showing past and future vesting events.",
+          "dependencies": [
+            1
+          ],
+          "details": "Implement a graphical representation of the vesting schedule with clear indicators for vesting dates, cliff periods, and amounts. Allow users to hover/click for detailed information about specific vesting events.",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "Develop grants table with filtering and sorting",
+          "description": "Create a detailed table showing all equity grants with relevant details and interactive features.",
+          "dependencies": [
+            1
+          ],
+          "details": "Include columns for grant date, grant type, shares/units, vesting schedule, current value, and vesting status. Implement sorting and filtering capabilities to help users organize and find specific grants.",
+          "status": "pending"
+        },
+        {
+          "id": 5,
+          "title": "Implement tax calculator functionality",
+          "description": "Build a calculator tool that estimates tax implications for different exercise scenarios.",
+          "dependencies": [
+            1
+          ],
+          "details": "Create input fields for exercise date, quantity, strike price, and fair market value. Calculate estimated AMT, ordinary income, and capital gains taxes based on user inputs and current tax regulations.",
+          "status": "pending"
+        },
+        {
+          "id": 6,
+          "title": "Create educational content section",
+          "description": "Develop a section with educational resources about equity compensation.",
+          "dependencies": [
+            1
+          ],
+          "details": "Include explanations of key terms (RSUs, options, vesting, etc.), FAQs, and guides on exercise strategies. Organize content in an accessible way with expandable sections and search functionality.",
+          "status": "pending"
+        },
+        {
+          "id": 7,
+          "title": "Integrate data retrieval and API connections",
+          "description": "Set up connections to backend services to retrieve user-specific equity data.",
+          "dependencies": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "details": "Implement API calls to fetch grant details, vesting schedules, company valuation data, and user account information. Include error handling and loading states for a smooth user experience.",
+          "status": "pending"
+        },
+        {
+          "id": 8,
+          "title": "Implement user preferences and settings",
+          "description": "Create functionality for users to customize their dashboard experience.",
+          "dependencies": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "details": "Allow users to set default views, hide/show specific components, set notification preferences for vesting events, and save tax calculation scenarios for future reference.",
+          "status": "pending"
+        },
+        {
+          "id": 9,
+          "title": "Perform cross-browser and responsive testing",
+          "description": "Test the dashboard across different devices and browsers to ensure compatibility.",
+          "dependencies": [
+            7,
+            8
+          ],
+          "details": "Verify functionality and appearance on desktop, tablet, and mobile devices. Test on Chrome, Firefox, Safari, and Edge browsers. Address any layout or functionality issues that arise during testing.",
+          "status": "pending"
+        },
+        {
+          "id": 10,
+          "title": "Implement analytics and user feedback mechanisms",
+          "description": "Add tracking for user interactions and create channels for feedback collection.",
+          "dependencies": [
+            9
+          ],
+          "details": "Set up analytics to track feature usage and identify potential improvements. Implement feedback forms or surveys to collect user input on dashboard usability and feature requests for future iterations.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Investor Portfolio View",
+      "description": "Implement the investor dashboard with portfolio summary, interactive bubble map, holdings table, and alerts to provide investors with a comprehensive view of their investments.",
+      "details": "1. Create investor portfolio route at `/app/(routes)/investor/portfolio/page.tsx`\n2. Build SummaryBar with portfolio metrics\n3. Implement BubbleMap visualization for portfolio companies\n4. Create HoldingsTable with sortable columns\n5. Build LiquidityEventCard for upcoming events\n6. Implement ThemeToggle for user preferences\n7. Create API integration with `/api/mock/investor-holdings?investor=:id`\n8. Build tooltip interactions for bubble map\n9. Implement navigation to company detail view\n10. Create responsive layout with table fallback on mobile",
+      "testStrategy": "1. Test portfolio loading with investor data\n2. Verify bubble map interactions and tooltips\n3. Test holdings table sorting and filtering\n4. Validate alert notifications\n5. Test navigation to company details\n6. Verify responsive behavior on mobile devices",
+      "priority": "medium",
+      "dependencies": [
+        2,
+        4,
+        5
+      ],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "Design portfolio summary component",
+          "description": "Create the portfolio summary component showing key metrics like total investment, current valuation, and ROI",
+          "dependencies": [],
+          "details": "Design a clean, card-based layout that displays total portfolio value, number of investments, overall ROI percentage, and performance over time. Include a small sparkline chart for quick trend visualization. Ensure the design is responsive and follows the application's design system.",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "Implement data aggregation service for portfolio metrics",
+          "description": "Create a service to aggregate and calculate portfolio-level metrics from individual investment data",
+          "dependencies": [
+            1
+          ],
+          "details": "Develop a service that processes raw investment data to calculate summary metrics like total invested capital, current valuation, ROI, and performance over time. Implement caching mechanisms to improve dashboard loading performance. Include error handling for missing or inconsistent data.",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "Design interactive bubble map visualization",
+          "description": "Create the UI design for the bubble map showing investments by geography, sector, and size",
+          "dependencies": [],
+          "details": "Design an interactive bubble map visualization where each bubble represents a portfolio company. Size should represent investment amount, color should represent sector, and position should represent geographic location. Include tooltips for hovering and interaction states for selection.",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "Implement bubble map visualization component",
+          "description": "Develop the interactive bubble map component using D3.js or similar visualization library",
+          "dependencies": [
+            3
+          ],
+          "details": "Implement the bubble map visualization using D3.js or a similar library. Create animations for transitions, implement zoom and pan functionality, and ensure the visualization is responsive. Connect to the data service to populate the map with real portfolio data.",
+          "status": "pending"
+        },
+        {
+          "id": 5,
+          "title": "Design holdings table component",
+          "description": "Create the UI design for the sortable and filterable holdings table",
+          "dependencies": [],
+          "details": "Design a data table showing all portfolio companies with columns for company name, investment date, investment amount, current valuation, ROI, sector, and stage. Include sorting, filtering, and pagination controls. Design should be consistent with the dashboard's overall look and feel.",
+          "status": "pending"
+        },
+        {
+          "id": 6,
+          "title": "Implement holdings table component",
+          "description": "Develop the interactive holdings table with sorting, filtering, and pagination",
+          "dependencies": [
+            5
+          ],
+          "details": "Implement the holdings table component with full sorting capabilities for all columns, filtering by multiple criteria, and efficient pagination. Include the ability to export data to CSV. Ensure the table is accessible and works well on all screen sizes.",
+          "status": "pending"
+        },
+        {
+          "id": 7,
+          "title": "Design liquidity event alerts component",
+          "description": "Create the UI for the liquidity event alerts section",
+          "dependencies": [],
+          "details": "Design an alerts section that displays upcoming and recent liquidity events like IPOs, acquisitions, or secondary market opportunities. Include visual indicators for event types, timeline visualization, and notification settings. Design should draw attention to high-priority events.",
+          "status": "pending"
+        },
+        {
+          "id": 8,
+          "title": "Implement liquidity event alerts functionality",
+          "description": "Develop the alerts component with notification system",
+          "dependencies": [
+            7
+          ],
+          "details": "Implement the liquidity events alert system with real-time updates. Create the notification mechanism that can push alerts to email or in-app notifications based on user preferences. Include the ability to mark alerts as read or dismiss them.",
+          "status": "pending"
+        },
+        {
+          "id": 9,
+          "title": "Integrate all dashboard components",
+          "description": "Combine all components into a cohesive dashboard layout with proper data flow",
+          "dependencies": [
+            2,
+            4,
+            6,
+            8
+          ],
+          "details": "Integrate all dashboard components into a unified interface. Implement state management to ensure data consistency across components. Create interactions between components (e.g., clicking a bubble on the map filters the holdings table). Optimize the layout for different screen sizes.",
+          "status": "pending"
+        },
+        {
+          "id": 10,
+          "title": "Implement dashboard performance optimizations",
+          "description": "Optimize dashboard loading and interaction performance",
+          "dependencies": [
+            9
+          ],
+          "details": "Implement performance optimizations including lazy loading of components, data caching, virtualized lists for large datasets, and debounced event handlers. Add loading states and skeleton screens for better user experience during data fetching. Conduct performance testing and optimize render cycles.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Company Detail View for Investors",
+      "description": "Create the company detail view for investors with investment summary, ownership evolution chart, cap table section, and document management to provide detailed insights into specific investments.",
+      "details": "1. Create company detail route at `/app/(routes)/investor/companies/[id]/page.tsx`\n2. Build HeaderBar with company information\n3. Implement MetricCardsRow for investment metrics\n4. Create LineChartDualAxis for ownership evolution\n5. Build CapMiniTable for simplified cap table view\n6. Implement ProRataCalcModal for future round planning\n7. Create document management section with tabs\n8. Build API integration with `/api/mock/company/:id?investor=:investorId`\n9. Implement toggle between shares and percentage view\n10. Create responsive layout for different screen sizes",
+      "testStrategy": "1. Test company detail loading with different companies\n2. Verify chart interactions and toggles\n3. Test pro-rata calculator functionality\n4. Validate document viewing and management\n5. Test responsive layout across device sizes\n6. Verify data consistency with portfolio view",
+      "priority": "medium",
+      "dependencies": [
+        4,
+        5,
+        11
+      ],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "Design company detail view layout",
+          "description": "Create wireframes and design mockups for the company detail view layout",
+          "dependencies": [],
+          "details": "Design the overall layout of the company detail view page, including header, navigation, main content areas for investment summary, ownership chart, cap table, and document sections. Consider responsive design for different screen sizes.",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "Implement company header and basic information section",
+          "description": "Develop the company header with logo, name, and key metrics",
+          "dependencies": [
+            1
+          ],
+          "details": "Create the company header component displaying the company logo, name, industry, founding date, and other key information. Include a summary card with vital statistics like valuation, total investment, and investor count.",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "Develop investment summary component",
+          "description": "Create a component to display investment history and key metrics",
+          "dependencies": [
+            2
+          ],
+          "details": "Implement the investment summary section showing total investment amount, number of rounds, investment timeline, and key metrics. Include filtering options and summary statistics relevant to investors.",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "Design and implement ownership evolution chart",
+          "description": "Create an interactive chart showing ownership changes over time",
+          "dependencies": [
+            2
+          ],
+          "details": "Develop a visualization component that displays how company ownership has evolved across funding rounds. Include interactive elements to view specific time periods, highlight specific investor stakes, and show percentage changes.",
+          "status": "pending"
+        },
+        {
+          "id": 5,
+          "title": "Build cap table data model and API integration",
+          "description": "Create data models and API endpoints for cap table information",
+          "dependencies": [
+            2
+          ],
+          "details": "Design the data structure for storing and retrieving cap table information. Implement API endpoints to fetch cap table data including shareholder information, equity distribution, and valuation details.",
+          "status": "pending"
+        },
+        {
+          "id": 6,
+          "title": "Implement cap table visualization component",
+          "description": "Create interactive cap table display with filtering and sorting options",
+          "dependencies": [
+            5
+          ],
+          "details": "Develop the cap table component with tabular and visual representations of equity distribution. Include features for sorting, filtering by investor type, and highlighting specific shareholders. Implement export functionality for reports.",
+          "status": "pending"
+        },
+        {
+          "id": 7,
+          "title": "Create document management system backend",
+          "description": "Implement backend services for document storage, retrieval, and categorization",
+          "dependencies": [
+            2
+          ],
+          "details": "Develop the backend infrastructure for document management including storage solutions, metadata handling, versioning, and access control. Create API endpoints for uploading, retrieving, and managing documents.",
+          "status": "pending"
+        },
+        {
+          "id": 8,
+          "title": "Build document management UI",
+          "description": "Create user interface for document browsing, uploading, and management",
+          "dependencies": [
+            7
+          ],
+          "details": "Implement the document management interface with features for categorizing documents (legal, financial, operational), searching, filtering, and previewing. Include upload functionality with metadata tagging and version control UI.",
+          "status": "pending"
+        },
+        {
+          "id": 9,
+          "title": "Implement user permissions and access controls",
+          "description": "Create permission system for different investor access levels",
+          "dependencies": [
+            3,
+            6,
+            8
+          ],
+          "details": "Develop a comprehensive permissions system to control which investors can view specific company information, documents, and cap table details. Implement role-based access controls and audit logging for sensitive information access.",
+          "status": "pending"
+        },
+        {
+          "id": 10,
+          "title": "Integrate analytics and reporting features",
+          "description": "Add analytics dashboard and reporting capabilities for investment performance",
+          "dependencies": [
+            3,
+            4,
+            6
+          ],
+          "details": "Implement analytics features to help investors track performance metrics, compare against benchmarks, and generate reports. Include data export options, scheduled report generation, and customizable dashboards for investment monitoring.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Compliance Dashboard",
+      "description": "Implement the compliance dashboard with health metrics, filing calendar, stakeholder verification status, document management, and rules engine configuration to streamline compliance management.",
+      "details": "1. Create compliance dashboard route at `/app/(routes)/founder/compliance/page.tsx`\n2. Build GaugeChart for compliance score visualization\n3. Implement TabGroup for organizing compliance sections\n4. Create CalendarGrid for filing deadlines\n5. Build KycStatusTable for stakeholder verification\n6. Implement DocUploadRow for document management\n7. Create RuleEditor for compliance rule configuration\n8. Build CopilotDrawer for AI assistance\n9. Implement API integration with `/api/mock/compliance`\n10. Create file upload functionality with progress tracking\n11. Build responsive layout for different screen sizes",
+      "testStrategy": "1. Test dashboard loading with compliance data\n2. Verify gauge chart accuracy\n3. Test tab navigation between sections\n4. Validate file upload functionality\n5. Test AI copilot interactions\n6. Verify responsive layout across device sizes",
+      "priority": "medium",
+      "dependencies": [
+        4,
+        6
+      ],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "Design compliance dashboard layout and information architecture",
+          "description": "Create wireframes and mockups for the compliance dashboard, defining the layout, navigation, and information hierarchy.",
+          "dependencies": [],
+          "details": "Include sections for health metrics, filing calendar, stakeholder verification, document management, and rules engine. Consider user roles and permissions in the design. Create responsive layouts for different devices.",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "Implement compliance health metrics visualization",
+          "description": "Develop visual indicators and charts to display compliance health status across different regulatory areas.",
+          "dependencies": [
+            1
+          ],
+          "details": "Create risk-level indicators (red/yellow/green), compliance score calculations, trend charts showing historical compliance performance, and drill-down capabilities for detailed metric analysis.",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "Build interactive filing calendar component",
+          "description": "Create a calendar interface showing upcoming filing deadlines, submission status, and historical filing records.",
+          "dependencies": [
+            1
+          ],
+          "details": "Implement month/week/day views, deadline notifications, color-coding for status (pending, submitted, overdue), filtering by jurisdiction or filing type, and integration with external calendar systems.",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "Develop stakeholder verification status tracking",
+          "description": "Create a system to track and display verification status of key stakeholders required for compliance documentation.",
+          "dependencies": [
+            1
+          ],
+          "details": "Include stakeholder profiles, verification status indicators, automated reminder functionality, audit trail of verification activities, and reporting capabilities for verification completion rates.",
+          "status": "pending"
+        },
+        {
+          "id": 5,
+          "title": "Implement document management system",
+          "description": "Build a document repository for storing, organizing, and retrieving compliance-related documentation.",
+          "dependencies": [
+            1
+          ],
+          "details": "Create document upload/download functionality, version control, metadata tagging, search capabilities, access controls based on user roles, and integration with existing document storage systems.",
+          "status": "pending"
+        },
+        {
+          "id": 6,
+          "title": "Design rules engine configuration interface",
+          "description": "Create an interface for configuring compliance rules and validation criteria.",
+          "dependencies": [
+            1
+          ],
+          "details": "Design UI for rule creation, editing, and deletion. Include rule templates, condition builders, action definition tools, and rule testing capabilities.",
+          "status": "pending"
+        },
+        {
+          "id": 7,
+          "title": "Implement rules engine backend",
+          "description": "Develop the backend logic for the rules engine to evaluate compliance conditions and trigger appropriate actions.",
+          "dependencies": [
+            6
+          ],
+          "details": "Build rule parsing, condition evaluation, action execution, rule chaining capabilities, and performance optimization for rule processing. Implement logging for rule execution history.",
+          "status": "pending"
+        },
+        {
+          "id": 8,
+          "title": "Create compliance notification system",
+          "description": "Implement alerts and notifications for compliance events, deadlines, and rule violations.",
+          "dependencies": [
+            2,
+            3,
+            4,
+            7
+          ],
+          "details": "Develop in-app notifications, email alerts, SMS options, notification preferences, and delivery scheduling. Include notification templates and personalization options.",
+          "status": "pending"
+        },
+        {
+          "id": 9,
+          "title": "Develop compliance reporting module",
+          "description": "Build reporting capabilities to generate compliance status reports and analytics.",
+          "dependencies": [
+            2,
+            3,
+            4,
+            5,
+            7
+          ],
+          "details": "Create standard report templates, custom report builder, export options (PDF, Excel, CSV), scheduled report generation, and visualization tools for compliance trends and patterns.",
+          "status": "pending"
+        },
+        {
+          "id": 10,
+          "title": "Implement AI assistance for compliance tasks",
+          "description": "Integrate AI capabilities to provide recommendations and assistance for compliance activities.",
+          "dependencies": [
+            7,
+            9
+          ],
+          "details": "Develop AI models for risk prediction, document classification, anomaly detection in compliance data, and recommendation generation for compliance improvements. Include feedback mechanisms to improve AI accuracy over time.",
+          "status": "pending"
+        },
+        {
+          "id": 11,
+          "title": "Perform integration testing and compliance validation",
+          "description": "Test the complete compliance dashboard to ensure all components work together correctly and meet regulatory requirements.",
+          "dependencies": [
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10
+          ],
+          "details": "Conduct end-to-end testing, performance testing, security testing, and compliance validation against relevant regulations. Create test scenarios for different compliance workflows and edge cases.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "KYC Verification Flow",
+      "description": "Create the KYC verification process with personal information collection, identity verification, accreditation status, and review steps to streamline stakeholder verification.",
+      "details": "1. Create KYC verification route at `/app/(routes)/onboarding/kyc/[id]/page.tsx`\n2. Build ProgressStepper for step navigation\n3. Implement AddressAutoComplete for address verification\n4. Create DocUploadField for identity documents\n5. Build SelfieCapture using WebRTC\n6. Implement AccreditationForm for investor qualification\n7. Create ReviewSummary for final verification\n8. Build SideInfoPanel with status and help\n9. Implement API integration with `/api/mock/kyc/:userId`\n10. Create step validation and progression logic\n11. Build responsive layout with mobile considerations",
+      "testStrategy": "1. Test KYC flow navigation through all steps\n2. Verify form validation for required fields\n3. Test document upload functionality\n4. Validate selfie capture with WebRTC\n5. Test accreditation form with different scenarios\n6. Verify responsive behavior on mobile devices",
+      "priority": "medium",
+      "dependencies": [
+        4
+      ],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "Design KYC data schema",
+          "description": "Create a comprehensive data schema for storing all KYC-related information securely",
+          "dependencies": [],
+          "details": "Define database schema for personal information, identity documents, verification status, and accreditation data. Include fields for timestamps, verification status, and audit logs. Ensure compliance with data protection regulations.",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "Implement personal information collection form",
+          "description": "Create a form to collect basic personal information from users",
+          "dependencies": [
+            1
+          ],
+          "details": "Build a multi-step form collecting name, address, date of birth, contact information, and tax identification numbers. Implement client-side validation for all fields and ensure accessibility compliance.",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "Develop document upload functionality",
+          "description": "Create a secure system for users to upload identity verification documents",
+          "dependencies": [
+            1
+          ],
+          "details": "Implement file upload for passport, driver's license, and other government IDs. Include file type validation, size restrictions, and image quality checks. Store documents securely with encryption.",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "Implement WebRTC selfie capture",
+          "description": "Add functionality for users to take a selfie for facial verification",
+          "dependencies": [
+            1
+          ],
+          "details": "Integrate WebRTC for browser-based camera access. Implement face detection to ensure quality captures. Include instructions for proper lighting and positioning. Store images securely.",
+          "status": "pending"
+        },
+        {
+          "id": 5,
+          "title": "Integrate third-party ID verification service",
+          "description": "Connect with external verification service to validate user-provided documents",
+          "dependencies": [
+            3,
+            4
+          ],
+          "details": "Research and select appropriate verification service. Implement API integration for document authenticity checks and facial matching. Handle verification responses and error cases.",
+          "status": "pending"
+        },
+        {
+          "id": 6,
+          "title": "Create accreditation status verification",
+          "description": "Implement process for verifying user's accreditation status",
+          "dependencies": [
+            2
+          ],
+          "details": "Build form for collecting accreditation information including investor type, income verification, and investment experience. Include document upload for supporting financial statements.",
+          "status": "pending"
+        },
+        {
+          "id": 7,
+          "title": "Develop admin review interface",
+          "description": "Create dashboard for administrators to review and approve KYC submissions",
+          "dependencies": [
+            2,
+            3,
+            4,
+            6
+          ],
+          "details": "Build admin panel showing pending verifications with filtering and sorting. Include detailed view of all user-submitted information and documents. Implement approval/rejection workflow with comment capability.",
+          "status": "pending"
+        },
+        {
+          "id": 8,
+          "title": "Implement verification status tracking",
+          "description": "Create system to track and display verification status to users",
+          "dependencies": [
+            5,
+            7
+          ],
+          "details": "Develop status tracking for each verification step. Create user-facing dashboard showing current status, pending items, and next steps. Implement notifications for status changes.",
+          "status": "pending"
+        },
+        {
+          "id": 9,
+          "title": "Set up security measures and encryption",
+          "description": "Implement security protocols for sensitive KYC data",
+          "dependencies": [
+            1
+          ],
+          "details": "Implement end-to-end encryption for document storage. Set up access controls for admin users. Create audit logging for all verification activities. Ensure compliance with data protection regulations.",
+          "status": "pending"
+        },
+        {
+          "id": 10,
+          "title": "Create automated verification workflows",
+          "description": "Implement automated processes for routine verification steps",
+          "dependencies": [
+            5,
+            6,
+            7
+          ],
+          "details": "Develop rules engine for automatic approval of straightforward cases. Implement risk scoring algorithm. Create workflow for escalating complex cases to human reviewers.",
+          "status": "pending"
+        },
+        {
+          "id": 11,
+          "title": "Implement testing and compliance review",
+          "description": "Conduct thorough testing and compliance review of the entire KYC process",
+          "dependencies": [
+            8,
+            9,
+            10
+          ],
+          "details": "Perform security testing including penetration testing. Conduct compliance review against relevant regulations (KYC/AML). Test all user flows and edge cases. Document compliance measures for audit purposes.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "title": "Token Transfer & Rule Engine Demo",
+      "description": "Implement the token transfer interface with real-time rule evaluation visualization to demonstrate compliance automation during equity transfers.",
+      "details": "1. Create token transfer route at `/app/(routes)/founder/transactions/transfer/page.tsx`\n2. Build SplitView layout for transfer form and rules visualization\n3. Implement SecuritySelect for token selection\n4. Create AddressPicker with address book integration\n5. Build RuleFlowGraph for visualizing compliance checks\n6. Implement ResultToast for transfer outcomes\n7. Create API integration with `/api/mock/rules/preview` and `/api/mock/transfer`\n8. Build animation for rule evaluation flow\n9. Implement one-click resolution for blocked transfers\n10. Create responsive layout with mobile considerations",
+      "testStrategy": "1. Test transfer form with different inputs\n2. Verify rule evaluation visualization\n3. Test blocked transfers and resolution paths\n4. Validate successful transfer animations\n5. Test responsive layout on mobile devices\n6. Verify accessibility alternatives to visual flow",
+      "priority": "medium",
+      "dependencies": [
+        4,
+        13
+      ],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "Design token transfer form UI",
+          "description": "Create the user interface for the token transfer form with input fields for sender, recipient, amount, and transfer details.",
+          "dependencies": [],
+          "details": "Design a clean, intuitive form that includes validation for all fields. Include token selection dropdown, amount input with balance validation, recipient address field with address book integration, and an optional memo/description field. Ensure mobile responsiveness and accessibility compliance.",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "Implement rule evaluation data model",
+          "description": "Define the data structures needed to represent and process transfer rules and their evaluation states.",
+          "dependencies": [],
+          "details": "Create classes/interfaces for rules, rule conditions, evaluation results, and rule dependencies. Design a model that can represent complex rule relationships including dependencies, conflicts, and priority ordering. Include metadata for visualization purposes such as rule categories, severity levels, and user-friendly descriptions.",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "Develop real-time rule evaluation engine",
+          "description": "Build the core logic that evaluates transfer rules as user inputs change and maintains evaluation state.",
+          "dependencies": [
+            2
+          ],
+          "details": "Implement an event-driven evaluation system that triggers rule checks when form values change. Optimize for performance with debouncing and selective re-evaluation. Include support for asynchronous rule checks (e.g., external API calls) and maintain a consistent state model for rule evaluation results.",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "Create rule flow graph visualization component",
+          "description": "Develop a visual component that displays rules as a directed graph showing dependencies and evaluation states.",
+          "dependencies": [
+            2
+          ],
+          "details": "Implement an interactive graph visualization using a library like D3.js or Cytoscape.js. Display rules as nodes with color-coding for pass/fail/pending states. Show rule dependencies as directed edges. Include zooming, panning, and focusing capabilities for complex rule sets.",
+          "status": "pending"
+        },
+        {
+          "id": 5,
+          "title": "Integrate form inputs with rule evaluation",
+          "description": "Connect the transfer form UI with the rule evaluation engine to provide real-time feedback.",
+          "dependencies": [
+            1,
+            3
+          ],
+          "details": "Implement two-way binding between form inputs and the rule engine. Update rule evaluations as users type or select options. Add visual indicators next to form fields to show which rules are affected by each input. Include tooltips explaining rule violations directly in the form context.",
+          "status": "pending"
+        },
+        {
+          "id": 6,
+          "title": "Implement rule violation resolution workflows",
+          "description": "Design and implement guided workflows to help users resolve rule violations that block transfers.",
+          "dependencies": [
+            3,
+            5
+          ],
+          "details": "Create step-by-step resolution paths for common rule violations. For each violation type, provide actionable suggestions with direct links/buttons to resolve issues (e.g., 'Add funds', 'Reduce amount', 'Complete KYC'). Implement a resolution queue for handling multiple violations efficiently.",
+          "status": "pending"
+        },
+        {
+          "id": 7,
+          "title": "Connect rule flow graph with form interactions",
+          "description": "Link the rule visualization with form interactions to highlight affected rules as users interact with the form.",
+          "dependencies": [
+            4,
+            5
+          ],
+          "details": "Implement bidirectional highlighting between form fields and graph nodes. When users focus on a form field, highlight related rules in the graph. When users click on a rule in the graph, highlight the relevant form fields. Add animations for rule state transitions to make the evaluation process clear.",
+          "status": "pending"
+        },
+        {
+          "id": 8,
+          "title": "Develop detailed rule inspection panel",
+          "description": "Create an expandable panel showing detailed information about selected rules and their evaluation.",
+          "dependencies": [
+            4,
+            7
+          ],
+          "details": "Implement a side panel that shows when users select a rule from the graph. Include rule description, current status, evaluation history, dependent rules, and specific resolution steps. Add the ability to simulate rule resolution and see the impact on other rules without changing actual form values.",
+          "status": "pending"
+        },
+        {
+          "id": 9,
+          "title": "Implement transfer submission and confirmation flow",
+          "description": "Create the workflow for submitting transfers after rule evaluation, including confirmation and receipt.",
+          "dependencies": [
+            5,
+            6
+          ],
+          "details": "Implement a multi-step confirmation process that shows a summary of the transfer details, applicable fees, and estimated completion time. Include final rule validation before submission. Design success and error states with appropriate user feedback. Create a transaction receipt with a unique identifier and transaction details.",
+          "status": "pending"
+        },
+        {
+          "id": 10,
+          "title": "Add performance optimizations and final testing",
+          "description": "Optimize the performance of the rule visualization for complex rule sets and conduct comprehensive testing.",
+          "dependencies": [
+            3,
+            4,
+            7,
+            8,
+            9
+          ],
+          "details": "Implement lazy loading and virtualization for large rule sets. Add caching for rule evaluation results. Conduct performance testing with large rule sets (100+ rules) and optimize rendering. Perform usability testing focusing on the clarity of rule visualization and resolution workflows. Fix edge cases in rule evaluation and visualization.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "title": "Option Exercise Wizard",
+      "description": "Create the option exercise wizard with quantity selection, cost calculation, payment method selection, tax implications visualization, and confirmation to guide employees through the exercise process.",
+      "details": "1. Create option exercise route at `/app/(routes)/employee/exercise/[id]/page.tsx`\n2. Build QuantitySlider for selecting exercise amount\n3. Implement CostBreakdown for financial calculations\n4. Create PaymentOptionCard for payment method selection\n5. Build TaxImpactGraph for visualizing tax implications\n6. Implement ESignField for digital signature\n7. Create API integration with `/api/mock/exercise/:grantId/quote`\n8. Build dynamic updates based on quantity selection\n9. Implement payment method-specific flows\n10. Create confirmation screen with summary\n11. Build responsive layout for different screen sizes",
+      "testStrategy": "1. Test exercise wizard with different grants\n2. Verify cost calculations with quantity changes\n3. Test payment method selection\n4. Validate tax impact visualization\n5. Test confirmation and submission flow\n6. Verify responsive layout across device sizes",
+      "priority": "medium",
+      "dependencies": [
+        4,
+        10
+      ],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "Design wizard UI flow and components",
+          "description": "Create wireframes and design mockups for the entire option exercise wizard flow",
+          "dependencies": [],
+          "details": "Design all screens including quantity selection, cost calculation, payment method selection, tax implications, and confirmation screens. Ensure the UI is intuitive and guides users through the process with clear navigation between steps.",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "Implement quantity selection interface",
+          "description": "Build the UI component for users to select the number of options to exercise",
+          "dependencies": [
+            1
+          ],
+          "details": "Create a form component with input validation that allows users to select a quantity up to their maximum available options. Include visual feedback showing the valid range and implement real-time validation.",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "Develop cost calculation engine",
+          "description": "Create the logic to calculate total exercise cost based on quantity and option details",
+          "dependencies": [
+            2
+          ],
+          "details": "Implement functions to calculate the total cost based on strike price, quantity selected, and any applicable fees. Ensure calculations handle currency formatting and edge cases correctly.",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "Build cost summary display",
+          "description": "Create a component to show the breakdown of costs for the selected options",
+          "dependencies": [
+            3
+          ],
+          "details": "Design and implement a detailed cost summary that shows strike price, quantity, total exercise cost, fees, and final amount due. Include appropriate formatting for currency values.",
+          "status": "pending"
+        },
+        {
+          "id": 5,
+          "title": "Implement payment method selection",
+          "description": "Create the interface for users to select their preferred payment method",
+          "dependencies": [
+            4
+          ],
+          "details": "Build a component that allows users to choose between available payment methods (cash, sell-to-cover, etc.). Include explanations of each method and any restrictions based on user eligibility.",
+          "status": "pending"
+        },
+        {
+          "id": 6,
+          "title": "Develop tax implications calculator",
+          "description": "Create the logic to estimate tax implications based on exercise details",
+          "dependencies": [
+            3
+          ],
+          "details": "Implement algorithms to calculate estimated tax implications including income tax, capital gains considerations, and AMT if applicable. Include appropriate disclaimers about tax estimates.",
+          "status": "pending"
+        },
+        {
+          "id": 7,
+          "title": "Build tax visualization component",
+          "description": "Create visual representations of tax implications for the user",
+          "dependencies": [
+            6
+          ],
+          "details": "Design and implement charts, graphs or tables that clearly illustrate the tax implications of the exercise. Include toggles to show different tax scenarios if applicable.",
+          "status": "pending"
+        },
+        {
+          "id": 8,
+          "title": "Implement payment processing integration",
+          "description": "Connect the wizard to payment processing systems",
+          "dependencies": [
+            5
+          ],
+          "details": "Integrate with payment processors or internal payment systems to handle the actual transaction. Implement secure handling of payment information and proper error handling for failed transactions.",
+          "status": "pending"
+        },
+        {
+          "id": 9,
+          "title": "Create confirmation screen",
+          "description": "Build the final confirmation step showing exercise details before submission",
+          "dependencies": [
+            4,
+            7,
+            8
+          ],
+          "details": "Design and implement a comprehensive confirmation screen that summarizes all details of the exercise including quantity, cost, payment method, and tax implications. Include clear calls to action for final submission.",
+          "status": "pending"
+        },
+        {
+          "id": 10,
+          "title": "Implement exercise submission and receipt",
+          "description": "Create the functionality to submit the exercise request and generate a receipt",
+          "dependencies": [
+            9
+          ],
+          "details": "Build the backend integration to submit the exercise request to the appropriate systems. Generate a detailed receipt/confirmation for the user with all relevant details and next steps.",
+          "status": "pending"
+        },
+        {
+          "id": 11,
+          "title": "Develop comprehensive testing suite",
+          "description": "Create tests for all components of the option exercise wizard",
+          "dependencies": [
+            2,
+            3,
+            5,
+            6,
+            8,
+            10
+          ],
+          "details": "Implement unit tests, integration tests, and end-to-end tests for the entire wizard flow. Include test cases for edge cases, error handling, and different user scenarios to ensure reliability.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "title": "Board Meeting Preparation Center",
+      "description": "Implement the board meeting preparation center with agenda builder, cap table summary, document generation, voting tracker, and collaborative notes to streamline governance processes.",
+      "details": "1. Create board meeting route at `/app/(routes)/founder/governance/board/page.tsx`\n2. Build MeetingCard with upcoming meeting details\n3. Implement DragTopicItem for agenda management\n4. Create CapMetricHighlight for board-ready visualizations\n5. Build DocTemplateSelector for document generation\n6. Implement ESignCollector for electronic signatures\n7. Create CollabNotes for meeting notes\n8. Build API integration with `/api/mock/board/next`\n9. Implement drag-and-drop functionality for agenda items\n10. Create document generation with templates\n11. Build responsive layout for different screen sizes",
+      "testStrategy": "1. Test meeting preparation with sample data\n2. Verify drag-and-drop agenda functionality\n3. Test document generation with templates\n4. Validate electronic signature collection\n5. Test collaborative notes functionality\n6. Verify responsive layout across device sizes",
+      "priority": "low",
+      "dependencies": [
+        4,
+        6
+      ],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "Design database schema for board meeting center",
+          "description": "Create the database schema to support all board meeting center features including meetings, agendas, cap tables, documents, votes, and notes.",
+          "dependencies": [],
+          "details": "Define tables and relationships for: Meetings, Agenda items, Cap table entries, Document templates, Generated documents, Voting records, Meeting notes. Include appropriate foreign keys and indexes for efficient querying.",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "Implement drag-and-drop agenda builder",
+          "description": "Create an interactive agenda builder with drag-and-drop functionality for organizing meeting topics.",
+          "dependencies": [
+            1
+          ],
+          "details": "Use a modern JavaScript framework to implement drag-and-drop. Include features for adding, removing, reordering, and nesting agenda items. Implement auto-save functionality and real-time updates for collaborative editing.",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "Develop cap table summary component",
+          "description": "Create a component to display and manage capitalization table information for board meetings.",
+          "dependencies": [
+            1
+          ],
+          "details": "Implement data visualization for equity distribution. Include filtering options for different equity types. Create input forms for updating cap table information. Implement version history to track changes over time.",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "Create document template system",
+          "description": "Develop a system for creating and managing document templates for board meetings.",
+          "dependencies": [
+            1
+          ],
+          "details": "Implement a template editor with variable placeholders. Create a template library with common board documents (resolutions, minutes, etc.). Include version control for templates. Support rich text formatting and layout options.",
+          "status": "pending"
+        },
+        {
+          "id": 5,
+          "title": "Implement document generation engine",
+          "description": "Build an engine to generate documents from templates with meeting-specific data.",
+          "dependencies": [
+            1,
+            4
+          ],
+          "details": "Create a system to merge template variables with meeting data. Support multiple output formats (PDF, DOCX). Implement preview functionality before final generation. Include batch generation for multiple documents.",
+          "status": "pending"
+        },
+        {
+          "id": 6,
+          "title": "Integrate electronic signature functionality",
+          "description": "Add electronic signature capabilities to generated documents.",
+          "dependencies": [
+            5
+          ],
+          "details": "Research and integrate a third-party e-signature API or implement a custom solution. Create signature request workflow. Implement signature verification and audit trail. Support multiple signatories with role-based permissions.",
+          "status": "pending"
+        },
+        {
+          "id": 7,
+          "title": "Develop voting tracker system",
+          "description": "Create a system to track and record votes during board meetings.",
+          "dependencies": [
+            1
+          ],
+          "details": "Implement different voting types (yes/no, multiple choice, weighted). Create real-time voting interface. Generate voting reports and analytics. Support proxy voting and vote delegation. Include historical vote tracking.",
+          "status": "pending"
+        },
+        {
+          "id": 8,
+          "title": "Implement collaborative notes feature",
+          "description": "Build a real-time collaborative note-taking system for meeting participants.",
+          "dependencies": [
+            1
+          ],
+          "details": "Integrate a real-time collaboration library (e.g., YJS, ShareDB). Implement rich text editing with formatting options. Add user presence indicators to show who is currently editing. Create automatic saving and version history.",
+          "status": "pending"
+        },
+        {
+          "id": 9,
+          "title": "Create meeting dashboard and navigation",
+          "description": "Develop the main dashboard interface for accessing all board meeting center features.",
+          "dependencies": [
+            2,
+            3,
+            5,
+            7,
+            8
+          ],
+          "details": "Design an intuitive navigation system between features. Create overview dashboard with meeting status and upcoming tasks. Implement responsive design for mobile access. Add customizable widgets for frequently used features.",
+          "status": "pending"
+        },
+        {
+          "id": 10,
+          "title": "Implement permissions and access control",
+          "description": "Create a comprehensive permissions system for different user roles in the board meeting center.",
+          "dependencies": [
+            1
+          ],
+          "details": "Define role-based permissions (admin, board member, observer, etc.). Implement document-level access controls. Create audit logging for sensitive actions. Support temporary access grants for specific meetings.",
+          "status": "pending"
+        },
+        {
+          "id": 11,
+          "title": "Conduct integration testing and optimization",
+          "description": "Test all components working together and optimize performance of the board meeting center.",
+          "dependencies": [
+            9,
+            10
+          ],
+          "details": "Create end-to-end test scenarios covering all features. Perform load testing with simulated concurrent users. Optimize database queries and front-end performance. Conduct usability testing with actual board members. Fix identified issues and implement performance improvements.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "title": "Proxy Voting Portal",
+      "description": "Create the proxy voting portal with proposal details, document preview, voting interface, real-time results visualization, and voting history to facilitate governance participation.",
+      "details": "1. Create proxy voting route at `/app/(routes)/investor/voting/[proposalId]/page.tsx`\n2. Build ProposalDocViewer for document preview\n3. Implement VotePowerChip showing voting rights\n4. Create LiveResultsChart for real-time voting status\n5. Build SplitVoteForm for partial voting\n6. Implement voting history section\n7. Create API integration with `/api/mock/proposals/:id`\n8. Build optimistic UI updates for vote casting\n9. Implement server-sent events for real-time results\n10. Create responsive layout for different screen sizes",
+      "testStrategy": "1. Test voting portal with different proposals\n2. Verify document preview functionality\n3. Test vote casting with different options\n4. Validate real-time results updates\n5. Test split voting functionality\n6. Verify responsive layout across device sizes",
+      "priority": "low",
+      "dependencies": [
+        4,
+        11
+      ],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "Design database schema for proxy voting system",
+          "description": "Create the database schema to store proposals, votes, documents, and user voting history",
+          "dependencies": [],
+          "details": "Design tables for proposals, votes, documents, voting history, and user permissions. Include fields for proposal details, voting options, vote weights, timestamps, and document references. Ensure schema supports split voting functionality.",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "Implement proposal listing and details page",
+          "description": "Create the interface for users to view all available proposals and access detailed information",
+          "dependencies": [
+            1
+          ],
+          "details": "Develop a paginated list view of all active proposals with filtering options. Create a detailed view page showing proposal title, description, voting deadline, proposal type, and voting options. Include metadata such as proposal sponsor and submission date.",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "Build document preview functionality",
+          "description": "Implement a system to preview proposal-related documents within the portal",
+          "dependencies": [
+            2
+          ],
+          "details": "Create a document viewer that supports PDF, DOC, and image formats. Implement zooming, page navigation, and download options. Ensure documents load efficiently with progressive rendering for large files. Add annotations or highlighting if required.",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "Develop voting interface with split voting capability",
+          "description": "Create the interface for users to cast their votes, including split voting functionality",
+          "dependencies": [
+            2
+          ],
+          "details": "Design and implement a voting form with options for 'For', 'Against', 'Abstain'. Add functionality for split voting allowing users to distribute their voting power across different options. Include validation to ensure total voting power is not exceeded.",
+          "status": "pending"
+        },
+        {
+          "id": 5,
+          "title": "Implement vote submission and confirmation",
+          "description": "Create the backend functionality to process and store votes",
+          "dependencies": [
+            1,
+            4
+          ],
+          "details": "Develop API endpoints to receive and validate vote submissions. Implement transaction handling to ensure vote integrity. Create a confirmation system with receipts for submitted votes. Add functionality to allow vote changes before the deadline.",
+          "status": "pending"
+        },
+        {
+          "id": 6,
+          "title": "Build real-time results visualization",
+          "description": "Create dynamic charts and graphs to display voting results in real-time",
+          "dependencies": [
+            5
+          ],
+          "details": "Implement real-time data fetching using WebSockets or polling. Create visualizations showing vote distribution, participation rates, and voting trends. Include filters to view results by different demographics if applicable. Ensure visualizations are responsive and accessible.",
+          "status": "pending"
+        },
+        {
+          "id": 7,
+          "title": "Develop user voting history section",
+          "description": "Create a section where users can view their past voting activity",
+          "dependencies": [
+            5
+          ],
+          "details": "Design and implement a user dashboard showing historical voting activity. Include filters for date ranges and proposal types. Show voting choices, timestamps, and proposal outcomes. Add functionality to export voting history in various formats.",
+          "status": "pending"
+        },
+        {
+          "id": 8,
+          "title": "Implement authentication and authorization",
+          "description": "Set up secure authentication and proper authorization for different user roles",
+          "dependencies": [
+            1
+          ],
+          "details": "Implement secure login functionality with multi-factor authentication options. Create role-based access control for administrators, voters, and observers. Ensure proper validation of voting rights and delegation permissions. Implement audit logging for security events.",
+          "status": "pending"
+        },
+        {
+          "id": 9,
+          "title": "Create admin dashboard for proposal management",
+          "description": "Build an interface for administrators to create, edit, and manage proposals",
+          "dependencies": [
+            8
+          ],
+          "details": "Develop an admin interface to create new proposals with document uploads. Add functionality to edit proposal details, set voting deadlines, and manage voting options. Include tools for monitoring voting activity and participation rates. Implement proposal archiving functionality.",
+          "status": "pending"
+        },
+        {
+          "id": 10,
+          "title": "Perform testing and optimization",
+          "description": "Conduct thorough testing and optimize the portal for performance and usability",
+          "dependencies": [
+            3,
+            6,
+            7,
+            9
+          ],
+          "details": "Perform unit and integration testing for all components. Conduct load testing to ensure system handles peak voting periods. Optimize database queries and front-end performance. Conduct usability testing with representative users. Fix identified issues and implement performance improvements.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "title": "Scenario Modeling Tool",
+      "description": "Implement the scenario modeling tool with funding parameters, option pool adjustments, projection charts, sensitivity analysis, and comparison views to help founders plan equity strategies.",
+      "details": "1. Create scenario modeling route at `/app/(routes)/founder/modeling/page.tsx`\n2. Build ScenarioCard for saved scenario management\n3. Implement FundingInputs for round parameters\n4. Create OptionPoolAdjuster for equity allocation\n5. Build ProjectionMultiChart for visualizing outcomes\n6. Implement DeltaHighlight for comparing scenarios\n7. Create ExportButton for sharing results\n8. Build API integration with `/api/mock/model/scenario/:id`\n9. Implement real-time recalculation with parameter changes\n10. Create side-by-side comparison view\n11. Build responsive layout with collapsible panels",
+      "testStrategy": "1. Test scenario modeling with different parameters\n2. Verify chart updates with parameter changes\n3. Test scenario saving and loading\n4. Validate comparison functionality\n5. Test export and sharing features\n6. Verify responsive layout across device sizes",
+      "priority": "low",
+      "dependencies": [
+        4,
+        5,
+        7
+      ],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "Define core funding parameters",
+          "description": "Identify and define all funding parameters that will be modifiable in the scenario modeling tool",
+          "dependencies": [],
+          "details": "Create a comprehensive list of funding parameters including pre-money valuation, investment amount, investor ownership percentage, post-money valuation, and dilution calculations. Document the mathematical relationships between these parameters and how changing one affects others.",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "Implement option pool adjustment functionality",
+          "description": "Develop the mechanism to adjust option pool size and calculate its impact on cap table",
+          "dependencies": [
+            1
+          ],
+          "details": "Create functionality to add, remove, or modify option pool allocations. Include calculations for pre-money and post-money option pools, and how they affect founder and investor dilution. Implement validation to ensure option pool percentages remain within reasonable bounds.",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "Design financial projection model",
+          "description": "Create the mathematical model for financial projections based on funding parameters",
+          "dependencies": [
+            1
+          ],
+          "details": "Develop algorithms for projecting key financial metrics including revenue, expenses, burn rate, runway, and growth rates. Include time-based projections (monthly, quarterly, yearly) and ensure the model can handle different growth patterns (linear, exponential, etc.).",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "Implement real-time calculation engine",
+          "description": "Build the core calculation engine that updates all values when parameters change",
+          "dependencies": [
+            1,
+            2,
+            3
+          ],
+          "details": "Develop an efficient calculation system that can recalculate all dependent values when any input parameter changes. Implement caching mechanisms for performance optimization and ensure calculations remain accurate across all scenarios.",
+          "status": "pending"
+        },
+        {
+          "id": 5,
+          "title": "Create projection chart visualization components",
+          "description": "Develop interactive charts to visualize financial projections",
+          "dependencies": [
+            3,
+            4
+          ],
+          "details": "Implement various chart types (line, bar, area, pie) to visualize projections. Include zoom functionality, tooltips for detailed information, and the ability to toggle between different metrics. Ensure charts are responsive and maintain visual clarity across device sizes.",
+          "status": "pending"
+        },
+        {
+          "id": 6,
+          "title": "Implement sensitivity analysis functionality",
+          "description": "Build tools to analyze how changes in key parameters affect outcomes",
+          "dependencies": [
+            4
+          ],
+          "details": "Create a sensitivity analysis module that shows how variations in key inputs (valuation, investment amount, growth rate) affect outcomes. Implement both single-variable and multi-variable sensitivity analysis with appropriate visualizations to highlight critical thresholds.",
+          "status": "pending"
+        },
+        {
+          "id": 7,
+          "title": "Develop scenario saving and management",
+          "description": "Create functionality to save, name, and manage multiple funding scenarios",
+          "dependencies": [
+            4
+          ],
+          "details": "Implement a system to save complete scenarios with all parameters and calculations. Include naming, description, tagging, and organization features. Ensure scenarios can be duplicated, modified, and deleted with appropriate confirmation steps.",
+          "status": "pending"
+        },
+        {
+          "id": 8,
+          "title": "Build scenario comparison view",
+          "description": "Develop interface to compare multiple funding scenarios side by side",
+          "dependencies": [
+            5,
+            7
+          ],
+          "details": "Create a comparison view that displays key metrics from multiple scenarios side by side. Include visual indicators for favorable/unfavorable differences, percentage changes between scenarios, and the ability to highlight specific metrics for focused comparison.",
+          "status": "pending"
+        },
+        {
+          "id": 9,
+          "title": "Implement multi-round funding projections",
+          "description": "Extend the model to handle multiple funding rounds and their cumulative effects",
+          "dependencies": [
+            4,
+            7
+          ],
+          "details": "Enhance the modeling tool to support sequential funding rounds. Calculate dilution across rounds, track ownership changes, and project valuation growth between rounds. Include parameters for timing between rounds based on runway and growth metrics.",
+          "status": "pending"
+        },
+        {
+          "id": 10,
+          "title": "Create export and reporting functionality",
+          "description": "Develop features to export scenarios and generate comprehensive reports",
+          "dependencies": [
+            5,
+            8
+          ],
+          "details": "Implement export options for scenarios in various formats (PDF, Excel, CSV). Create report templates that combine charts, tables, and narrative explanations of key insights. Include customization options for reports to highlight specific aspects of the analysis.",
+          "status": "pending"
+        },
+        {
+          "id": 11,
+          "title": "Perform mathematical validation and edge case testing",
+          "description": "Validate all financial calculations and test edge cases to ensure accuracy",
+          "dependencies": [
+            4,
+            6,
+            9
+          ],
+          "details": "Create a comprehensive test suite to validate all financial calculations against known examples. Test edge cases such as extreme valuations, unusual option pool sizes, and multiple rounds with complex terms. Document validation procedures and results for transparency.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "title": "Integration Testing and Deployment Setup",
+      "description": "Perform comprehensive integration testing across all components and set up deployment configuration for Google Cloud Run and Cloud Functions.",
+      "details": "1. Create end-to-end test suite using Cypress or Playwright\n2. Implement test scenarios for all major user flows:\n   - Founder equity management flow\n   - Employee option exercise flow\n   - Investor portfolio management flow\n3. Set up continuous integration with GitHub Actions\n4. Configure Google Cloud Run deployment:\n   - Create Dockerfile for containerization\n   - Set up environment variables for production\n   - Configure auto-scaling parameters\n5. Set up Cloud Functions for mock API endpoints:\n   - Create function deployment scripts\n   - Configure API Gateway for routing\n6. Implement monitoring and error tracking with Sentry\n7. Set up performance monitoring\n8. Create deployment documentation\n9. Perform security audit and implement fixes\n10. Conduct final cross-browser testing",
+      "testStrategy": "1. Run end-to-end tests across all user flows\n2. Verify deployment to staging environment\n3. Test production build performance\n4. Validate API endpoints in production environment\n5. Perform load testing with simulated users\n6. Verify error tracking and monitoring\n7. Conduct security penetration testing",
+      "priority": "high",
+      "dependencies": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "status": "pending",
+      "subtasks": [
+        {
+          "id": 1,
+          "title": "Define End-to-End Testing Strategy",
+          "description": "Create a comprehensive testing strategy document that outlines the approach for testing all user flows and system integrations.",
+          "dependencies": [],
+          "details": "Document should include test coverage goals, testing tools selection (e.g., Cypress, Selenium), test environment requirements, and critical user journeys to be tested. Define success criteria for each test scenario.",
+          "status": "pending"
+        },
+        {
+          "id": 2,
+          "title": "Implement Automated End-to-End Tests",
+          "description": "Develop automated test scripts that validate all critical user flows and system integrations.",
+          "dependencies": [
+            1
+          ],
+          "details": "Create test scripts for user registration, authentication, content creation, search functionality, and any other core features. Include both happy path and edge case scenarios. Ensure tests are maintainable and properly documented.",
+          "status": "pending"
+        },
+        {
+          "id": 3,
+          "title": "Set Up Containerization with Docker",
+          "description": "Create Docker configuration files for containerizing the application and its dependencies.",
+          "dependencies": [],
+          "details": "Develop Dockerfile for the application, configure Docker Compose for local development and testing environments. Ensure proper environment variable management and optimize container size and performance.",
+          "status": "pending"
+        },
+        {
+          "id": 4,
+          "title": "Configure CI Pipeline",
+          "description": "Set up continuous integration pipeline to automatically build, test, and validate code changes.",
+          "dependencies": [
+            2,
+            3
+          ],
+          "details": "Configure CI tool (e.g., GitHub Actions, Jenkins) to trigger on code commits, run unit tests, integration tests, and end-to-end tests. Include code quality checks, linting, and security scanning. Set up proper notification system for build failures.",
+          "status": "pending"
+        },
+        {
+          "id": 5,
+          "title": "Configure CD Pipeline for Google Cloud",
+          "description": "Establish continuous deployment pipeline to automatically deploy validated changes to Google Cloud environments.",
+          "dependencies": [
+            4
+          ],
+          "details": "Set up deployment stages for development, staging, and production environments. Configure Google Cloud Build or similar tools. Implement deployment approval gates and rollback mechanisms. Document the deployment workflow.",
+          "status": "pending"
+        },
+        {
+          "id": 6,
+          "title": "Set Up Google Cloud Infrastructure",
+          "description": "Configure necessary Google Cloud resources using Infrastructure as Code (IaC).",
+          "dependencies": [
+            3
+          ],
+          "details": "Use Terraform or Google Cloud Deployment Manager to provision required resources (e.g., GKE clusters, Cloud SQL, Cloud Storage). Implement proper network security configurations, IAM roles, and resource scaling policies.",
+          "status": "pending"
+        },
+        {
+          "id": 7,
+          "title": "Implement Application Monitoring",
+          "description": "Set up comprehensive monitoring for application performance, errors, and user experience.",
+          "dependencies": [
+            5,
+            6
+          ],
+          "details": "Configure Google Cloud Monitoring, set up custom dashboards, implement logging strategy, and create alerting policies. Include metrics for application performance, database performance, API response times, and error rates. Set up proper log aggregation and analysis.",
+          "status": "pending"
+        },
+        {
+          "id": 8,
+          "title": "Implement Security Scanning and Auditing",
+          "description": "Set up automated security scanning tools and processes for continuous security validation.",
+          "dependencies": [
+            5
+          ],
+          "details": "Implement dependency vulnerability scanning, container image scanning, and code security analysis. Configure regular security audits and penetration testing schedule. Document security findings remediation process.",
+          "status": "pending"
+        },
+        {
+          "id": 9,
+          "title": "Create Disaster Recovery Plan",
+          "description": "Develop and document procedures for backup, recovery, and business continuity.",
+          "dependencies": [
+            6,
+            7
+          ],
+          "details": "Define backup strategy and schedule, implement automated backup procedures, document recovery processes, and establish RTO/RPO objectives. Create runbooks for common failure scenarios and test recovery procedures.",
+          "status": "pending"
+        },
+        {
+          "id": 10,
+          "title": "Conduct Load and Performance Testing",
+          "description": "Perform comprehensive load testing to validate system performance under expected and peak loads.",
+          "dependencies": [
+            5,
+            7
+          ],
+          "details": "Define performance benchmarks, implement load testing scripts using tools like JMeter or Locust, simulate various load scenarios, identify performance bottlenecks, and document optimization recommendations. Test auto-scaling capabilities of the cloud infrastructure.",
+          "status": "pending"
+        }
+      ]
+    }
+  ]
+}

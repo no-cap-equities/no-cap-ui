@@ -1,0 +1,94 @@
+# Task ID: 14
+# Title: KYC Verification Flow
+# Status: pending
+# Dependencies: 4
+# Priority: medium
+# Description: Create the KYC verification process with personal information collection, identity verification, accreditation status, and review steps to streamline stakeholder verification.
+# Details:
+1. Create KYC verification route at `/app/(routes)/onboarding/kyc/[id]/page.tsx`
+2. Build ProgressStepper for step navigation
+3. Implement AddressAutoComplete for address verification
+4. Create DocUploadField for identity documents
+5. Build SelfieCapture using WebRTC
+6. Implement AccreditationForm for investor qualification
+7. Create ReviewSummary for final verification
+8. Build SideInfoPanel with status and help
+9. Implement API integration with `/api/mock/kyc/:userId`
+10. Create step validation and progression logic
+11. Build responsive layout with mobile considerations
+
+# Test Strategy:
+1. Test KYC flow navigation through all steps
+2. Verify form validation for required fields
+3. Test document upload functionality
+4. Validate selfie capture with WebRTC
+5. Test accreditation form with different scenarios
+6. Verify responsive behavior on mobile devices
+
+# Subtasks:
+## 1. Design KYC data schema [pending]
+### Dependencies: None
+### Description: Create a comprehensive data schema for storing all KYC-related information securely
+### Details:
+Define database schema for personal information, identity documents, verification status, and accreditation data. Include fields for timestamps, verification status, and audit logs. Ensure compliance with data protection regulations.
+
+## 2. Implement personal information collection form [pending]
+### Dependencies: 14.1
+### Description: Create a form to collect basic personal information from users
+### Details:
+Build a multi-step form collecting name, address, date of birth, contact information, and tax identification numbers. Implement client-side validation for all fields and ensure accessibility compliance.
+
+## 3. Develop document upload functionality [pending]
+### Dependencies: 14.1
+### Description: Create a secure system for users to upload identity verification documents
+### Details:
+Implement file upload for passport, driver's license, and other government IDs. Include file type validation, size restrictions, and image quality checks. Store documents securely with encryption.
+
+## 4. Implement WebRTC selfie capture [pending]
+### Dependencies: 14.1
+### Description: Add functionality for users to take a selfie for facial verification
+### Details:
+Integrate WebRTC for browser-based camera access. Implement face detection to ensure quality captures. Include instructions for proper lighting and positioning. Store images securely.
+
+## 5. Integrate third-party ID verification service [pending]
+### Dependencies: 14.3, 14.4
+### Description: Connect with external verification service to validate user-provided documents
+### Details:
+Research and select appropriate verification service. Implement API integration for document authenticity checks and facial matching. Handle verification responses and error cases.
+
+## 6. Create accreditation status verification [pending]
+### Dependencies: 14.2
+### Description: Implement process for verifying user's accreditation status
+### Details:
+Build form for collecting accreditation information including investor type, income verification, and investment experience. Include document upload for supporting financial statements.
+
+## 7. Develop admin review interface [pending]
+### Dependencies: 14.2, 14.3, 14.4, 14.6
+### Description: Create dashboard for administrators to review and approve KYC submissions
+### Details:
+Build admin panel showing pending verifications with filtering and sorting. Include detailed view of all user-submitted information and documents. Implement approval/rejection workflow with comment capability.
+
+## 8. Implement verification status tracking [pending]
+### Dependencies: 14.5, 14.7
+### Description: Create system to track and display verification status to users
+### Details:
+Develop status tracking for each verification step. Create user-facing dashboard showing current status, pending items, and next steps. Implement notifications for status changes.
+
+## 9. Set up security measures and encryption [pending]
+### Dependencies: 14.1
+### Description: Implement security protocols for sensitive KYC data
+### Details:
+Implement end-to-end encryption for document storage. Set up access controls for admin users. Create audit logging for all verification activities. Ensure compliance with data protection regulations.
+
+## 10. Create automated verification workflows [pending]
+### Dependencies: 14.5, 14.6, 14.7
+### Description: Implement automated processes for routine verification steps
+### Details:
+Develop rules engine for automatic approval of straightforward cases. Implement risk scoring algorithm. Create workflow for escalating complex cases to human reviewers.
+
+## 11. Implement testing and compliance review [pending]
+### Dependencies: 14.8, 14.9, 14.10
+### Description: Conduct thorough testing and compliance review of the entire KYC process
+### Details:
+Perform security testing including penetration testing. Conduct compliance review against relevant regulations (KYC/AML). Test all user flows and edge cases. Document compliance measures for audit purposes.
+

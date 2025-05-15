@@ -1,0 +1,94 @@
+# Task ID: 16
+# Title: Option Exercise Wizard
+# Status: pending
+# Dependencies: 4, 10
+# Priority: medium
+# Description: Create the option exercise wizard with quantity selection, cost calculation, payment method selection, tax implications visualization, and confirmation to guide employees through the exercise process.
+# Details:
+1. Create option exercise route at `/app/(routes)/employee/exercise/[id]/page.tsx`
+2. Build QuantitySlider for selecting exercise amount
+3. Implement CostBreakdown for financial calculations
+4. Create PaymentOptionCard for payment method selection
+5. Build TaxImpactGraph for visualizing tax implications
+6. Implement ESignField for digital signature
+7. Create API integration with `/api/mock/exercise/:grantId/quote`
+8. Build dynamic updates based on quantity selection
+9. Implement payment method-specific flows
+10. Create confirmation screen with summary
+11. Build responsive layout for different screen sizes
+
+# Test Strategy:
+1. Test exercise wizard with different grants
+2. Verify cost calculations with quantity changes
+3. Test payment method selection
+4. Validate tax impact visualization
+5. Test confirmation and submission flow
+6. Verify responsive layout across device sizes
+
+# Subtasks:
+## 1. Design wizard UI flow and components [pending]
+### Dependencies: None
+### Description: Create wireframes and design mockups for the entire option exercise wizard flow
+### Details:
+Design all screens including quantity selection, cost calculation, payment method selection, tax implications, and confirmation screens. Ensure the UI is intuitive and guides users through the process with clear navigation between steps.
+
+## 2. Implement quantity selection interface [pending]
+### Dependencies: 16.1
+### Description: Build the UI component for users to select the number of options to exercise
+### Details:
+Create a form component with input validation that allows users to select a quantity up to their maximum available options. Include visual feedback showing the valid range and implement real-time validation.
+
+## 3. Develop cost calculation engine [pending]
+### Dependencies: 16.2
+### Description: Create the logic to calculate total exercise cost based on quantity and option details
+### Details:
+Implement functions to calculate the total cost based on strike price, quantity selected, and any applicable fees. Ensure calculations handle currency formatting and edge cases correctly.
+
+## 4. Build cost summary display [pending]
+### Dependencies: 16.3
+### Description: Create a component to show the breakdown of costs for the selected options
+### Details:
+Design and implement a detailed cost summary that shows strike price, quantity, total exercise cost, fees, and final amount due. Include appropriate formatting for currency values.
+
+## 5. Implement payment method selection [pending]
+### Dependencies: 16.4
+### Description: Create the interface for users to select their preferred payment method
+### Details:
+Build a component that allows users to choose between available payment methods (cash, sell-to-cover, etc.). Include explanations of each method and any restrictions based on user eligibility.
+
+## 6. Develop tax implications calculator [pending]
+### Dependencies: 16.3
+### Description: Create the logic to estimate tax implications based on exercise details
+### Details:
+Implement algorithms to calculate estimated tax implications including income tax, capital gains considerations, and AMT if applicable. Include appropriate disclaimers about tax estimates.
+
+## 7. Build tax visualization component [pending]
+### Dependencies: 16.6
+### Description: Create visual representations of tax implications for the user
+### Details:
+Design and implement charts, graphs or tables that clearly illustrate the tax implications of the exercise. Include toggles to show different tax scenarios if applicable.
+
+## 8. Implement payment processing integration [pending]
+### Dependencies: 16.5
+### Description: Connect the wizard to payment processing systems
+### Details:
+Integrate with payment processors or internal payment systems to handle the actual transaction. Implement secure handling of payment information and proper error handling for failed transactions.
+
+## 9. Create confirmation screen [pending]
+### Dependencies: 16.4, 16.7, 16.8
+### Description: Build the final confirmation step showing exercise details before submission
+### Details:
+Design and implement a comprehensive confirmation screen that summarizes all details of the exercise including quantity, cost, payment method, and tax implications. Include clear calls to action for final submission.
+
+## 10. Implement exercise submission and receipt [pending]
+### Dependencies: 16.9
+### Description: Create the functionality to submit the exercise request and generate a receipt
+### Details:
+Build the backend integration to submit the exercise request to the appropriate systems. Generate a detailed receipt/confirmation for the user with all relevant details and next steps.
+
+## 11. Develop comprehensive testing suite [pending]
+### Dependencies: 16.2, 16.3, 16.5, 16.6, 16.8, 16.10
+### Description: Create tests for all components of the option exercise wizard
+### Details:
+Implement unit tests, integration tests, and end-to-end tests for the entire wizard flow. Include test cases for edge cases, error handling, and different user scenarios to ensure reliability.
+

@@ -1,0 +1,94 @@
+# Task ID: 6
+# Title: Founder Dashboard Implementation
+# Status: pending
+# Dependencies: 2, 4, 5
+# Priority: high
+# Description: Create the founder dashboard with cap table visualization, treasury widget, compliance checklist, and activity timeline to provide a comprehensive view of ownership and compliance.
+# Details:
+1. Create founder dashboard route at `/app/(routes)/founder/dashboard/page.tsx`
+2. Implement SidebarNav component for founder navigation
+3. Build TopBar with company selector and notifications
+4. Create CapTablePieChart component with interactive features
+5. Implement StackedBarToggle for alternative visualization
+6. Build TreasuryWidget showing balances and runway
+7. Create ComplianceChecklist component with status indicators
+8. Implement RecentActivityTimeline with transaction history
+9. Connect to mock API endpoint `/api/mock/founder-dashboard`
+10. Implement responsive layout for different screen sizes
+11. Add drag-to-dilute CTA navigation to simulator page
+
+# Test Strategy:
+1. Test dashboard loading and data display
+2. Verify interactive features of charts
+3. Test responsive layout across device sizes
+4. Validate navigation to other founder screens
+5. Test notifications and alerts functionality
+6. Verify that all components update correctly with data changes
+
+# Subtasks:
+## 1. Define dashboard requirements and architecture [pending]
+### Dependencies: None
+### Description: Document the complete requirements for the founder dashboard and design the overall architecture
+### Details:
+Create a comprehensive document outlining all dashboard components, data sources, user interactions, and technical requirements. Design the architecture including component hierarchy, state management approach, and API integration points. Include wireframes for the main dashboard layout and navigation structure.
+
+## 2. Set up dashboard framework and navigation [pending]
+### Dependencies: 6.1
+### Description: Implement the base dashboard structure with navigation between different sections
+### Details:
+Create the dashboard shell with responsive layout. Implement the navigation bar/sidebar that allows switching between cap table, treasury, compliance, and activity sections. Set up routing and state management foundation. Ensure the framework supports all planned widgets and visualizations.
+
+## 3. Implement cap table data model and API integration [pending]
+### Dependencies: 6.2
+### Description: Create the data structures and API connections needed for the cap table visualization
+### Details:
+Define the data model for equity ownership, share classes, vesting schedules, and dilution calculations. Implement API services to fetch cap table data. Create data transformation utilities to prepare the data for visualization. Include error handling and loading states.
+
+## 4. Develop cap table visualization component [pending]
+### Dependencies: 6.3
+### Description: Build interactive charts and tables to display equity distribution and ownership
+### Details:
+Implement pie/donut charts showing equity distribution by stakeholder type. Create detailed tables showing individual ownership percentages, share counts, and values. Add interactive features like filtering, sorting, and drill-down capabilities. Ensure visualizations are responsive across device sizes.
+
+## 5. Implement treasury data model and API integration [pending]
+### Dependencies: 6.2
+### Description: Create the data structures and API connections for the treasury management widget
+### Details:
+Define the data model for cash positions, burn rate, runway calculations, and financial projections. Implement API services to fetch treasury data. Create data transformation utilities for financial calculations and trend analysis. Include error handling and loading states.
+
+## 6. Develop treasury management widget [pending]
+### Dependencies: 6.5
+### Description: Build interactive components to display cash position, burn rate, and financial projections
+### Details:
+Implement line/area charts showing cash flow over time. Create burn rate visualizations and runway indicators. Add financial health metrics and alerts for critical thresholds. Include interactive features for different time periods and projection scenarios. Ensure all components are responsive.
+
+## 7. Implement compliance data model and API integration [pending]
+### Dependencies: 6.2
+### Description: Create the data structures and API connections for the compliance checklist
+### Details:
+Define the data model for compliance requirements, deadlines, completion status, and documentation. Implement API services to fetch compliance data. Create utilities for deadline calculations and status tracking. Include error handling and loading states.
+
+## 8. Develop compliance checklist component [pending]
+### Dependencies: 6.7
+### Description: Build an interactive checklist to track regulatory and governance requirements
+### Details:
+Implement a categorized checklist showing compliance items with status indicators. Create deadline visualizations and overdue alerts. Add document upload/attachment capabilities. Include filtering by status, category, and urgency. Ensure the component is responsive and accessible.
+
+## 9. Implement activity timeline data model and API integration [pending]
+### Dependencies: 6.2
+### Description: Create the data structures and API connections for the activity timeline
+### Details:
+Define the data model for company events, milestones, transactions, and user activities. Implement API services to fetch timeline data. Create utilities for chronological sorting, filtering, and grouping. Include error handling and loading states.
+
+## 10. Develop activity timeline component [pending]
+### Dependencies: 6.9
+### Description: Build an interactive timeline showing company events and activities
+### Details:
+Implement a vertical timeline visualization with event categories and icons. Create interactive features for filtering by event type and date range. Add detail expansion and related document access. Ensure the timeline is responsive and performs well with large datasets.
+
+## 11. Integrate components and implement dashboard analytics [pending]
+### Dependencies: 6.4, 6.6, 6.8, 6.10
+### Description: Combine all components into a cohesive dashboard and add analytics features
+### Details:
+Integrate all components into the main dashboard. Implement cross-component communication where needed. Add dashboard-level analytics like summary metrics and health indicators. Create user preference saving and dashboard customization options. Perform final testing and optimization across all device sizes.
+

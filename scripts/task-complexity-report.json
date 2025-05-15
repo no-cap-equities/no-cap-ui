@@ -1,0 +1,171 @@
+{
+  "meta": {
+    "generatedAt": "2025-05-15T17:34:35.000Z",
+    "tasksAnalyzed": 20,
+    "thresholdScore": 5,
+    "projectName": "Taskmaster",
+    "usedResearch": true
+  },
+  "complexityAnalysis": [
+    {
+      "taskId": 1,
+      "taskTitle": "Project Setup and Configuration",
+      "complexityScore": 7,
+      "recommendedSubtasks": 9,
+      "expansionPrompt": "Break down the Next.js 15.3+ project setup with App Router architecture into detailed implementation steps, including Tailwind v4 configuration, shadcn/ui setup, and project structure establishment.",
+      "reasoning": "This task involves setting up the entire project foundation with multiple technologies (Next.js App Router, Tailwind, shadcn/ui) and establishing the project structure. The complexity comes from configuring multiple systems to work together correctly and creating the proper directory structure for the App Router architecture."
+    },
+    {
+      "taskId": 2,
+      "taskTitle": "Authentication System with Alchemy Account Kit",
+      "complexityScore": 8,
+      "recommendedSubtasks": 10,
+      "expansionPrompt": "Expand the authentication system implementation using Alchemy Account Kit into detailed steps, including wallet connections, authentication hooks, session management, and protected routes.",
+      "reasoning": "Implementing authentication with blockchain wallet connections is complex, requiring integration with Alchemy Account Kit, creating authentication flows, session management, and protected routes. The task involves both frontend components and backend authentication logic."
+    },
+    {
+      "taskId": 3,
+      "taskTitle": "Multi-Role Landing Page",
+      "complexityScore": 6,
+      "recommendedSubtasks": 8,
+      "expansionPrompt": "Detail the implementation steps for the multi-role landing page, including role selection cards, animations, responsive design, and integration with the authentication flow.",
+      "reasoning": "This task requires creating a landing page with role selection functionality, animations, and responsive design. It has moderate complexity due to the need to integrate with authentication and implement subtle blockchain connection visuals."
+    },
+    {
+      "taskId": 4,
+      "taskTitle": "Core Data Models and API Layer",
+      "complexityScore": 9,
+      "recommendedSubtasks": 12,
+      "expansionPrompt": "Break down the implementation of core data models and API layer for the cap table system, including TypeScript interfaces, React Query hooks, mock API routes, and data transformation utilities.",
+      "reasoning": "This task involves defining the entire data architecture for the application, including complex entities like cap tables, stakeholders, securities, and transactions. It requires creating TypeScript interfaces, API utilities, React Query hooks, and mock endpoints, making it highly complex."
+    },
+    {
+      "taskId": 5,
+      "taskTitle": "Visualization Components and Chart Library",
+      "complexityScore": 8,
+      "recommendedSubtasks": 10,
+      "expansionPrompt": "Detail the development of reusable chart components using Recharts for cap table visualization, including pie charts, bar charts, line graphs, and interactive features.",
+      "reasoning": "Creating a comprehensive chart library requires implementing multiple chart types with Recharts, handling responsive behavior, interactive features, accessibility, and export functionality. The complexity is high due to the variety of chart types and interactive requirements."
+    },
+    {
+      "taskId": 6,
+      "taskTitle": "Founder Dashboard Implementation",
+      "complexityScore": 8,
+      "recommendedSubtasks": 11,
+      "expansionPrompt": "Break down the founder dashboard implementation into detailed steps, including cap table visualization, treasury widget, compliance checklist, and activity timeline components.",
+      "reasoning": "The founder dashboard combines multiple complex components including visualizations, interactive features, and data from various sources. It requires implementing navigation, charts, widgets, and timelines while ensuring responsive behavior."
+    },
+    {
+      "taskId": 7,
+      "taskTitle": "Cap Table Explorer with Time-Machine Slider",
+      "complexityScore": 9,
+      "recommendedSubtasks": 10,
+      "expansionPrompt": "Detail the implementation steps for the cap table explorer with time-machine slider, including interactive timeline, visualization toggles, dilution simulator, and scenario management.",
+      "reasoning": "This feature involves complex time-based data visualization, interactive sliders, multiple visualization types, and a dilution simulator. The complexity is high due to the need to model and visualize ownership changes over time and implement scenario management."
+    },
+    {
+      "taskId": 8,
+      "taskTitle": "Equity Issuance Wizard",
+      "complexityScore": 8,
+      "recommendedSubtasks": 12,
+      "expansionPrompt": "Break down the multi-step equity issuance wizard implementation, including instrument selection, recipient information, vesting configuration, compliance checks, and approval workflow.",
+      "reasoning": "The equity issuance wizard involves a complex multi-step process with form validation, visualizations, compliance checks, and integration with the approval system. Each step has its own complexity and data requirements."
+    },
+    {
+      "taskId": 9,
+      "taskTitle": "Multi-Party Approval Workflow",
+      "complexityScore": 8,
+      "recommendedSubtasks": 11,
+      "expansionPrompt": "Detail the implementation of the approval workflow system, including visual flow diagram, approval actions, delegation capabilities, and real-time activity tracking.",
+      "reasoning": "This task involves creating a complex workflow system with multiple approval states, document viewing, delegation capabilities, and real-time updates. The complexity comes from managing the approval state machine and implementing real-time features."
+    },
+    {
+      "taskId": 10,
+      "taskTitle": "Employee Dashboard with Vesting Visualization",
+      "complexityScore": 7,
+      "recommendedSubtasks": 10,
+      "expansionPrompt": "Break down the employee dashboard implementation, including equity summary, vesting timeline visualization, grants table, tax calculator, and educational content.",
+      "reasoning": "The employee dashboard combines several components including visualizations, tables, calculators, and educational content. The complexity is moderate to high due to the need to accurately visualize vesting schedules and calculate tax implications."
+    },
+    {
+      "taskId": 11,
+      "taskTitle": "Investor Portfolio View",
+      "complexityScore": 7,
+      "recommendedSubtasks": 10,
+      "expansionPrompt": "Detail the implementation of the investor dashboard with portfolio summary, interactive bubble map, holdings table, and liquidity event alerts.",
+      "reasoning": "This task requires creating a portfolio view with multiple visualization types, interactive features, and data aggregation. The complexity comes from implementing the bubble map visualization and ensuring proper data relationships between portfolio companies."
+    },
+    {
+      "taskId": 12,
+      "taskTitle": "Company Detail View for Investors",
+      "complexityScore": 7,
+      "recommendedSubtasks": 10,
+      "expansionPrompt": "Break down the company detail view implementation for investors, including investment summary, ownership evolution chart, cap table section, and document management.",
+      "reasoning": "This task involves creating a detailed company view with multiple data visualizations, metrics, and document management. The complexity comes from integrating various data sources and implementing the ownership evolution chart."
+    },
+    {
+      "taskId": 13,
+      "taskTitle": "Compliance Dashboard",
+      "complexityScore": 8,
+      "recommendedSubtasks": 11,
+      "expansionPrompt": "Detail the implementation of the compliance dashboard, including health metrics, filing calendar, stakeholder verification status, document management, and rules engine configuration.",
+      "reasoning": "The compliance dashboard combines multiple complex features including visualization, document management, rule configuration, and AI assistance. The complexity is high due to the variety of compliance-related features and the rule editor implementation."
+    },
+    {
+      "taskId": 14,
+      "taskTitle": "KYC Verification Flow",
+      "complexityScore": 7,
+      "recommendedSubtasks": 11,
+      "expansionPrompt": "Break down the KYC verification process implementation, including personal information collection, identity verification, accreditation status, and review steps.",
+      "reasoning": "This task involves creating a multi-step verification flow with form validation, document uploads, WebRTC integration for selfie capture, and accreditation verification. The complexity comes from handling various verification methods and ensuring security."
+    },
+    {
+      "taskId": 15,
+      "taskTitle": "Token Transfer & Rule Engine Demo",
+      "complexityScore": 8,
+      "recommendedSubtasks": 10,
+      "expansionPrompt": "Detail the implementation of the token transfer interface with real-time rule evaluation visualization, including transfer form, rule flow graph, and resolution workflows.",
+      "reasoning": "This task requires implementing a complex rule evaluation visualization alongside a token transfer interface. The complexity comes from visualizing the rule flow in real-time and implementing resolution paths for blocked transfers."
+    },
+    {
+      "taskId": 16,
+      "taskTitle": "Option Exercise Wizard",
+      "complexityScore": 7,
+      "recommendedSubtasks": 11,
+      "expansionPrompt": "Break down the option exercise wizard implementation, including quantity selection, cost calculation, payment method selection, tax implications visualization, and confirmation flow.",
+      "reasoning": "The option exercise wizard involves a multi-step process with financial calculations, tax implications, and payment processing. The complexity comes from accurately calculating costs and taxes based on quantity selection and implementing payment flows."
+    },
+    {
+      "taskId": 17,
+      "taskTitle": "Board Meeting Preparation Center",
+      "complexityScore": 7,
+      "recommendedSubtasks": 11,
+      "expansionPrompt": "Detail the implementation of the board meeting preparation center, including agenda builder, cap table summary, document generation, voting tracker, and collaborative notes.",
+      "reasoning": "This task combines multiple features including drag-and-drop agenda management, document generation, electronic signatures, and collaborative notes. The complexity comes from implementing these varied features and ensuring they work together cohesively."
+    },
+    {
+      "taskId": 18,
+      "taskTitle": "Proxy Voting Portal",
+      "complexityScore": 7,
+      "recommendedSubtasks": 10,
+      "expansionPrompt": "Break down the proxy voting portal implementation, including proposal details, document preview, voting interface, real-time results visualization, and voting history.",
+      "reasoning": "This task involves creating a voting system with document preview, vote casting, real-time results, and split voting functionality. The complexity comes from implementing real-time updates and handling different voting scenarios."
+    },
+    {
+      "taskId": 19,
+      "taskTitle": "Scenario Modeling Tool",
+      "complexityScore": 8,
+      "recommendedSubtasks": 11,
+      "expansionPrompt": "Detail the implementation of the scenario modeling tool, including funding parameters, option pool adjustments, projection charts, sensitivity analysis, and comparison views.",
+      "reasoning": "The scenario modeling tool requires complex financial calculations, multiple chart types, real-time recalculation, and comparison functionality. The complexity is high due to the mathematical modeling required and the need to visualize multiple scenarios."
+    },
+    {
+      "taskId": 20,
+      "taskTitle": "Integration Testing and Deployment Setup",
+      "complexityScore": 9,
+      "recommendedSubtasks": 10,
+      "expansionPrompt": "Break down the integration testing and deployment setup process, including end-to-end testing, CI/CD configuration, cloud deployment, monitoring, and security auditing.",
+      "reasoning": "This task involves setting up comprehensive testing across all components and configuring deployment to Google Cloud. The complexity is high due to the need to test all user flows, set up containerization, configure cloud services, and implement monitoring and security measures."
+    }
+  ]
+}

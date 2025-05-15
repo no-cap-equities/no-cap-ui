@@ -1,0 +1,87 @@
+# Task ID: 10
+# Title: Employee Dashboard with Vesting Visualization
+# Status: pending
+# Dependencies: 2, 4, 5
+# Priority: medium
+# Description: Create the employee dashboard with equity summary, vesting timeline, grants table, tax calculator, and educational content to help employees understand their equity.
+# Details:
+1. Create employee dashboard route at `/app/(routes)/employee/dashboard/page.tsx`
+2. Build MetricCard components for equity summary
+3. Implement LinearVestingBar for visualizing vesting schedule
+4. Create GrantsTable with expandable details
+5. Build TaxCalcWidget for estimating tax implications
+6. Implement FAQAccordion for educational content
+7. Create API integration with `/api/mock/employee-grants?user=:id`
+8. Implement confetti animation for vesting milestones
+9. Build navigation to option exercise wizard
+10. Create responsive layout with mobile-first approach
+
+# Test Strategy:
+1. Test dashboard loading with employee data
+2. Verify vesting visualization accuracy
+3. Test grants table expansion and details
+4. Validate tax calculator with different scenarios
+5. Test educational content accessibility
+6. Verify responsive layout on mobile devices
+
+# Subtasks:
+## 1. Design dashboard layout and information architecture [pending]
+### Dependencies: None
+### Description: Create wireframes and design mockups for the overall dashboard layout, including navigation and component placement.
+### Details:
+Define the information hierarchy, user flow, and responsive design considerations. Include placement for equity summary, vesting timeline, grants table, tax calculator, and educational content sections.
+
+## 2. Implement equity summary component [pending]
+### Dependencies: 10.1
+### Description: Develop the equity summary section showing total grants, vested shares, and current value.
+### Details:
+Create visualizations for quick understanding of equity position. Include total shares granted, vested shares, unvested shares, and estimated current value based on latest company valuation.
+
+## 3. Build vesting timeline visualization [pending]
+### Dependencies: 10.1
+### Description: Create an interactive timeline showing past and future vesting events.
+### Details:
+Implement a graphical representation of the vesting schedule with clear indicators for vesting dates, cliff periods, and amounts. Allow users to hover/click for detailed information about specific vesting events.
+
+## 4. Develop grants table with filtering and sorting [pending]
+### Dependencies: 10.1
+### Description: Create a detailed table showing all equity grants with relevant details and interactive features.
+### Details:
+Include columns for grant date, grant type, shares/units, vesting schedule, current value, and vesting status. Implement sorting and filtering capabilities to help users organize and find specific grants.
+
+## 5. Implement tax calculator functionality [pending]
+### Dependencies: 10.1
+### Description: Build a calculator tool that estimates tax implications for different exercise scenarios.
+### Details:
+Create input fields for exercise date, quantity, strike price, and fair market value. Calculate estimated AMT, ordinary income, and capital gains taxes based on user inputs and current tax regulations.
+
+## 6. Create educational content section [pending]
+### Dependencies: 10.1
+### Description: Develop a section with educational resources about equity compensation.
+### Details:
+Include explanations of key terms (RSUs, options, vesting, etc.), FAQs, and guides on exercise strategies. Organize content in an accessible way with expandable sections and search functionality.
+
+## 7. Integrate data retrieval and API connections [pending]
+### Dependencies: 10.2, 10.3, 10.4, 10.5
+### Description: Set up connections to backend services to retrieve user-specific equity data.
+### Details:
+Implement API calls to fetch grant details, vesting schedules, company valuation data, and user account information. Include error handling and loading states for a smooth user experience.
+
+## 8. Implement user preferences and settings [pending]
+### Dependencies: 10.2, 10.3, 10.4, 10.5, 10.6
+### Description: Create functionality for users to customize their dashboard experience.
+### Details:
+Allow users to set default views, hide/show specific components, set notification preferences for vesting events, and save tax calculation scenarios for future reference.
+
+## 9. Perform cross-browser and responsive testing [pending]
+### Dependencies: 10.7, 10.8
+### Description: Test the dashboard across different devices and browsers to ensure compatibility.
+### Details:
+Verify functionality and appearance on desktop, tablet, and mobile devices. Test on Chrome, Firefox, Safari, and Edge browsers. Address any layout or functionality issues that arise during testing.
+
+## 10. Implement analytics and user feedback mechanisms [pending]
+### Dependencies: 10.9
+### Description: Add tracking for user interactions and create channels for feedback collection.
+### Details:
+Set up analytics to track feature usage and identify potential improvements. Implement feedback forms or surveys to collect user input on dashboard usability and feature requests for future iterations.
+

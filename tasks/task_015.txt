@@ -1,0 +1,87 @@
+# Task ID: 15
+# Title: Token Transfer & Rule Engine Demo
+# Status: pending
+# Dependencies: 4, 13
+# Priority: medium
+# Description: Implement the token transfer interface with real-time rule evaluation visualization to demonstrate compliance automation during equity transfers.
+# Details:
+1. Create token transfer route at `/app/(routes)/founder/transactions/transfer/page.tsx`
+2. Build SplitView layout for transfer form and rules visualization
+3. Implement SecuritySelect for token selection
+4. Create AddressPicker with address book integration
+5. Build RuleFlowGraph for visualizing compliance checks
+6. Implement ResultToast for transfer outcomes
+7. Create API integration with `/api/mock/rules/preview` and `/api/mock/transfer`
+8. Build animation for rule evaluation flow
+9. Implement one-click resolution for blocked transfers
+10. Create responsive layout with mobile considerations
+
+# Test Strategy:
+1. Test transfer form with different inputs
+2. Verify rule evaluation visualization
+3. Test blocked transfers and resolution paths
+4. Validate successful transfer animations
+5. Test responsive layout on mobile devices
+6. Verify accessibility alternatives to visual flow
+
+# Subtasks:
+## 1. Design token transfer form UI [pending]
+### Dependencies: None
+### Description: Create the user interface for the token transfer form with input fields for sender, recipient, amount, and transfer details.
+### Details:
+Design a clean, intuitive form that includes validation for all fields. Include token selection dropdown, amount input with balance validation, recipient address field with address book integration, and an optional memo/description field. Ensure mobile responsiveness and accessibility compliance.
+
+## 2. Implement rule evaluation data model [pending]
+### Dependencies: None
+### Description: Define the data structures needed to represent and process transfer rules and their evaluation states.
+### Details:
+Create classes/interfaces for rules, rule conditions, evaluation results, and rule dependencies. Design a model that can represent complex rule relationships including dependencies, conflicts, and priority ordering. Include metadata for visualization purposes such as rule categories, severity levels, and user-friendly descriptions.
+
+## 3. Develop real-time rule evaluation engine [pending]
+### Dependencies: 15.2
+### Description: Build the core logic that evaluates transfer rules as user inputs change and maintains evaluation state.
+### Details:
+Implement an event-driven evaluation system that triggers rule checks when form values change. Optimize for performance with debouncing and selective re-evaluation. Include support for asynchronous rule checks (e.g., external API calls) and maintain a consistent state model for rule evaluation results.
+
+## 4. Create rule flow graph visualization component [pending]
+### Dependencies: 15.2
+### Description: Develop a visual component that displays rules as a directed graph showing dependencies and evaluation states.
+### Details:
+Implement an interactive graph visualization using a library like D3.js or Cytoscape.js. Display rules as nodes with color-coding for pass/fail/pending states. Show rule dependencies as directed edges. Include zooming, panning, and focusing capabilities for complex rule sets.
+
+## 5. Integrate form inputs with rule evaluation [pending]
+### Dependencies: 15.1, 15.3
+### Description: Connect the transfer form UI with the rule evaluation engine to provide real-time feedback.
+### Details:
+Implement two-way binding between form inputs and the rule engine. Update rule evaluations as users type or select options. Add visual indicators next to form fields to show which rules are affected by each input. Include tooltips explaining rule violations directly in the form context.
+
+## 6. Implement rule violation resolution workflows [pending]
+### Dependencies: 15.3, 15.5
+### Description: Design and implement guided workflows to help users resolve rule violations that block transfers.
+### Details:
+Create step-by-step resolution paths for common rule violations. For each violation type, provide actionable suggestions with direct links/buttons to resolve issues (e.g., 'Add funds', 'Reduce amount', 'Complete KYC'). Implement a resolution queue for handling multiple violations efficiently.
+
+## 7. Connect rule flow graph with form interactions [pending]
+### Dependencies: 15.4, 15.5
+### Description: Link the rule visualization with form interactions to highlight affected rules as users interact with the form.
+### Details:
+Implement bidirectional highlighting between form fields and graph nodes. When users focus on a form field, highlight related rules in the graph. When users click on a rule in the graph, highlight the relevant form fields. Add animations for rule state transitions to make the evaluation process clear.
+
+## 8. Develop detailed rule inspection panel [pending]
+### Dependencies: 15.4, 15.7
+### Description: Create an expandable panel showing detailed information about selected rules and their evaluation.
+### Details:
+Implement a side panel that shows when users select a rule from the graph. Include rule description, current status, evaluation history, dependent rules, and specific resolution steps. Add the ability to simulate rule resolution and see the impact on other rules without changing actual form values.
+
+## 9. Implement transfer submission and confirmation flow [pending]
+### Dependencies: 15.5, 15.6
+### Description: Create the workflow for submitting transfers after rule evaluation, including confirmation and receipt.
+### Details:
+Implement a multi-step confirmation process that shows a summary of the transfer details, applicable fees, and estimated completion time. Include final rule validation before submission. Design success and error states with appropriate user feedback. Create a transaction receipt with a unique identifier and transaction details.
+
+## 10. Add performance optimizations and final testing [pending]
+### Dependencies: 15.3, 15.4, 15.7, 15.8, 15.9
+### Description: Optimize the performance of the rule visualization for complex rule sets and conduct comprehensive testing.
+### Details:
+Implement lazy loading and virtualization for large rule sets. Add caching for rule evaluation results. Conduct performance testing with large rule sets (100+ rules) and optimize rendering. Perform usability testing focusing on the clarity of rule visualization and resolution workflows. Fix edge cases in rule evaluation and visualization.
+

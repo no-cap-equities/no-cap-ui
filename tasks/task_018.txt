@@ -1,0 +1,87 @@
+# Task ID: 18
+# Title: Proxy Voting Portal
+# Status: pending
+# Dependencies: 4, 11
+# Priority: low
+# Description: Create the proxy voting portal with proposal details, document preview, voting interface, real-time results visualization, and voting history to facilitate governance participation.
+# Details:
+1. Create proxy voting route at `/app/(routes)/investor/voting/[proposalId]/page.tsx`
+2. Build ProposalDocViewer for document preview
+3. Implement VotePowerChip showing voting rights
+4. Create LiveResultsChart for real-time voting status
+5. Build SplitVoteForm for partial voting
+6. Implement voting history section
+7. Create API integration with `/api/mock/proposals/:id`
+8. Build optimistic UI updates for vote casting
+9. Implement server-sent events for real-time results
+10. Create responsive layout for different screen sizes
+
+# Test Strategy:
+1. Test voting portal with different proposals
+2. Verify document preview functionality
+3. Test vote casting with different options
+4. Validate real-time results updates
+5. Test split voting functionality
+6. Verify responsive layout across device sizes
+
+# Subtasks:
+## 1. Design database schema for proxy voting system [pending]
+### Dependencies: None
+### Description: Create the database schema to store proposals, votes, documents, and user voting history
+### Details:
+Design tables for proposals, votes, documents, voting history, and user permissions. Include fields for proposal details, voting options, vote weights, timestamps, and document references. Ensure schema supports split voting functionality.
+
+## 2. Implement proposal listing and details page [pending]
+### Dependencies: 18.1
+### Description: Create the interface for users to view all available proposals and access detailed information
+### Details:
+Develop a paginated list view of all active proposals with filtering options. Create a detailed view page showing proposal title, description, voting deadline, proposal type, and voting options. Include metadata such as proposal sponsor and submission date.
+
+## 3. Build document preview functionality [pending]
+### Dependencies: 18.2
+### Description: Implement a system to preview proposal-related documents within the portal
+### Details:
+Create a document viewer that supports PDF, DOC, and image formats. Implement zooming, page navigation, and download options. Ensure documents load efficiently with progressive rendering for large files. Add annotations or highlighting if required.
+
+## 4. Develop voting interface with split voting capability [pending]
+### Dependencies: 18.2
+### Description: Create the interface for users to cast their votes, including split voting functionality
+### Details:
+Design and implement a voting form with options for 'For', 'Against', 'Abstain'. Add functionality for split voting allowing users to distribute their voting power across different options. Include validation to ensure total voting power is not exceeded.
+
+## 5. Implement vote submission and confirmation [pending]
+### Dependencies: 18.1, 18.4
+### Description: Create the backend functionality to process and store votes
+### Details:
+Develop API endpoints to receive and validate vote submissions. Implement transaction handling to ensure vote integrity. Create a confirmation system with receipts for submitted votes. Add functionality to allow vote changes before the deadline.
+
+## 6. Build real-time results visualization [pending]
+### Dependencies: 18.5
+### Description: Create dynamic charts and graphs to display voting results in real-time
+### Details:
+Implement real-time data fetching using WebSockets or polling. Create visualizations showing vote distribution, participation rates, and voting trends. Include filters to view results by different demographics if applicable. Ensure visualizations are responsive and accessible.
+
+## 7. Develop user voting history section [pending]
+### Dependencies: 18.5
+### Description: Create a section where users can view their past voting activity
+### Details:
+Design and implement a user dashboard showing historical voting activity. Include filters for date ranges and proposal types. Show voting choices, timestamps, and proposal outcomes. Add functionality to export voting history in various formats.
+
+## 8. Implement authentication and authorization [pending]
+### Dependencies: 18.1
+### Description: Set up secure authentication and proper authorization for different user roles
+### Details:
+Implement secure login functionality with multi-factor authentication options. Create role-based access control for administrators, voters, and observers. Ensure proper validation of voting rights and delegation permissions. Implement audit logging for security events.
+
+## 9. Create admin dashboard for proposal management [pending]
+### Dependencies: 18.8
+### Description: Build an interface for administrators to create, edit, and manage proposals
+### Details:
+Develop an admin interface to create new proposals with document uploads. Add functionality to edit proposal details, set voting deadlines, and manage voting options. Include tools for monitoring voting activity and participation rates. Implement proposal archiving functionality.
+
+## 10. Perform testing and optimization [pending]
+### Dependencies: 18.3, 18.6, 18.7, 18.9
+### Description: Conduct thorough testing and optimize the portal for performance and usability
+### Details:
+Perform unit and integration testing for all components. Conduct load testing to ensure system handles peak voting periods. Optimize database queries and front-end performance. Conduct usability testing with representative users. Fix identified issues and implement performance improvements.
+

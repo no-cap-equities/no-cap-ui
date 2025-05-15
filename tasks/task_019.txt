@@ -1,0 +1,94 @@
+# Task ID: 19
+# Title: Scenario Modeling Tool
+# Status: pending
+# Dependencies: 4, 5, 7
+# Priority: low
+# Description: Implement the scenario modeling tool with funding parameters, option pool adjustments, projection charts, sensitivity analysis, and comparison views to help founders plan equity strategies.
+# Details:
+1. Create scenario modeling route at `/app/(routes)/founder/modeling/page.tsx`
+2. Build ScenarioCard for saved scenario management
+3. Implement FundingInputs for round parameters
+4. Create OptionPoolAdjuster for equity allocation
+5. Build ProjectionMultiChart for visualizing outcomes
+6. Implement DeltaHighlight for comparing scenarios
+7. Create ExportButton for sharing results
+8. Build API integration with `/api/mock/model/scenario/:id`
+9. Implement real-time recalculation with parameter changes
+10. Create side-by-side comparison view
+11. Build responsive layout with collapsible panels
+
+# Test Strategy:
+1. Test scenario modeling with different parameters
+2. Verify chart updates with parameter changes
+3. Test scenario saving and loading
+4. Validate comparison functionality
+5. Test export and sharing features
+6. Verify responsive layout across device sizes
+
+# Subtasks:
+## 1. Define core funding parameters [pending]
+### Dependencies: None
+### Description: Identify and define all funding parameters that will be modifiable in the scenario modeling tool
+### Details:
+Create a comprehensive list of funding parameters including pre-money valuation, investment amount, investor ownership percentage, post-money valuation, and dilution calculations. Document the mathematical relationships between these parameters and how changing one affects others.
+
+## 2. Implement option pool adjustment functionality [pending]
+### Dependencies: 19.1
+### Description: Develop the mechanism to adjust option pool size and calculate its impact on cap table
+### Details:
+Create functionality to add, remove, or modify option pool allocations. Include calculations for pre-money and post-money option pools, and how they affect founder and investor dilution. Implement validation to ensure option pool percentages remain within reasonable bounds.
+
+## 3. Design financial projection model [pending]
+### Dependencies: 19.1
+### Description: Create the mathematical model for financial projections based on funding parameters
+### Details:
+Develop algorithms for projecting key financial metrics including revenue, expenses, burn rate, runway, and growth rates. Include time-based projections (monthly, quarterly, yearly) and ensure the model can handle different growth patterns (linear, exponential, etc.).
+
+## 4. Implement real-time calculation engine [pending]
+### Dependencies: 19.1, 19.2, 19.3
+### Description: Build the core calculation engine that updates all values when parameters change
+### Details:
+Develop an efficient calculation system that can recalculate all dependent values when any input parameter changes. Implement caching mechanisms for performance optimization and ensure calculations remain accurate across all scenarios.
+
+## 5. Create projection chart visualization components [pending]
+### Dependencies: 19.3, 19.4
+### Description: Develop interactive charts to visualize financial projections
+### Details:
+Implement various chart types (line, bar, area, pie) to visualize projections. Include zoom functionality, tooltips for detailed information, and the ability to toggle between different metrics. Ensure charts are responsive and maintain visual clarity across device sizes.
+
+## 6. Implement sensitivity analysis functionality [pending]
+### Dependencies: 19.4
+### Description: Build tools to analyze how changes in key parameters affect outcomes
+### Details:
+Create a sensitivity analysis module that shows how variations in key inputs (valuation, investment amount, growth rate) affect outcomes. Implement both single-variable and multi-variable sensitivity analysis with appropriate visualizations to highlight critical thresholds.
+
+## 7. Develop scenario saving and management [pending]
+### Dependencies: 19.4
+### Description: Create functionality to save, name, and manage multiple funding scenarios
+### Details:
+Implement a system to save complete scenarios with all parameters and calculations. Include naming, description, tagging, and organization features. Ensure scenarios can be duplicated, modified, and deleted with appropriate confirmation steps.
+
+## 8. Build scenario comparison view [pending]
+### Dependencies: 19.5, 19.7
+### Description: Develop interface to compare multiple funding scenarios side by side
+### Details:
+Create a comparison view that displays key metrics from multiple scenarios side by side. Include visual indicators for favorable/unfavorable differences, percentage changes between scenarios, and the ability to highlight specific metrics for focused comparison.
+
+## 9. Implement multi-round funding projections [pending]
+### Dependencies: 19.4, 19.7
+### Description: Extend the model to handle multiple funding rounds and their cumulative effects
+### Details:
+Enhance the modeling tool to support sequential funding rounds. Calculate dilution across rounds, track ownership changes, and project valuation growth between rounds. Include parameters for timing between rounds based on runway and growth metrics.
+
+## 10. Create export and reporting functionality [pending]
+### Dependencies: 19.5, 19.8
+### Description: Develop features to export scenarios and generate comprehensive reports
+### Details:
+Implement export options for scenarios in various formats (PDF, Excel, CSV). Create report templates that combine charts, tables, and narrative explanations of key insights. Include customization options for reports to highlight specific aspects of the analysis.
+
+## 11. Perform mathematical validation and edge case testing [pending]
+### Dependencies: 19.4, 19.6, 19.9
+### Description: Validate all financial calculations and test edge cases to ensure accuracy
+### Details:
+Create a comprehensive test suite to validate all financial calculations against known examples. Test edge cases such as extreme valuations, unusual option pool sizes, and multiple rounds with complex terms. Document validation procedures and results for transparency.
+

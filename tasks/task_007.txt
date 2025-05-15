@@ -1,0 +1,87 @@
+# Task ID: 7
+# Title: Cap Table Explorer with Time-Machine Slider
+# Status: pending
+# Dependencies: 4, 5, 6
+# Priority: high
+# Description: Implement the cap table explorer with an interactive timeline slider that allows users to visualize ownership evolution over time and explore different equity scenarios.
+# Details:
+1. Create cap table explorer route at `/app/(routes)/founder/cap-table/page.tsx`
+2. Build TimeMachineSlider component for time navigation
+3. Implement CapTableTable with sortable columns and expandable rows
+4. Create PieToBarToggle for switching visualization types
+5. Build DiluteSimulatorPanel for modeling funding rounds
+6. Implement ScenarioSaveChip for bookmarking scenarios
+7. Create API integration with `/api/mock/cap-table?date=YYYY-MM-DD`
+8. Implement animation for ownership changes over time
+9. Build export functionality for cap table data
+10. Create responsive layout with collapsible simulator panel on mobile
+
+# Test Strategy:
+1. Test time slider functionality with different dates
+2. Verify cap table data updates correctly with time changes
+3. Test dilution simulator with various inputs
+4. Validate scenario saving functionality
+5. Test export features for different formats
+6. Verify responsive behavior on mobile devices
+
+# Subtasks:
+## 1. Design data model for cap table time series [pending]
+### Dependencies: None
+### Description: Create a data model that can represent ownership changes over time, including funding rounds, option grants, transfers, and other equity events.
+### Details:
+Define schemas for equity events, ownership records with timestamps, and historical snapshots. Ensure the model can efficiently support time-based queries and scenario branching. Include entity relationships between shareholders, equity types, and transactions.
+
+## 2. Implement time-machine slider component [pending]
+### Dependencies: 7.1
+### Description: Develop an interactive slider component that allows users to move through the cap table history and see ownership at different points in time.
+### Details:
+Create a responsive slider with date markers for significant events. Implement smooth transitions between time points. Add play/pause functionality to animate through time. Include tooltips showing key events at each point on the timeline.
+
+## 3. Build cap table visualization engine [pending]
+### Dependencies: 7.1
+### Description: Create a visualization engine that can render the cap table data in multiple formats (pie charts, bar graphs, tables) based on the selected time point.
+### Details:
+Implement D3.js or similar library for data visualization. Create modular visualization components that can be toggled. Ensure visualizations update efficiently when the time point changes. Include animations for transitions between states.
+
+## 4. Develop visualization toggle controls [pending]
+### Dependencies: 7.3
+### Description: Create UI controls that allow users to switch between different visualization types and configure display options.
+### Details:
+Design an intuitive toggle interface for switching between pie charts, bar graphs, tables, and other visualizations. Include options for grouping shareholders by type, filtering by ownership percentage, and highlighting specific shareholders. Implement responsive design for different screen sizes.
+
+## 5. Implement dilution simulator [pending]
+### Dependencies: 7.1, 7.3
+### Description: Create a simulator that allows users to model how potential future events would affect ownership percentages.
+### Details:
+Build a form interface for inputting hypothetical events (new funding rounds, option grants, etc.). Implement real-time calculation of dilution effects. Show before/after comparisons visually. Include validation to prevent unrealistic scenarios.
+
+## 6. Develop scenario management system [pending]
+### Dependencies: 7.5
+### Description: Create functionality to save, load, and compare different cap table scenarios.
+### Details:
+Implement a scenario storage system with naming and description. Create UI for managing saved scenarios. Build comparison view to show differences between scenarios. Include export functionality for scenarios in various formats (PDF, Excel, etc.).
+
+## 7. Create interactive timeline of equity events [pending]
+### Dependencies: 7.1, 7.2
+### Description: Develop a visual timeline showing all equity events with filtering and search capabilities.
+### Details:
+Design a horizontal timeline with event markers. Implement zooming and panning for navigating large timelines. Add filtering by event type, date range, and stakeholders. Include search functionality to find specific events quickly.
+
+## 8. Implement shareholder detail view [pending]
+### Dependencies: 7.1, 7.3, 7.7
+### Description: Create a detailed view showing a specific shareholder's equity position over time.
+### Details:
+Design a shareholder profile page with ownership history graph. Show all transactions affecting the shareholder. Include metrics like ownership percentage, value over time, and dilution history. Add export functionality for shareholder-specific reports.
+
+## 9. Build API for cap table data retrieval and manipulation [pending]
+### Dependencies: 7.1
+### Description: Develop backend APIs to support all the cap table explorer functionality.
+### Details:
+Create RESTful endpoints for retrieving cap table data at specific time points. Implement endpoints for scenario creation and management. Add authentication and authorization for sensitive data. Include performance optimizations for large cap tables.
+
+## 10. Implement end-to-end testing and performance optimization [pending]
+### Dependencies: 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9
+### Description: Create comprehensive tests and optimize performance for the cap table explorer.
+### Details:
+Develop unit tests for all components. Create integration tests for the full feature. Implement performance testing for large datasets. Optimize rendering and data loading for smooth user experience. Add caching strategies for frequently accessed data points.
+

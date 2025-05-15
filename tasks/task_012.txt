@@ -1,0 +1,87 @@
+# Task ID: 12
+# Title: Company Detail View for Investors
+# Status: pending
+# Dependencies: 4, 5, 11
+# Priority: medium
+# Description: Create the company detail view for investors with investment summary, ownership evolution chart, cap table section, and document management to provide detailed insights into specific investments.
+# Details:
+1. Create company detail route at `/app/(routes)/investor/companies/[id]/page.tsx`
+2. Build HeaderBar with company information
+3. Implement MetricCardsRow for investment metrics
+4. Create LineChartDualAxis for ownership evolution
+5. Build CapMiniTable for simplified cap table view
+6. Implement ProRataCalcModal for future round planning
+7. Create document management section with tabs
+8. Build API integration with `/api/mock/company/:id?investor=:investorId`
+9. Implement toggle between shares and percentage view
+10. Create responsive layout for different screen sizes
+
+# Test Strategy:
+1. Test company detail loading with different companies
+2. Verify chart interactions and toggles
+3. Test pro-rata calculator functionality
+4. Validate document viewing and management
+5. Test responsive layout across device sizes
+6. Verify data consistency with portfolio view
+
+# Subtasks:
+## 1. Design company detail view layout [pending]
+### Dependencies: None
+### Description: Create wireframes and design mockups for the company detail view layout
+### Details:
+Design the overall layout of the company detail view page, including header, navigation, main content areas for investment summary, ownership chart, cap table, and document sections. Consider responsive design for different screen sizes.
+
+## 2. Implement company header and basic information section [pending]
+### Dependencies: 12.1
+### Description: Develop the company header with logo, name, and key metrics
+### Details:
+Create the company header component displaying the company logo, name, industry, founding date, and other key information. Include a summary card with vital statistics like valuation, total investment, and investor count.
+
+## 3. Develop investment summary component [pending]
+### Dependencies: 12.2
+### Description: Create a component to display investment history and key metrics
+### Details:
+Implement the investment summary section showing total investment amount, number of rounds, investment timeline, and key metrics. Include filtering options and summary statistics relevant to investors.
+
+## 4. Design and implement ownership evolution chart [pending]
+### Dependencies: 12.2
+### Description: Create an interactive chart showing ownership changes over time
+### Details:
+Develop a visualization component that displays how company ownership has evolved across funding rounds. Include interactive elements to view specific time periods, highlight specific investor stakes, and show percentage changes.
+
+## 5. Build cap table data model and API integration [pending]
+### Dependencies: 12.2
+### Description: Create data models and API endpoints for cap table information
+### Details:
+Design the data structure for storing and retrieving cap table information. Implement API endpoints to fetch cap table data including shareholder information, equity distribution, and valuation details.
+
+## 6. Implement cap table visualization component [pending]
+### Dependencies: 12.5
+### Description: Create interactive cap table display with filtering and sorting options
+### Details:
+Develop the cap table component with tabular and visual representations of equity distribution. Include features for sorting, filtering by investor type, and highlighting specific shareholders. Implement export functionality for reports.
+
+## 7. Create document management system backend [pending]
+### Dependencies: 12.2
+### Description: Implement backend services for document storage, retrieval, and categorization
+### Details:
+Develop the backend infrastructure for document management including storage solutions, metadata handling, versioning, and access control. Create API endpoints for uploading, retrieving, and managing documents.
+
+## 8. Build document management UI [pending]
+### Dependencies: 12.7
+### Description: Create user interface for document browsing, uploading, and management
+### Details:
+Implement the document management interface with features for categorizing documents (legal, financial, operational), searching, filtering, and previewing. Include upload functionality with metadata tagging and version control UI.
+
+## 9. Implement user permissions and access controls [pending]
+### Dependencies: 12.3, 12.6, 12.8
+### Description: Create permission system for different investor access levels
+### Details:
+Develop a comprehensive permissions system to control which investors can view specific company information, documents, and cap table details. Implement role-based access controls and audit logging for sensitive information access.
+
+## 10. Integrate analytics and reporting features [pending]
+### Dependencies: 12.3, 12.4, 12.6
+### Description: Add analytics dashboard and reporting capabilities for investment performance
+### Details:
+Implement analytics features to help investors track performance metrics, compare against benchmarks, and generate reports. Include data export options, scheduled report generation, and customizable dashboards for investment monitoring.
+

@@ -1,0 +1,83 @@
+# Task ID: 1
+# Title: Project Setup and Configuration
+# Status: pending
+# Dependencies: None
+# Priority: high
+# Description: Initialize the Next.js 15.3+ project with App Router architecture, configure Tailwind v4, set up shadcn/ui component system, and establish the project structure.
+# Details:
+1. Create a new Next.js project using the App Router: `npx create-next-app@latest no-cap --typescript --tailwind --app`
+2. Configure Tailwind v4 for layout/spacing only
+3. Set up CSS variables for theming in `/app/globals.css`
+4. Install and configure shadcn/ui: `npx shadcn-ui@latest init`
+5. Create component directory structure:
+   - `/components/ui` - Re-exported shadcn components
+   - `/components/charts` - Chart wrappers
+   - `/components/layout` - Layout components
+   - `/app/(routes)` - Route groups by user role
+6. Set up Zustand for client state management: `npm install zustand`
+7. Set up React Query for API cache: `npm install @tanstack/react-query`
+8. Configure ESLint and Prettier
+9. Set up mock API directory structure for `/api/mock/*` endpoints
+
+# Test Strategy:
+1. Verify project builds without errors: `npm run build`
+2. Confirm all dependencies are correctly installed
+3. Test that the development server runs: `npm run dev`
+4. Validate that the component structure is accessible
+5. Ensure CSS variables are properly defined and accessible
+
+# Subtasks:
+## 1. Initialize Next.js 15.3+ project [pending]
+### Dependencies: None
+### Description: Create a new Next.js 15.3+ project with App Router architecture
+### Details:
+Use 'npx create-next-app@latest' to initialize a new project. When prompted, select the following options: 1) Name your project, 2) Yes to TypeScript, 3) Yes to ESLint, 4) Yes to Tailwind CSS, 5) Yes to App Router, 6) No to custom import alias (unless specifically needed). After initialization, verify the project structure and ensure Next.js version is 15.3 or higher in package.json.
+
+## 2. Configure Tailwind v4 [pending]
+### Dependencies: 1.1
+### Description: Update and configure Tailwind CSS to version 4
+### Details:
+Update Tailwind CSS to v4 by running 'npm install tailwindcss@latest postcss@latest autoprefixer@latest'. Create or update tailwind.config.js to use the v4 syntax. Configure content paths to include all relevant files. Set up any custom theme extensions, plugins, or color schemes needed for the project. Update the globals.css file to include the proper Tailwind directives (@tailwind base, components, and utilities).
+
+## 3. Install and configure shadcn/ui [pending]
+### Dependencies: 1.2
+### Description: Set up shadcn/ui component library with the project
+### Details:
+Install shadcn/ui CLI with 'npm install -D @shadcn/ui'. Initialize shadcn/ui with 'npx shadcn-ui@latest init'. During initialization, configure the style (default, new york), color (slate, zinc, etc.), global CSS path, component directory, and React Server Components support. Ensure the configuration is compatible with Tailwind v4 and Next.js 15.3+.
+
+## 4. Set up App Router directory structure [pending]
+### Dependencies: 1.1
+### Description: Create the necessary directories and files for App Router architecture
+### Details:
+Establish the core App Router directory structure: 1) app/ directory with page.tsx (homepage), layout.tsx (root layout), and error.tsx (error handling), 2) Create app/api directory for API routes, 3) Set up proper metadata in layout.tsx for SEO, 4) Configure any necessary route groups with parentheses notation (e.g., (auth), (dashboard)). Ensure the structure follows Next.js 15.3+ best practices.
+
+## 5. Implement authentication structure [pending]
+### Dependencies: 1.4
+### Description: Set up the authentication framework and related routes
+### Details:
+Create an (auth) route group with sign-in, sign-up, and other auth-related pages. Set up authentication provider (NextAuth.js, Clerk, or custom solution). Configure necessary middleware.ts for protected routes. Create authentication hooks or utilities in the lib/ directory. Ensure the authentication flow works with the App Router architecture.
+
+## 6. Create reusable components with shadcn/ui [pending]
+### Dependencies: 1.3
+### Description: Install and customize essential shadcn/ui components
+### Details:
+Install core shadcn/ui components using the CLI (e.g., 'npx shadcn-ui@latest add button card form input'). Create a components/ directory with subdirectories for organization (ui/, layout/, forms/, etc.). Customize components to match project design requirements. Create any composite components needed for the application using the shadcn/ui primitives.
+
+## 7. Set up state management and data fetching [pending]
+### Dependencies: 1.4
+### Description: Implement state management solution and data fetching patterns
+### Details:
+Choose and implement a state management approach (React Context, Zustand, Jotai, etc.). Create a lib/ directory for utilities and state management. Set up data fetching patterns using Next.js Server Components and/or client-side fetching. Implement proper loading states and error handling for data fetching. Configure any necessary API route handlers in the app/api directory.
+
+## 8. Configure environment variables and config [pending]
+### Dependencies: 1.1
+### Description: Set up environment variables and project configuration
+### Details:
+Create .env, .env.local, .env.example files for environment variables. Set up a config.ts file to centralize configuration values. Configure any necessary third-party services (database, authentication, etc.). Implement environment-specific settings for development, testing, and production. Document all required environment variables in the README.md.
+
+## 9. Implement testing and deployment setup [pending]
+### Dependencies: 1.2, 1.3, 1.4, 1.7, 1.8
+### Description: Configure testing framework and deployment pipeline
+### Details:
+Set up testing framework (Jest, Vitest, or React Testing Library). Create test directories and initial test files. Configure CI/CD pipeline with GitHub Actions or similar service. Set up deployment configuration for the chosen hosting platform (Vercel, Netlify, etc.). Create necessary scripts in package.json for testing, building, and deployment. Document the deployment process in the README.md.
+

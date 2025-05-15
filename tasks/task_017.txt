@@ -1,0 +1,94 @@
+# Task ID: 17
+# Title: Board Meeting Preparation Center
+# Status: pending
+# Dependencies: 4, 6
+# Priority: low
+# Description: Implement the board meeting preparation center with agenda builder, cap table summary, document generation, voting tracker, and collaborative notes to streamline governance processes.
+# Details:
+1. Create board meeting route at `/app/(routes)/founder/governance/board/page.tsx`
+2. Build MeetingCard with upcoming meeting details
+3. Implement DragTopicItem for agenda management
+4. Create CapMetricHighlight for board-ready visualizations
+5. Build DocTemplateSelector for document generation
+6. Implement ESignCollector for electronic signatures
+7. Create CollabNotes for meeting notes
+8. Build API integration with `/api/mock/board/next`
+9. Implement drag-and-drop functionality for agenda items
+10. Create document generation with templates
+11. Build responsive layout for different screen sizes
+
+# Test Strategy:
+1. Test meeting preparation with sample data
+2. Verify drag-and-drop agenda functionality
+3. Test document generation with templates
+4. Validate electronic signature collection
+5. Test collaborative notes functionality
+6. Verify responsive layout across device sizes
+
+# Subtasks:
+## 1. Design database schema for board meeting center [pending]
+### Dependencies: None
+### Description: Create the database schema to support all board meeting center features including meetings, agendas, cap tables, documents, votes, and notes.
+### Details:
+Define tables and relationships for: Meetings, Agenda items, Cap table entries, Document templates, Generated documents, Voting records, Meeting notes. Include appropriate foreign keys and indexes for efficient querying.
+
+## 2. Implement drag-and-drop agenda builder [pending]
+### Dependencies: 17.1
+### Description: Create an interactive agenda builder with drag-and-drop functionality for organizing meeting topics.
+### Details:
+Use a modern JavaScript framework to implement drag-and-drop. Include features for adding, removing, reordering, and nesting agenda items. Implement auto-save functionality and real-time updates for collaborative editing.
+
+## 3. Develop cap table summary component [pending]
+### Dependencies: 17.1
+### Description: Create a component to display and manage capitalization table information for board meetings.
+### Details:
+Implement data visualization for equity distribution. Include filtering options for different equity types. Create input forms for updating cap table information. Implement version history to track changes over time.
+
+## 4. Create document template system [pending]
+### Dependencies: 17.1
+### Description: Develop a system for creating and managing document templates for board meetings.
+### Details:
+Implement a template editor with variable placeholders. Create a template library with common board documents (resolutions, minutes, etc.). Include version control for templates. Support rich text formatting and layout options.
+
+## 5. Implement document generation engine [pending]
+### Dependencies: 17.1, 17.4
+### Description: Build an engine to generate documents from templates with meeting-specific data.
+### Details:
+Create a system to merge template variables with meeting data. Support multiple output formats (PDF, DOCX). Implement preview functionality before final generation. Include batch generation for multiple documents.
+
+## 6. Integrate electronic signature functionality [pending]
+### Dependencies: 17.5
+### Description: Add electronic signature capabilities to generated documents.
+### Details:
+Research and integrate a third-party e-signature API or implement a custom solution. Create signature request workflow. Implement signature verification and audit trail. Support multiple signatories with role-based permissions.
+
+## 7. Develop voting tracker system [pending]
+### Dependencies: 17.1
+### Description: Create a system to track and record votes during board meetings.
+### Details:
+Implement different voting types (yes/no, multiple choice, weighted). Create real-time voting interface. Generate voting reports and analytics. Support proxy voting and vote delegation. Include historical vote tracking.
+
+## 8. Implement collaborative notes feature [pending]
+### Dependencies: 17.1
+### Description: Build a real-time collaborative note-taking system for meeting participants.
+### Details:
+Integrate a real-time collaboration library (e.g., YJS, ShareDB). Implement rich text editing with formatting options. Add user presence indicators to show who is currently editing. Create automatic saving and version history.
+
+## 9. Create meeting dashboard and navigation [pending]
+### Dependencies: 17.2, 17.3, 17.5, 17.7, 17.8
+### Description: Develop the main dashboard interface for accessing all board meeting center features.
+### Details:
+Design an intuitive navigation system between features. Create overview dashboard with meeting status and upcoming tasks. Implement responsive design for mobile access. Add customizable widgets for frequently used features.
+
+## 10. Implement permissions and access control [pending]
+### Dependencies: 17.1
+### Description: Create a comprehensive permissions system for different user roles in the board meeting center.
+### Details:
+Define role-based permissions (admin, board member, observer, etc.). Implement document-level access controls. Create audit logging for sensitive actions. Support temporary access grants for specific meetings.
+
+## 11. Conduct integration testing and optimization [pending]
+### Dependencies: 17.9, 17.10
+### Description: Test all components working together and optimize performance of the board meeting center.
+### Details:
+Create end-to-end test scenarios covering all features. Perform load testing with simulated concurrent users. Optimize database queries and front-end performance. Conduct usability testing with actual board members. Fix identified issues and implement performance improvements.
+

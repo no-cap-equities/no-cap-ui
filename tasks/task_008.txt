@@ -1,0 +1,101 @@
+# Task ID: 8
+# Title: Equity Issuance Wizard
+# Status: pending
+# Dependencies: 4, 6
+# Priority: medium
+# Description: Create a multi-step wizard for issuing equity to stakeholders with instrument selection, recipient information, terms configuration, compliance checks, and approval workflow.
+# Details:
+1. Create equity issuance wizard route at `/app/(routes)/founder/issue-equity/page.tsx`
+2. Build Stepper component for multi-step navigation
+3. Implement InstrumentCard selection for security types
+4. Create StakeholderLookup for recipient selection
+5. Build VestingTimeline visualization for schedule configuration
+6. Implement RuleValidationList for compliance checks
+7. Create SummaryCard for final review
+8. Build side panel showing cap table impact
+9. Implement form validation for each step
+10. Create API integration with mock endpoints for instruments, employees, and vesting templates
+11. Implement draft saving functionality
+12. Build submission flow to approval system
+
+# Test Strategy:
+1. Test wizard navigation through all steps
+2. Verify form validation for required fields
+3. Test instrument selection and configuration
+4. Validate compliance checks with different scenarios
+5. Test submission and approval routing
+6. Verify cap table impact visualization updates correctly
+
+# Subtasks:
+## 1. Design Wizard Flow Architecture [pending]
+### Dependencies: None
+### Description: Create the overall architecture for the multi-step equity issuance wizard, defining the step sequence and data flow between steps.
+### Details:
+Define the complete wizard flow including navigation, data persistence between steps, and error handling. Create wireframes for each step and document the data model that will be passed through the wizard.
+
+## 2. Implement Instrument Selection Step [pending]
+### Dependencies: 8.1
+### Description: Build the first step of the wizard for selecting the equity instrument type (options, RSUs, etc.) with appropriate visualizations and explanations.
+### Details:
+Create UI components for instrument selection with comparison charts, tooltips explaining each instrument type, and validation logic to ensure a valid selection before proceeding.
+
+## 3. Develop Recipient Information Form [pending]
+### Dependencies: 8.1
+### Description: Create the form for inputting recipient details including validation for required fields and integration with existing user database.
+### Details:
+Build form components with validation for name, contact information, employee ID, and tax information. Include search functionality to find existing users in the system and auto-populate fields when possible.
+
+## 4. Implement Grant Size Calculator [pending]
+### Dependencies: 8.2, 8.3
+### Description: Create an interactive calculator for determining grant size based on company policies, recipient level, and available equity pool.
+### Details:
+Build a calculator that shows available options based on company guidelines, with visualizations of dilution impact and monetary value at different price points. Include validation to prevent exceeding available equity pool.
+
+## 5. Build Vesting Schedule Configuration [pending]
+### Dependencies: 8.4
+### Description: Develop the interface for configuring vesting schedules with visualization of the vesting timeline.
+### Details:
+Create UI for setting vesting parameters (cliff period, vesting duration, frequency) with an interactive timeline visualization showing vesting events. Include templates for standard vesting schedules and custom configuration options.
+
+## 6. Implement Document Generation Preview [pending]
+### Dependencies: 8.5
+### Description: Create a preview system for the equity documents that will be generated based on the configured grant.
+### Details:
+Build a document preview system showing how the final grant documents will appear with all entered information. Include the ability to download draft documents for review before submission.
+
+## 7. Develop Compliance Verification System [pending]
+### Dependencies: 8.4, 8.5
+### Description: Implement automated compliance checks to ensure the grant meets regulatory requirements and company policies.
+### Details:
+Create a system that validates the grant against securities regulations, company equity plan rules, and recipient eligibility requirements. Display warnings or errors when compliance issues are detected.
+
+## 8. Build Approval Workflow Integration [pending]
+### Dependencies: 8.6, 8.7
+### Description: Integrate the wizard with the company's approval workflow system to route completed grants for necessary approvals.
+### Details:
+Implement integration with the approval system, determining the approval chain based on grant size, recipient, and company policies. Include status tracking and notification capabilities.
+
+## 9. Create Summary and Confirmation Step [pending]
+### Dependencies: 8.6, 8.7
+### Description: Develop the final wizard step showing a complete summary of the grant and confirmation before submission.
+### Details:
+Build a comprehensive summary page displaying all configured grant details with the ability to go back and edit any section. Include a final submission confirmation with terms acknowledgment.
+
+## 10. Implement Data Persistence and Recovery [pending]
+### Dependencies: 8.1, 8.2, 8.3, 8.4, 8.5
+### Description: Create a system for saving draft grants and recovering in-progress wizard sessions.
+### Details:
+Develop functionality to automatically save wizard progress, allow users to return to in-progress grants, and implement draft management features including listing, editing, and deleting draft grants.
+
+## 11. Develop Notification System [pending]
+### Dependencies: 8.8, 8.9
+### Description: Build a notification system to alert relevant parties about grant creation, approval requests, and status changes.
+### Details:
+Implement email and in-app notifications for grant submission, approval requests, approvals/rejections, and final grant issuance. Include customizable notification preferences for different user roles.
+
+## 12. Create Comprehensive Testing Suite [pending]
+### Dependencies: 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 8.10, 8.11
+### Description: Develop end-to-end testing for the entire wizard flow, including edge cases and integration testing.
+### Details:
+Create automated tests covering all wizard steps, validation logic, compliance checks, and approval workflows. Include performance testing for large grants and security testing for sensitive equity data.
+
