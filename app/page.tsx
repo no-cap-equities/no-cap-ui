@@ -7,26 +7,78 @@ import { WalletConnectDialog } from '@/components/auth/wallet-connect-dialog'
 import { useAuth } from '@/components/auth/auth-provider'
 import { useRouter } from 'next/navigation'
 import { useUserStore } from '@/lib/store'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { ChartPieIcon, CurrencyDollarIcon, UserGroupIcon, ShieldCheckIcon, ChartBarIcon, BoltIcon } from '@heroicons/react/24/outline'
 
 export default function Home() {
   const [showConnectDialog, setShowConnectDialog] = useState(false)
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null)
   const { isAuthenticated, role } = useAuth()
   const router = useRouter()
+
+  const handleRoleSelect = (selectedRole: 'founder' | 'investor' | 'employee') => {
+    if (isAuthenticated) {
+      // If already logged in, switch role and navigate
+      useUserStore.setState({ role: selectedRole })
+      if (selectedRole === "founder") router.push("/founder/dashboard")
+      else if (selectedRole === "investor") router.push("/investor/portfolio") 
+      else if (selectedRole === "employee") router.push("/employee/dashboard")
+    } else {
+      // If not logged in, set role and show wallet dialog
+      useUserStore.setState({ role: selectedRole })
+      setShowConnectDialog(true)
+    }
+  }
+
   return (
-    <main className="min-h-screen flex flex-col">
-      <header className="container mx-auto p-4 flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <span className="text-2xl">🧢</span>
-          <h1 className="text-xl font-bold">No Cap</h1>
+    <main className="min-h-screen flex flex-col relative overflow-hidden">
+      {/* Animated blockchain background */}
+      <div className="fixed inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-primary/5" />
+        <svg 
+          className="absolute inset-0 w-full h-full opacity-5"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <pattern id="blockchain-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+              <circle cx="50" cy="50" r="3" fill="#8b5cf6" fillOpacity="0.2">
+                <animate attributeName="r" values="3;6;3" dur="3s" repeatCount="indefinite" />
+              </circle>
+              <line x1="50" y1="50" x2="100" y2="50" stroke="#8b5cf6" strokeOpacity="0.1" strokeWidth="1">
+                <animate attributeName="stroke-opacity" values="0.1;0.4;0.1" dur="3s" repeatCount="indefinite" />
+              </line>
+              <line x1="50" y1="50" x2="0" y2="50" stroke="#8b5cf6" strokeOpacity="0.1" strokeWidth="1">
+                <animate attributeName="stroke-opacity" values="0.1;0.4;0.1" dur="3s" repeatCount="indefinite" />
+              </line>
+              <line x1="50" y1="50" x2="50" y2="100" stroke="#8b5cf6" strokeOpacity="0.1" strokeWidth="1">
+                <animate attributeName="stroke-opacity" values="0.1;0.4;0.1" dur="3s" repeatCount="indefinite" />
+              </line>
+              <line x1="50" y1="50" x2="50" y2="0" stroke="#8b5cf6" strokeOpacity="0.1" strokeWidth="1">
+                <animate attributeName="stroke-opacity" values="0.1;0.4;0.1" dur="3s" repeatCount="indefinite" />
+              </line>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#blockchain-pattern)" />
+        </svg>
+      </div>
+
+      {/* Header */}
+      <header className="container mx-auto p-6 flex justify-between items-center relative z-10 animate-fade-in">
+        <div className="flex items-center gap-3">
+          <span className="text-3xl">🧢</span>
+          <div>
+            <h1 className="text-2xl font-bold">No Cap</h1>
+            <p className="text-xs text-muted-foreground">Equity management for the digital age</p>
+          </div>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
           <div className="text-sm text-muted-foreground">
-            Powered by Forte
+            Powered by <span className="font-semibold">Forte</span>
           </div>
           {isAuthenticated ? (
             <Button 
               variant="outline" 
-              size="sm" 
               onClick={() => {
                 if (role === "founder") router.push("/founder/dashboard")
                 else if (role === "investor") router.push("/investor/portfolio")
@@ -37,8 +89,7 @@ export default function Home() {
             </Button>
           ) : (
             <Button 
-              variant="outline" 
-              size="sm" 
+              variant="outline"
               onClick={() => setShowConnectDialog(true)}
             >
               Connect Wallet
@@ -47,134 +98,185 @@ export default function Home() {
         </div>
       </header>
 
-      <div className="flex-1 container mx-auto flex flex-col items-center justify-center px-4 py-16">
-        <h2 className="text-3xl font-bold text-center mb-4">Equity management for the digital age</h2>
-        <p className="text-muted-foreground text-center mb-12 max-w-xl">
-          Streamlined cap table management, compliance automation, and on-chain actions
-          in one unified platform.
+      {/* Main content */}
+      <div className="flex-1 container mx-auto flex flex-col items-center justify-center px-4 py-16 relative z-10">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent animate-fade-in-up">
+          Choose Your Role
+        </h2>
+        <p className="text-muted-foreground text-center mb-12 max-w-2xl text-lg animate-fade-in-up animate-delay-100">
+          Experience equity management tailored to your needs. Select your primary role to get started.
         </p>
 
-        <div className="grid md:grid-cols-3 gap-8 w-full max-w-4xl">
+        {/* Role cards */}
+        <div className="grid md:grid-cols-3 gap-8 w-full max-w-6xl">
           {/* Founder Card */}
-          <div 
-            onClick={() => {
-              if (isAuthenticated) {
-                // If already logged in, switch role and navigate
-                useUserStore.setState({ role: 'founder' })
-                router.push("/founder/dashboard")
-              } else {
-                // If not logged in, set role and show wallet dialog
-                useUserStore.setState({ role: 'founder' })
-                setShowConnectDialog(true)
-              }
-            }}
-            className="flex flex-col items-center p-6 rounded-lg border border-border bg-card hover:shadow-md transition-shadow cursor-pointer"
+          <Card 
+            className={`relative overflow-hidden cursor-pointer transition-all duration-300 transform hover:scale-105 animate-scale-in animate-delay-200 ${
+              hoveredCard === 'founder' ? 'ring-2 ring-primary' : ''
+            }`}
+            onClick={() => handleRoleSelect('founder')}
+            onMouseEnter={() => setHoveredCard('founder')}
+            onMouseLeave={() => setHoveredCard(null)}
           >
-            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-              <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Founder / Admin</h3>
-            <p className="text-muted-foreground text-center text-sm">
-              Manage your cap table, issue equity, and monitor compliance
-            </p>
-            <div className="mt-6 text-primary font-medium">
-              Enter as Founder
-            </div>
-          </div>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-16 translate-x-16" />
+            <CardHeader className="pb-8">
+              <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-purple-600/20 rounded-full flex items-center justify-center mb-4">
+                <ChartPieIcon className="w-10 h-10 text-primary" />
+              </div>
+              <CardTitle className="text-2xl">Founder / Admin</CardTitle>
+              <CardDescription className="text-base">
+                Take control of your company's equity
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-center gap-2">
+                  <span className="text-primary">•</span>
+                  Manage cap table & ownership
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-primary">•</span>
+                  Issue equity & handle compliance
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-primary">•</span>
+                  Model dilution scenarios
+                </li>
+              </ul>
+              <Button 
+                className="w-full mt-6" 
+                variant={hoveredCard === 'founder' ? 'default' : 'outline'}
+              >
+                Enter as Founder
+              </Button>
+            </CardContent>
+          </Card>
 
           {/* Investor Card */}
-          <div 
-            onClick={() => {
-              if (isAuthenticated) {
-                // If already logged in, switch role and navigate
-                useUserStore.setState({ role: 'investor' })
-                router.push("/investor/portfolio")
-              } else {
-                // If not logged in, set role and show wallet dialog
-                useUserStore.setState({ role: 'investor' })
-                setShowConnectDialog(true)
-              }
-            }}
-            className="flex flex-col items-center p-6 rounded-lg border border-border bg-card hover:shadow-md transition-shadow cursor-pointer"
+          <Card 
+            className={`relative overflow-hidden cursor-pointer transition-all duration-300 transform hover:scale-105 animate-scale-in animate-delay-300 ${
+              hoveredCard === 'investor' ? 'ring-2 ring-primary' : ''
+            }`}
+            onClick={() => handleRoleSelect('investor')}
+            onMouseEnter={() => setHoveredCard('investor')}
+            onMouseLeave={() => setHoveredCard(null)}
           >
-            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-              <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Investor</h3>
-            <p className="text-muted-foreground text-center text-sm">
-              Track your investments, monitor performance, and participate in governance
-            </p>
-            <div className="mt-6 text-primary font-medium">
-              Enter as Investor
-            </div>
-          </div>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-16 translate-x-16" />
+            <CardHeader className="pb-8">
+              <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-purple-600/20 rounded-full flex items-center justify-center mb-4">
+                <CurrencyDollarIcon className="w-10 h-10 text-primary" />
+              </div>
+              <CardTitle className="text-2xl">Investor</CardTitle>
+              <CardDescription className="text-base">
+                Monitor and manage your portfolio
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-center gap-2">
+                  <span className="text-primary">•</span>
+                  Track portfolio performance
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-primary">•</span>
+                  Participate in governance
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-primary">•</span>
+                  Access real-time valuations
+                </li>
+              </ul>
+              <Button 
+                className="w-full mt-6" 
+                variant={hoveredCard === 'investor' ? 'default' : 'outline'}
+              >
+                Enter as Investor
+              </Button>
+            </CardContent>
+          </Card>
 
           {/* Employee Card */}
-          <div 
-            onClick={() => {
-              if (isAuthenticated) {
-                // If already logged in, switch role and navigate
-                useUserStore.setState({ role: 'employee' })
-                router.push("/employee/dashboard")
-              } else {
-                // If not logged in, set role and show wallet dialog
-                useUserStore.setState({ role: 'employee' })
-                setShowConnectDialog(true)
-              }
-            }}
-            className="flex flex-col items-center p-6 rounded-lg border border-border bg-card hover:shadow-md transition-shadow cursor-pointer"
+          <Card 
+            className={`relative overflow-hidden cursor-pointer transition-all duration-300 transform hover:scale-105 animate-scale-in animate-delay-400 ${
+              hoveredCard === 'employee' ? 'ring-2 ring-primary' : ''
+            }`}
+            onClick={() => handleRoleSelect('employee')}
+            onMouseEnter={() => setHoveredCard('employee')}
+            onMouseLeave={() => setHoveredCard(null)}
           >
-            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-              <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zm-4 7a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Employee</h3>
-            <p className="text-muted-foreground text-center text-sm">
-              View your equity, understand vesting, and exercise options
-            </p>
-            <div className="mt-6 text-primary font-medium">
-              Enter as Employee
-            </div>
-          </div>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-16 translate-x-16" />
+            <CardHeader className="pb-8">
+              <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-purple-600/20 rounded-full flex items-center justify-center mb-4">
+                <UserGroupIcon className="w-10 h-10 text-primary" />
+              </div>
+              <CardTitle className="text-2xl">Employee</CardTitle>
+              <CardDescription className="text-base">
+                Understand and manage your equity
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-center gap-2">
+                  <span className="text-primary">•</span>
+                  View vesting schedules
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-primary">•</span>
+                  Exercise options seamlessly
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-primary">•</span>
+                  Understand your ownership
+                </li>
+              </ul>
+              <Button 
+                className="w-full mt-6" 
+                variant={hoveredCard === 'employee' ? 'default' : 'outline'}
+              >
+                Enter as Employee
+              </Button>
+            </CardContent>
+          </Card>
         </div>
 
-        <div className="flex gap-8 mt-16">
-          <div className="flex items-center gap-2 text-sm">
-            <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
-            <span>Seamless Compliance</span>
-          </div>
-          <div className="flex items-center gap-2 text-sm">
-            <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
-            </svg>
-            <span>Real-Time Cap Table</span>
-          </div>
-          <div className="flex items-center gap-2 text-sm">
-            <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-            <span>On-Chain Actions</span>
-          </div>
+        {/* Feature badges */}
+        <div className="flex flex-wrap gap-4 mt-16 justify-center animate-fade-in-up animate-delay-500">
+          <Badge variant="secondary" className="px-4 py-2 text-sm">
+            <ShieldCheckIcon className="w-4 h-4 mr-2" />
+            Seamless Compliance
+          </Badge>
+          <Badge variant="secondary" className="px-4 py-2 text-sm">
+            <ChartBarIcon className="w-4 h-4 mr-2" />
+            Real-Time Cap Table
+          </Badge>
+          <Badge variant="secondary" className="px-4 py-2 text-sm">
+            <BoltIcon className="w-4 h-4 mr-2" />
+            On-Chain Actions
+          </Badge>
         </div>
       </div>
 
-      <footer className="container mx-auto p-6 border-t border-border">
-        <div className="flex justify-between items-center">
-          <div className="flex gap-4">
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground">Docs</a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground">GitHub</a>
+      {/* Footer */}
+      <footer className="container mx-auto p-6 border-t border-border relative z-10 animate-fade-in">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex gap-6">
+            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Documentation</a>
+            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">GitHub</a>
+            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Community</a>
           </div>
-          <div className="flex gap-4">
-            <div className="text-xs text-muted-foreground">SOC 2 Type II</div>
-            <div className="text-xs text-muted-foreground">ISO 27001</div>
+          <div className="flex flex-wrap gap-3">
+            <Badge variant="outline" className="text-xs">
+              <ShieldCheckIcon className="w-3 h-3 mr-1" />
+              SOC 2 Type II
+            </Badge>
+            <Badge variant="outline" className="text-xs">
+              <ShieldCheckIcon className="w-3 h-3 mr-1" />
+              ISO 27001
+            </Badge>
+            <Badge variant="outline" className="text-xs">
+              <ShieldCheckIcon className="w-3 h-3 mr-1" />
+              SEC Compliant
+            </Badge>
           </div>
         </div>
       </footer>
