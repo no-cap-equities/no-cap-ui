@@ -18,5 +18,6 @@
         "titleBar.inactiveBackground": "#2d62bc99",
         "titleBar.inactiveForeground": "#e7e7e799"
     },
-    "peacock.remoteColor": "#2d62bc"
+    "peacock.remoteColor": "#2d62bc",
+    "workbench.colorTheme": "Cursor Dark Midnight"
 }

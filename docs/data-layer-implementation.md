@@ -2,7 +2,7 @@
 
 ## Overview
 
-We've successfully implemented the core data models and API layer for the No Cap equity management platform. This document outlines what has been completed and the current state of the data layer.
+We've successfully implemented the complete data models, API layer, and React Query integration for the No Cap equity management platform. This document outlines what has been completed and the current state of the data layer.
 
 ## Completed Components
 
@@ -65,17 +65,77 @@ Implemented a fully-functional mock API client:
 - Full implementation of the API client interface
 - Support for complex operations like grant exercises and rule checking
 
+### 6. Mock API Routes (`/app/api/mock/`)
+
+Created RESTful API endpoints:
+- `/api/mock/cap-tables`: Cap table CRUD operations
+- `/api/mock/stakeholders`: Stakeholder management  
+- `/api/mock/securities`: Security class management
+- `/api/mock/transactions`: Transaction recording
+- Proper error handling and response formatting
+- Integration with the mock API client
+
+### 7. React Query Integration
+
+Set up complete React Query infrastructure:
+- Query client configuration (`/lib/react-query.ts`)
+- Base query utilities (`/hooks/use-queries.ts`)
+- Query keys factory for consistent cache key generation
+- Base query and mutation options generators
+- Global error handling utilities
+
+### 8. Entity-specific React Query Hooks
+
+Created specialized hooks for each entity type:
+- Company hooks (`/hooks/use-companies.ts`)
+- Stakeholder hooks (`/hooks/use-stakeholders.ts`)
+- Security hooks (`/hooks/use-securities.ts`)
+- Transaction hooks (`/hooks/use-transactions.ts`)
+- Cap table hooks (`/hooks/use-cap-tables.ts`)
+
+Each hook set includes:
+- List queries with filtering
+- Individual entity queries
+- Create, update, and delete mutations
+- Automatic cache invalidation
+
+### 9. Cache Management & Synchronization (`/hooks/use-cache-sync.ts`)
+
+Implemented sophisticated cache management:
+- Entity-specific invalidation strategies
+- Related data invalidation (e.g., transaction affects stakeholders)
+- Optimistic updates for better UX
+- Data prefetching for performance
+- Transaction effect synchronization
+- Grant effect synchronization
+
 ## Project Structure
 
 ```
 /home/liam/hack/screens2/no-cap-screens/
 ├── types/
-│   └── index.ts           # Core TypeScript interfaces
+│   └── index.ts                    # Core TypeScript interfaces
 ├── lib/
-│   ├── api.ts            # API client interface
-│   ├── api-client.ts     # Mock API client implementation
-│   ├── validation.ts     # Data validation utilities
-│   └── transforms.ts     # Data transformation utilities
+│   ├── api.ts                     # API client interface
+│   ├── api-client.ts              # Mock API client implementation
+│   ├── validation.ts              # Data validation utilities
+│   ├── transforms.ts              # Data transformation utilities
+│   └── react-query.ts             # React Query configuration
+├── app/
+│   └── api/
+│       └── mock/                  # Mock API routes
+│           ├── cap-tables/
+│           ├── stakeholders/
+│           ├── securities/
+│           └── transactions/
+├── hooks/
+│   ├── use-queries.ts             # Base React Query utilities
+│   ├── use-companies.ts           # Company-specific hooks
+│   ├── use-stakeholders.ts        # Stakeholder-specific hooks
+│   ├── use-securities.ts          # Security-specific hooks
+│   ├── use-transactions.ts        # Transaction-specific hooks
+│   ├── use-cap-tables.ts          # Cap table-specific hooks
+│   └── use-cache-sync.ts          # Cache synchronization utilities
 └── docs/
     └── data-layer-implementation.md  # This file
 ```
@@ -87,27 +147,59 @@ Implemented a fully-functional mock API client:
 3. **Transformation Layer**: Separates API data format from UI display format
 4. **Mock Implementation**: Full mock client allows development without backend
 5. **Modular Architecture**: Clear separation of concerns between types, validation, transformation, and API
+6. **React Query**: Modern data fetching with built-in caching and synchronization
+7. **Optimistic Updates**: Better UX with immediate UI updates
 
-## Next Steps
+## Usage Examples
 
-With the core data layer complete, the next phases include:
-1. Implementing React Query hooks for data fetching
-2. Setting up mock API routes in Next.js
-3. Creating sample JSON data files
-4. Implementing optimistic updates and caching strategies
-
-## Usage Example
+### Using React Query Hooks
 
 ```typescript
-import { createApiClient } from '@/lib/api';
+import { useCompany, useCreateTransaction } from '@/hooks';
+
+// Fetch a company
+function CompanyDetails({ companyId }: { companyId: string }) {
+  const { data, isLoading, error } = useCompany(companyId);
+  
+  if (isLoading) return <Loading />;
+  if (error) return <Error error={error} />;
+  
+  return <CompanyView company={data.data} />;
+}
+
+// Create a transaction with optimistic update
+function TransactionForm() {
+  const createTransaction = useCreateTransaction();
+  
+  const handleSubmit = async (formData: TransactionFormData) => {
+    await createTransaction.mutateAsync(formData);
+    // UI automatically updates via React Query
+  };
+}
+```
+
+### Using Cache Synchronization
+
+```typescript
+import { useCacheSync } from '@/hooks/use-cache-sync';
+
+function useTransactionEffects() {
+  const { syncTransactionEffects } = useCacheSync();
+  
+  // After successful transaction
+  syncTransactionEffects(transaction);
+}
+```
+
+### Direct API Usage
+
+```typescript
+import { apiClient } from '@/lib/api-client';
 import { validateCompany } from '@/lib/validation';
 import { centsToUSD } from '@/lib/transforms';
 
-// Create API client
-const api = createApiClient();
-
 // Fetch company data
-const { data: company } = await api.getCompany('acme-inc');
+const { data: company } = await apiClient.getCompany('acme-inc');
 
 // Validate the data
 const validation = validateCompany(company);
@@ -126,3 +218,21 @@ const displayValue = centsToUSD(company.valuationUsd);
 - Error conditions are randomly simulated for testing error handling
 - All monetary values are stored in cents for precision
 - Dates are stored in ISO 8601 format for consistency
+- React Query handles caching, synchronization, and background refetching
+- Optimistic updates provide immediate UI feedback
+
+## Remaining Work
+
+The only subtask not implemented from Task 4 is:
+- Subtask 12: Create comprehensive test suite for data layer
+
+This was deferred to focus on completing the core functionality first.
+
+## Next Steps
+
+With the complete data layer implementation:
+1. Create comprehensive test suite for all components
+2. Build UI components that utilize the React Query hooks
+3. Implement real-time data synchronization with WebSockets
+4. Add data export/import functionality
+5. Create performance monitoring and optimization
